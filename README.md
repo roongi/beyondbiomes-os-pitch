@@ -20,17 +20,18 @@ Double-click `index.html` — it opens in any browser, fully offline (all images
 | Next / previous (during play) | ‹ › buttons |
 | Funding versions | Ask section — tabs |
 | 1000× simulator | "＋ Deploy a vertical" / "↺ Reset" |
+| Download PowerPoint | "⬇ PowerPoint" (hero) — exports a 5-slide .pptx with a QR to the app on the last slide |
 
-## Sections
-1. Hero — the OS for the 1000× operator
-2. The method — *eyes before muscle*
-3. The output — 1000× operator + live simulator
-4. Soil — $1.8B→$3.08B by 2030, EU FPR 2019/1009, RhizoGenie + Biomizer
-5. The federation — one method, many verticals, one Holding
-6. Business model — €300/mo → €5–15k → €1–5k/mo; €1–2M / operator
+## Sections (soil-first)
+1. Hero — precision medicine for living soil
+2. Soil — the product: sample → read → custom biome → deliver (RhizoGenie + Biomizer)
+3. Business model — $1.8B→$3.08B by 2030, EU FPR 2019/1009; €300/mo → €5–15k → €1–5k/mo; €1–2M / operator
+4. The method — *eyes before muscle*
+5. The output — the OS / 1000× operator + live simulator (the reveal)
+6. The federation — one method, many verticals, one Holding
 7. Market signal — community validation
 8. Team — a federation of operators
-9. The ask — 4 switchable funding versions
+9. The ask — 4 switchable funding versions + QR to the app
 
 ## Files
 - `index.html` — the complete app (self-contained)
