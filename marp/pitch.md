@@ -68,8 +68,6 @@ footer: 'Beyond Biomes · precision medicine for living soil'
 
 ---
 
-<!-- _class: dark -->
-
 <div class="eyebrow">The ask</div>
 
 ## Read it. Prove it. Scale it.

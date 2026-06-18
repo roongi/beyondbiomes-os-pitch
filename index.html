@@ -7,10 +7,10 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-:root{ color-scheme:dark;
-  --bg:#15110c; --bg2:#1f1810; --paper:#1d1610; --ink:#ece3d1; --muted:#a99d86;
-  --green:#6aa84a; --green2:#efe8d6; --lime:#9bc247; --lime2:#bdd97a; --orange:#e2691f; --rust:#c4501f; --gold:#cda33a;
-  --card:#231c15; --line:#3a3128; --sh:0 24px 60px -28px rgba(28,58,34,.42); --sh2:0 8px 24px -12px rgba(28,58,34,.25);
+:root{ color-scheme:light;
+  --bg:#F5F2EA; --bg2:#EFEBDF; --paper:#FBFAF5; --ink:#19271C; --muted:#5b6b58;
+  --green:#2C5F2D; --green2:#2C5F2D; --lime:#6f9e2e; --lime2:#86AC36; --orange:#D9531E; --rust:#c4501f; --gold:#b8902f;
+  --card:#FBFAF5; --line:#E2E7D8; --sh:0 24px 60px -28px rgba(28,58,34,.22); --sh2:0 8px 24px -12px rgba(28,58,34,.14);
   --serif:'Fraunces',Georgia,serif; --sans:'Inter',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
 }
 *{margin:0;padding:0;box-sizing:border-box}
@@ -183,6 +183,30 @@ footer img{height:26px}
 #present .cc{font-size:clamp(15px,1.9vw,20px);line-height:1.5;max-height:32vh;overflow-y:auto;color:#f3f7ef}
 #present .ctrlrow{display:flex;align-items:center;gap:14px}
 #present .tm{font:600 13px var(--sans);color:#9fc39f;min-width:92px;text-align:right}
+
+/* ===== LIGHT THEME + CENTERED LAYOUT (overrides) ===== */
+.alt{background:linear-gradient(180deg,rgba(240,237,225,.5),rgba(245,242,234,.7))}
+.paper{background:rgba(251,250,245,.55)}
+header.scrolled{background:rgba(245,242,234,.92);box-shadow:0 1px 0 var(--line)}
+header nav a{color:var(--ink)} header nav a:hover{color:var(--orange)}
+.btn.g{background:rgba(44,95,45,.07);color:var(--green);border:1px solid var(--line)}
+.btn.g:hover{background:rgba(44,95,45,.12);border-color:var(--green);color:var(--green)}
+.chip{background:rgba(44,95,45,.06);color:var(--green);border:1px solid var(--line)}
+#hero::after{background:linear-gradient(180deg,rgba(245,242,234,.4) 0%,rgba(245,242,234,0) 24%,rgba(245,242,234,0) 74%,rgba(245,242,234,.6) 100%)}
+#heroCanvas{opacity:.62}
+#hero .sub{color:var(--muted)}
+#login{background:radial-gradient(120% 90% at 50% 0%,#FBFAF5 0%,#F5F2EA 60%,#EFEBDF 100%)}
+#login input{background:#fff;color:var(--ink);border:1px solid var(--line)}
+#login input::placeholder{color:#9aa292}
+/* centered everything */
+.wrap{text-align:center}
+.ey{justify-content:center}
+h2.t{margin-left:auto;margin-right:auto}
+.lead,.sub{margin-left:auto;margin-right:auto}
+.cta,.chips,.ladder,.loop,.team,.tabs,.quotes,.contact,.kpis{justify-content:center;flex-wrap:wrap}
+.card,.kpi,.step,.quote,.rung{text-align:center}
+.card h3,.step h3{text-align:center}
+.ic{margin-left:auto;margin-right:auto}
 </style>
 </head>
 <body>
@@ -443,6 +467,29 @@ const FUND=[
   use:[[60,"Paying pilots","soil diagnostics live, expanding"],[25,"Partnerships","lab + channel partners"],[15,"Flexible","sized to committed demand"]]}
 ];
 
+// German narration (spoken) + captions — used when window.__lang==='de'. Pending Ringo review.
+const NAR_DE=[
+"Jedes Jahr verlieren Höfe Milliarden durch Boden, der still aufgehört hat zu arbeiten: ausgelaugt, degradiert, weniger lebendig. Beyond Biomes bringt Präzisionsmedizin in diesen Boden. Wir lesen den lebendigen Boden eines Feldes und liefern dann ein maßgeschneidertes Biom, eine zugeschnittene Gemeinschaft nützlicher Mikroben, das ihn wieder zum Leben erweckt. Diese Runde fließt in einen einzigen Markt: die Landwirtschaft.",
+"So funktioniert es. Ein Landwirt schickt uns eine Bodenprobe. In unserem Labor sequenzieren wir sie und lesen, was die Mikroben tatsächlich tun, nicht nur, welche vorhanden sind, sondern welche Aufgaben sie erfüllen. Daraus entwerfen wir ein lebendiges Biom, genau auf das abgestimmt, was diesem Feld fehlt, und schicken es an den Landwirt zurück. Unsere Diagnostik heißt RhizoGenie; Biomizer verwandelt die Messung in die Behandlung. Zu lesen, was der Boden tatsächlich tut, das hat sonst niemand.",
+"Der Markt ist real und das Timing ist selten. Europas Markt für Biostimulanzien liegt heute bei einem Komma acht Milliarden Dollar und wächst bis zwanzigdreißig auf über drei Milliarden, und die EU-Verordnung hat gerade einen klaren Weg zum Verkauf geöffnet. Das Modell ist kapitaleffizient. Eine Bodendiagnostik beginnt bei dreihundert Euro im Monat. Audits, fünf- bis fünfzehntausend. Retainer, ein- bis fünftausend im Monat, wiederkehrend. Local-First-Infrastruktur hält die Kosten niedrig, sodass ein einzelner Operator ein bis zwei Millionen Umsatz tragen kann.",
+"Wie skalieren wir etwas so Technisches? Mit einer Regel aus der Natur: Niemals soll ein Prozess seine eigene Arbeit bewerten. DNA wird von einem separaten Enzym korrekturgelesen. Das Immunsystem prüft gegen eine Referenz, die nichts fälschen kann. Wir bauen unsere Software genauso. Augen vor Muskeln: beobachten, gegen die Realität verifizieren, dann handeln.",
+"Diese Methode wird zum Betriebssystem. Sie umhüllt die Arbeit mit einem agentischen Gerüst, Agenten erledigen die Arbeit, und ein unabhängiger Zeuge beweist, was tatsächlich geschah. Ein Operator leistet, wofür früher ein ganzes Team nötig war, und jede Handlung hinterlässt einen Beleg, den niemand von Hand schreiben muss.",
+"Und weil die Methode allgemein ist, ist sie nicht auf Boden beschränkt. Jede neue Branche, die wir hinzufügen, läuft auf demselben Gehirn, und startet schneller und günstiger als die letzte. Boden ist einfach die erste.",
+"Das Signal ist bereits da. Entwickler und Operatoren, die die Methode sahen, sagten uns unaufgefordert dasselbe: Produktionssysteme brauchen Verifikation, nicht nur Automatisierung. Das ist der Markt, der genau die Lücke benennt, die wir füllen.",
+"Und wir sind selbst Operatoren, mit der Bodenkunde, der Infrastruktur und der Felderfahrung, um das zu liefern. Das ist unsere Traktion.",
+"Wir sammeln Kapital, um das Produkt fertigzustellen, unsere Labortests zu skalieren und zwei Ingenieure einzustellen. Beyond Biomes: das lebendige System lesen, es beweisen, dann skalieren. Sprechen wir."
+];
+const SUBS_DE=[
+"Jedes Jahr verlieren Höfe Milliarden durch Boden, der still aufgehört hat zu arbeiten — ausgelaugt, degradiert, weniger lebendig. Beyond Biomes bringt Präzisionsmedizin in den Boden: Wir lesen den lebendigen Boden eines Feldes und liefern ein maßgeschneidertes Biom, das ihn wieder zum Leben erweckt. Diese Runde fließt in einen Markt — die Landwirtschaft.",
+"So funktioniert es: Ein Landwirt schickt eine Bodenprobe → wir sequenzieren sie und lesen, was die Mikroben wirklich tun → wir entwerfen ein lebendiges Biom für dieses Feld → wir schicken es zurück. RhizoGenie liest; Biomizer behandelt. Zu lesen, was der Boden tut, hat sonst niemand.",
+"Der Markt ist real: Europas Markt für Biostimulanzien liegt heute bei $1,8 Mrd., bis 2030 über $3 Mrd. — und die EU-Verordnung hat gerade die Tür geöffnet. Kapitaleffizientes Modell: €300/Mon. Diagnostik · €5–15k Audits · €1–5k/Mon. Retainer. Local-First hält die Kosten niedrig — €1–2 Mio. pro Operator.",
+"Wie es skaliert: eine Regel aus der Natur — niemals soll ein Prozess seine eigene Arbeit bewerten. DNA wird von einem separaten Enzym korrekturgelesen; das Immunsystem prüft gegen eine unfälschbare Referenz. Wir bauen Software genauso — Augen vor Muskeln: beobachten, verifizieren, handeln.",
+"Diese Methode wird zum Betriebssystem — ein agentisches Gerüst, in dem Agenten arbeiten und ein unabhängiger Zeuge beweist, was geschah. Ein Operator leistet, wofür früher ein Team nötig war; jede Handlung hinterlässt einen Beleg, den niemand von Hand schreibt.",
+"Weil die Methode allgemein ist, ist sie nicht auf Boden beschränkt. Jede neue Branche läuft auf demselben Gehirn — schneller und günstiger als die letzte. Boden ist einfach die erste.",
+"Das Signal ist da: Entwickler und Operatoren, die die Methode sahen, sagten unaufgefordert — Produktionssysteme brauchen Verifikation, nicht nur Automatisierung. Das ist der Markt, der unsere Lücke benennt.",
+"Und wir sind selbst Operatoren — Bodenkunde, Infrastruktur und Felderfahrung, um das zu liefern. Das ist unsere Traktion.",
+"Wir sammeln Kapital, um das Produkt fertigzustellen, Labortests zu skalieren und zwei Ingenieure einzustellen. Beyond Biomes: das lebendige System lesen, es beweisen, dann skalieren. Sprechen wir."
+];
 const hdr=document.getElementById('hdr'), prog=document.getElementById('prog');
 function onScroll(){ const sc=window.scrollY||document.documentElement.scrollTop;
   hdr.classList.toggle('scrolled', sc>40);
@@ -504,11 +551,11 @@ function pulseCanvas(id){ const c=document.getElementById(id||'loginCanvas'); if
   function size(){ w=c.width=window.innerWidth; h=c.height=window.innerHeight; build(); }
   function frame(){ ctx.clearRect(0,0,w,h);
     for(const n of nodes){ n.x+=n.vx; n.y+=n.vy; if(n.x<0||n.x>w)n.vx*=-1; if(n.y<0||n.y>h)n.vy*=-1; n.e*=.92; }
-    for(const e of edges){ const a=nodes[e[0]],b=nodes[e[1]]; ctx.strokeStyle='rgba(106,168,74,.16)'; ctx.lineWidth=.8; ctx.beginPath(); ctx.moveTo(a.x,a.y); ctx.lineTo(b.x,b.y); ctx.stroke(); }
+    for(const e of edges){ const a=nodes[e[0]],b=nodes[e[1]]; ctx.strokeStyle='rgba(44,95,45,.2)'; ctx.lineWidth=.8; ctx.beginPath(); ctx.moveTo(a.x,a.y); ctx.lineTo(b.x,b.y); ctx.stroke(); }
     if(Math.random()<.05 && edges.length){ signals.push({e:edges[(Math.random()*edges.length)|0],p:0,sp:.01+Math.random()*.02}); }
     signals=signals.filter(s=>{ const a=nodes[s.e[0]],b=nodes[s.e[1]]; s.p+=s.sp; const x=a.x+(b.x-a.x)*s.p,y=a.y+(b.y-a.y)*s.p;
       ctx.fillStyle='rgba(226,105,31,.9)'; ctx.beginPath(); ctx.arc(x,y,2.4,0,7); ctx.fill(); if(s.p>=1){ b.e=1; return false; } return true; });
-    for(const n of nodes){ const g=.4+n.e*.6; ctx.fillStyle='rgba(189,217,122,'+g+')'; ctx.beginPath(); ctx.arc(n.x,n.y,2.6+n.e*3,0,7); ctx.fill(); }
+    for(const n of nodes){ const g=.4+n.e*.6; ctx.fillStyle='rgba(44,95,45,'+g+')'; ctx.beginPath(); ctx.arc(n.x,n.y,2.6+n.e*3,0,7); ctx.fill(); }
     raf=requestAnimationFrame(frame); }
   size(); frame(); window.addEventListener('resize',size);
   document.addEventListener('visibilitychange',()=>{ if(document.hidden)cancelAnimationFrame(raf); else frame(); }); }
@@ -524,9 +571,9 @@ function heroCanvas(){ const c=document.getElementById('heroCanvas'); if(!c)retu
     ctx.globalCompositeOperation='source-over';
     const next=[];
     for(const tp of tips){ tp.a+=(Math.random()-.5)*.5; const nx=tp.x+Math.cos(tp.a)*.9, ny=tp.y+Math.sin(tp.a)*.9;
-      ctx.strokeStyle='rgba(134,172,54,.5)'; ctx.lineWidth=1.1; ctx.beginPath(); ctx.moveTo(tp.x,tp.y); ctx.lineTo(nx,ny); ctx.stroke();
+      ctx.strokeStyle='rgba(76,110,46,.5)'; ctx.lineWidth=1.1; ctx.beginPath(); ctx.moveTo(tp.x,tp.y); ctx.lineTo(nx,ny); ctx.stroke();
       tp.x=nx; tp.y=ny; tp.life++;
-      if(Math.random()<.02){ ctx.fillStyle='rgba(189,217,122,.8)'; ctx.beginPath(); ctx.arc(nx,ny,1.6,0,7); ctx.fill(); }
+      if(Math.random()<.02){ ctx.fillStyle='rgba(44,95,45,.6)'; ctx.beginPath(); ctx.arc(nx,ny,1.6,0,7); ctx.fill(); }
       if(tp.life<tp.max && nx>0&&nx<w&&ny>0&&ny<h){ next.push(tp);
         if(Math.random()<.012 && next.length<140) next.push({x:nx,y:ny,a:tp.a+(Math.random()<.5?1:-1)*(.5+Math.random()*.6),life:tp.life,max:tp.max}); } }
     tips=next; if(tips.length<4) seed(false);
@@ -567,13 +614,14 @@ function setFund(i){ const f=FUND[i];
   document.querySelectorAll('#askTabs .tab').forEach((t,j)=>t.classList.toggle('active',j===i)); }
 document.querySelectorAll('#askTabs .tab').forEach(t=>t.onclick=()=>setFund(+t.dataset.i));
 
-const synth=window.speechSynthesis; let voice=null, playing=false, muted=false, pIdx=0, advT=null, resumeT=null, tInt=null, secs=0;
+const synth=window.speechSynthesis; let voice=null, voiceDE=null, playing=false, muted=false, pIdx=0, advT=null, resumeT=null, tInt=null, secs=0;
 function pickVoice(){ if(!synth)return; const vs=synth.getVoices(); if(!vs.length)return;
-  voice=vs.find(v=>/en-GB/i.test(v.lang)&&/female|Google|Sonia|Libby|Hazel/i.test(v.name))||vs.find(v=>/Google US English/i.test(v.name))||vs.find(v=>/en-US/i.test(v.lang))||vs.find(v=>/^en/i.test(v.lang))||vs[0]; }
+  voice=vs.find(v=>/en-GB/i.test(v.lang)&&/female|Google|Sonia|Libby|Hazel/i.test(v.name))||vs.find(v=>/Google US English/i.test(v.name))||vs.find(v=>/en-US/i.test(v.lang))||vs.find(v=>/^en/i.test(v.lang))||vs[0];
+  voiceDE=vs.find(v=>/de-DE/i.test(v.lang)&&/Google|Petra|Katja|Anna|female/i.test(v.name))||vs.find(v=>/de-DE/i.test(v.lang))||vs.find(v=>/^de/i.test(v.lang))||null; }
 if(synth){pickVoice();synth.onvoiceschanged=pickVoice;}
 const pBar=document.getElementById('present');
-function speakIdx(){ if(!synth||muted)return; try{synth.cancel();}catch(e){} const u=new SpeechSynthesisUtterance(NAR[pIdx]); if(voice)u.voice=voice; u.rate=1.04; u.lang=(voice&&voice.lang)||'en-US'; try{synth.speak(u);}catch(e){} }
-function gotoIdx(i){ pIdx=Math.max(0,Math.min(SECT.length-1,i)); document.getElementById('pCC').textContent=SUBS[pIdx]; const el=document.getElementById(SECT[pIdx]); if(el)el.scrollIntoView({behavior:'smooth',block:'start'}); }
+function speakIdx(){ if(!synth||muted)return; try{synth.cancel();}catch(e){} const de=(window.__lang==='de'); const u=new SpeechSynthesisUtterance((de?NAR_DE:NAR)[pIdx]); const v=de?voiceDE:voice; if(v)u.voice=v; u.rate=1.04; u.lang=de?'de-DE':((voice&&voice.lang)||'en-US'); try{synth.speak(u);}catch(e){} }
+function gotoIdx(i){ pIdx=Math.max(0,Math.min(SECT.length-1,i)); document.getElementById('pCC').textContent=(window.__lang==='de'?SUBS_DE:SUBS)[pIdx]; const el=document.getElementById(SECT[pIdx]); if(el)el.scrollIntoView({behavior:'smooth',block:'start'}); }
 function runIdx(){ gotoIdx(pIdx); speakIdx(); clearTimeout(advT); advT=setTimeout(()=>{ if(playing){ if(pIdx<SECT.length-1){pIdx++;runIdx();} else stopPresent(); } },(DUR[pIdx]||18)*1000); }
 function startPresent(from){ pBar.classList.add('on'); playing=true; pIdx=(typeof from==='number'?from:0); document.getElementById('pPlay').textContent='⏸';
   if(!tInt){tInt=setInterval(()=>{if(playing){secs++;const m=Math.floor(secs/60),s=String(secs%60).padStart(2,'0');document.getElementById('pElapsed').textContent=m+':'+s;}},1000);}
@@ -3029,7 +3077,14 @@ var qrcode = function() {
     }catch(e){ console.error('QR add failed',e); }
     p.writeFile({fileName:'BeyondBiomes-Pitch'+(curLang()==='de'?'-DE':'')+'.pptx'});
   }
-  var btn=document.getElementById('pptxBtn'); if(btn) btn.addEventListener('click',build);
+  // Download the polished Marp-rendered deck (image-based, looks designed) by active language,
+  // instead of the native PptxGenJS build() above (kept for reference but no longer wired).
+  var btn=document.getElementById('pptxBtn');
+  if(btn) btn.addEventListener('click',function(){
+    var f=(window.__lang==='de')?'marp/BeyondBiomes-Pitch-DE.pptx':'marp/BeyondBiomes-Pitch.pptx';
+    var a=document.createElement('a'); a.href=f; a.download=f.split('/').pop();
+    document.body.appendChild(a); a.click(); a.remove();
+  });
 })();
 </script>
 
