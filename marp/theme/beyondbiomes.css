@@ -1,0 +1,66 @@
+/* @theme beyondbiomes */
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap');
+
+:root{
+  --forest:#2C5F2D; --deep:#14301c; --orange:#D9531E; --lime:#86AC36;
+  --bone:#F5F2EA; --ink:#19271C; --muted:#5b6b58; --line:#E4E9DD;
+}
+
+section{
+  background:var(--bone);
+  color:var(--ink);
+  font-family:'Inter',system-ui,-apple-system,sans-serif;
+  font-size:27px;
+  line-height:1.45;
+  padding:70px 88px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+/* brand spine */
+section::before{
+  content:''; position:absolute; left:0; top:0; bottom:0; width:12px;
+  background:var(--forest);
+}
+
+h1{
+  font-family:'Fraunces',Georgia,serif; font-weight:400;
+  font-size:86px; line-height:1.0; letter-spacing:-.035em;
+  color:var(--forest); margin:0 0 20px;
+}
+h2{
+  font-family:'Fraunces',Georgia,serif; font-weight:500;
+  font-size:54px; letter-spacing:-.02em;
+  color:var(--forest); margin:0 0 14px;
+}
+strong{ color:var(--forest); font-weight:600; }
+.ac{ color:var(--orange); }
+a{ color:var(--forest); }
+
+.eyebrow{
+  font-size:16px; font-weight:600; letter-spacing:.2em;
+  text-transform:uppercase; color:var(--orange); margin-bottom:20px;
+}
+.sub{ font-size:32px; color:var(--muted); max-width:24ch; margin:0; }
+
+/* hairline stat row */
+.stats{ display:flex; margin:30px 0 18px; }
+.stats > div{ padding:0 30px; border-left:1px solid var(--line); }
+.stats > div:first-child{ padding-left:0; border-left:0; }
+.stats b{
+  display:block; font-family:'Fraunces',serif; font-weight:500;
+  font-size:42px; color:var(--forest); line-height:1;
+  font-variant-numeric:tabular-nums; letter-spacing:-.02em;
+}
+.stats span{ font-size:16px; color:var(--muted); }
+
+/* dark closing slide */
+section.dark{ background:var(--deep); color:#eaf3ea; }
+section.dark::before{ background:linear-gradient(180deg,var(--lime),var(--orange)); }
+section.dark h1, section.dark h2{ color:#fff; }
+section.dark strong{ color:var(--lime); }
+section.dark .ac{ color:var(--lime); }
+
+/* pagination + footer */
+section::after{ color:var(--muted); font-size:15px; right:36px; bottom:26px; }
+footer{ color:var(--muted); font-size:15px; }
