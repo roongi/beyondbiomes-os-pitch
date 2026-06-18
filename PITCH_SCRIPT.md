@@ -40,3 +40,19 @@
 - **Word count ≈ 420** → ≈ 2:48–3:00 read warm with pauses. If you run short, slow the Slide-4 reveal; if long, trim the last sentence of Slide 2.
 - **Q&A reserve:** keep the soil competitive analysis + the Strata-map method slides on hand from the deck for the 2-minute Q&A.
 - The webapp speaks this automatically (browser voice); use this page as the teleprompter for a live read.
+
+---
+
+## Opening variants for A/B with Ringo (proof-forward) — NOT yet applied to the app
+
+**Why this section exists:** a colleague critiqued the Salvatore "problem→solution ladder" as 2018-era — 2026 VCs decide in <3 min and reward *leading with your single strongest evidence*, then layering problem/solution as context. Valid, with one hard limit for us: **we have no traction number to lead with, and fabricating one is the exact hallucination Ringo killed.** Our strongest *honest* proof is the **regulatory why-now** (EU just opened a multi-billion soil-health market) and **founder-market fit**. These keep soil-first (jury-validated) but make the first sentence hit harder and proof-forward. Pick one with Ringo; then I wire it into Slide 1 + the narration.
+
+**Control (current):** "Every year, farms lose billions to soil that's quietly stopped working — depleted, degraded, less alive. Beyond Biomes brings precision medicine to soil… This round goes into one market — agriculture."
+
+**Variant A — why-now first (recommended):**
+"Europe just opened a multi-billion-dollar market in soil health — right as most of that soil is quietly failing. Every year, farms lose billions because their living soil has stopped working. Beyond Biomes brings precision medicine to soil: we read what a field's microbes are actually *doing*, then deliver a custom biome that brings it back to life. This round goes into one market — agriculture."
+
+**Variant B — moat first ("AI-powered" is commodity; measurable ownership is the alpha):**
+"Anyone can tell you *which* microbes are in your soil. We read what they're actually *doing* — the difference between a lab report and a cure. Farms lose billions every year to soil that's stopped working; Beyond Biomes reads a field's living soil and delivers a custom biome that restores it. And the timing is rare — EU regulation just opened a multi-billion-dollar market. The money goes into one place: agriculture."
+
+**Red line:** do NOT manufacture a traction stat to "lead with proof." Lead with the why-now and the moat — both true.
