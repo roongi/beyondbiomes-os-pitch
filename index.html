@@ -44,7 +44,7 @@ header nav a:hover{color:var(--green)}
 .btn.g:hover{background:rgba(255,255,255,.15);border-color:var(--lime);color:#fff}
 @media(max-width:780px){header nav a.navlink{display:none}}
 
-#hero{min-height:clamp(100vh,165vw,195vh);display:flex;align-items:flex-start;padding-top:clamp(110px,12vh,150px);overflow:hidden;background:#15110c url('assets/soilprofile.jpg') center top/100% auto no-repeat}
+#hero{min-height:clamp(100vh,165vw,195vh);display:flex;align-items:flex-start;padding-top:clamp(110px,12vh,150px);overflow:hidden;background:#15110c}
 #hero::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(180deg,rgba(13,10,6,.6) 0%,rgba(13,10,6,.28) 15%,rgba(13,10,6,.02) 32%,rgba(13,10,6,0) 46%,rgba(18,14,9,.4) 64%,rgba(20,15,10,.8) 80%,rgba(21,16,11,.97) 91%,#15110c 100%)}
 #heroCanvas{position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:0;opacity:.55;pointer-events:none}
 #hero,section,footer{position:relative;z-index:1}
@@ -494,7 +494,7 @@ function buildFed(){ const svg=document.getElementById('fedSvg'); if(!svg||svg.d
 new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){buildChart();}});},{threshold:.12}).observe(document.getElementById('sec-soil'));
 new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){buildFed();}});},{threshold:.12}).observe(document.getElementById('sec-fed'));
 
-function heroCanvas(id){ const c=document.getElementById(id||'heroCanvas'); if(!c)return; const ctx=c.getContext('2d');
+function netCanvas(id){ const c=document.getElementById(id||'heroCanvas'); if(!c)return; const ctx=c.getContext('2d');
   let w,h,pts,raf; const N=Math.min(220,Math.floor((window.innerWidth*window.innerHeight)/10000));
   function size(){ w=c.width=window.innerWidth; h=c.height=window.innerHeight; pts=Array.from({length:N},()=>({x:Math.random()*w,y:Math.random()*h,vx:(Math.random()-.5)*.25,vy:(Math.random()-.5)*.25})); }
   function frame(){ ctx.clearRect(0,0,w,h);
@@ -505,7 +505,27 @@ function heroCanvas(id){ const c=document.getElementById(id||'heroCanvas'); if(!
     raf=requestAnimationFrame(frame); }
   size(); frame(); window.addEventListener('resize',size);
   document.addEventListener('visibilitychange',()=>{ if(document.hidden)cancelAnimationFrame(raf); else frame(); }); }
-heroCanvas('loginCanvas');
+netCanvas('loginCanvas');
+
+/* Pitch hero: living mycelium — branching growth, trails fade via destination-out so the soil photo stays clean */
+function heroCanvas(){ const c=document.getElementById('heroCanvas'); if(!c)return; const ctx=c.getContext('2d');
+  let w,h,tips,raf;
+  function seed(fresh){ if(fresh)tips=[]; for(let i=0;i<6;i++) tips.push({x:Math.random()*w,y:Math.random()*h,a:Math.random()*Math.PI*2,life:0,max:160+Math.random()*220}); }
+  function size(){ w=c.width=window.innerWidth; h=c.height=window.innerHeight; seed(true); }
+  function frame(){
+    ctx.globalCompositeOperation='destination-out'; ctx.fillStyle='rgba(0,0,0,0.03)'; ctx.fillRect(0,0,w,h);
+    ctx.globalCompositeOperation='source-over';
+    const next=[];
+    for(const tp of tips){ tp.a+=(Math.random()-.5)*.5; const nx=tp.x+Math.cos(tp.a)*.9, ny=tp.y+Math.sin(tp.a)*.9;
+      ctx.strokeStyle='rgba(134,172,54,.5)'; ctx.lineWidth=1.1; ctx.beginPath(); ctx.moveTo(tp.x,tp.y); ctx.lineTo(nx,ny); ctx.stroke();
+      tp.x=nx; tp.y=ny; tp.life++;
+      if(Math.random()<.02){ ctx.fillStyle='rgba(189,217,122,.8)'; ctx.beginPath(); ctx.arc(nx,ny,1.6,0,7); ctx.fill(); }
+      if(tp.life<tp.max && nx>0&&nx<w&&ny>0&&ny<h){ next.push(tp);
+        if(Math.random()<.012 && next.length<140) next.push({x:nx,y:ny,a:tp.a+(Math.random()<.5?1:-1)*(.5+Math.random()*.6),life:tp.life,max:tp.max}); } }
+    tips=next; if(tips.length<4) seed(false);
+    raf=requestAnimationFrame(frame); }
+  size(); frame(); window.addEventListener('resize',size);
+  document.addEventListener('visibilitychange',()=>{ if(document.hidden)cancelAnimationFrame(raf); else frame(); }); }
 
 let simInt=null, verticals=1, agents=6, multTarget=1, multShown=1, recCount=0;
 const VERTS=[["soil","diagnostics"],["soil","biome-design"],["lab","sequencing"],["lab","qa"],["ops","reconcile"],["field","trial"]];
