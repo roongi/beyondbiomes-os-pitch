@@ -185,8 +185,8 @@ footer img{height:26px}
 #present .tm{font:600 13px var(--sans);color:#9fc39f;min-width:92px;text-align:right}
 
 /* ===== LIGHT THEME + CENTERED LAYOUT (overrides) ===== */
-.alt{background:linear-gradient(180deg,rgba(240,237,225,.5),rgba(245,242,234,.7))}
-.paper{background:rgba(251,250,245,.55)}
+/* uniform cream tone across all sections — let the body bone + dynamic mycelium show through equally */
+.alt,.paper{background:transparent}
 header.scrolled{background:rgba(245,242,234,.92);box-shadow:0 1px 0 var(--line)}
 header nav a{color:var(--ink)} header nav a:hover{color:var(--orange)}
 .btn.g{background:rgba(44,95,45,.07);color:var(--green);border:1px solid var(--line)}
@@ -207,6 +207,9 @@ h2.t{margin-left:auto;margin-right:auto}
 .card,.kpi,.step,.quote,.rung{text-align:center}
 .card h3,.step h3{text-align:center}
 .ic{margin-left:auto;margin-right:auto}
+/* team: flex so the incomplete last row centers instead of left-packing */
+.team{display:flex;gap:18px}
+.member{width:150px}
 </style>
 </head>
 <body>
