@@ -209,12 +209,34 @@ PROMPTS = {
     "Italic caption along the bottom: 'extract - verify - act - the system that builds systems'. A second smaller "
     "italic line below: 'build the eyes before the muscles - we go far together'. "
     "Monochrome warm sepia on parchment, no modern colors, no photography. 16:9."),
+ "map_cycle": (
+    "Re-render in EXACTLY the rich antique treasure-map style of the reference image: aged parchment, sepia and "
+    "burnt-sienna ink, hand-drawn, ornate compass roses, small sailing ships and sea monsters in the ocean margins, "
+    "scrollwork title and bottom banners, fine topographic hatching, beautiful AND legible. KEEP ALL TEXT EXACT. "
+    "Title banner across the top: 'THE BEYOND BIOMES WORLD'. "
+    "The map shows ONE CYCLE flowing through FOUR LAYERS of communities that interact, drawn as connected territories "
+    "with a glowing dotted CYCLICAL route labelled 'OBSERVE -> VERIFY -> ACT -> LEARN' looping through all of them: "
+    "(1) a coastal 'OBSERVATION HARBOR' with a large finely-drawn human EYE, labelled 'AGENTS <-> ENVIRONMENT: we read "
+    "the living field', with two small globes offshore - a sun 'GERMANY' and snow 'CHILE' - labelled 'we bend time'. "
+    "(2) a deep 'LIVING SOIL' region drawn as a cross-section with roots, root-nodules, a cleaner-fish and bacteria, "
+    "labelled 'AGENTS <-> BACTERIA: we design living consortia', with four tiny rule-motifs named 'proofreader', "
+    "'immunity', 'quorum', 'stigmergy'. "
+    "(3) at the CENTER an ornate brass ASTROLABE / armillary sphere labelled 'THE AGENTIC LAYER - OBSERVABILITY', with "
+    "a small italic caption 'observe - verify - act' - the witness at the heart. "
+    "(4) three islands joined by golden trade routes - 'FARMER', 'SCIENTIST', 'PRODUCER' - titled 'HUMANS <-> HUMANS: "
+    "three people, one field', plus a small figure speaking to the astrolabe labelled 'HUMANS <-> AGENTS: a living app "
+    "for each'. "
+    "A far frontier archipelago labelled 'BEYOND - the next verticals', with dotted routes captioned 'the system that "
+    "builds systems'. "
+    "A bottom banner ribbon reads: 'WE GO FAR TOGETHER'; a small second line beneath: 'build the eyes before the "
+    "muscles'. Rich sepia line-work on parchment, ornate but legible, no modern colors, no photography. 16:9."),
 }
 
 # optional reference images (style transfer) per prompt name
-REF = {"the_map": "/mnt/e/WSL/shared/pitches/media/ref_jack.png"}
+REF = {"the_map": "/mnt/e/WSL/shared/pitches/media/ref_jack.png",
+       "map_cycle": "/mnt/e/WSL/shared/JACK_REF_MAP.jpeg"}
 
-ASPECT = {"p1_map":"4:5","connections":"16:9","logo_wordmark":"16:9","mappa":"16:9","mappa_bb":"16:9","onepager":"3:4","page1":"16:9","m_clean":"16:9","m_antique":"16:9","m_hero":"3:2","m_pairing":"16:9","m_bb":"16:9","the_map":"16:9","doctor":"1:1","factory":"1:1","logo_mark":"1:1"}
+ASPECT = {"p1_map":"4:5","connections":"16:9","logo_wordmark":"16:9","mappa":"16:9","mappa_bb":"16:9","onepager":"3:4","page1":"16:9","m_clean":"16:9","m_antique":"16:9","m_hero":"3:2","m_pairing":"16:9","m_bb":"16:9","the_map":"16:9","map_cycle":"16:9","doctor":"1:1","factory":"1:1","logo_mark":"1:1"}
 
 def save_parts(resp, base):
     n = 0
