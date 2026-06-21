@@ -78,9 +78,67 @@ PROMPTS = {
     "A ribbon scroll along the bottom edge reads: 'WE GO FAR TOGETHER'. Small sea monsters and a sailing ship decorate "
     "the ocean margins. Legible antique serif and calligraphic lettering throughout, intricate fine-line detail, warm "
     "candle-lit color grade, high resolution."),
+ "mappa_bb": (
+    "A hand-drawn ANTIQUE TREASURE MAP, 16:9 landscape, warm aged-parchment, sepia and burnt-sienna ink on tea-stained "
+    "cracked vintage paper, Jumanji / old pirate-map aesthetic, ornate hand-lettered calligraphic labels, a decorative "
+    "compass rose, scrollwork borders, faint topographic hatching and contour lines, small sea monsters and a sailing "
+    "ship in the ocean margins, warm candle-lit color grade. A title banner across the top in elegant calligraphy reads: "
+    "'THE BEYOND BIOMES WORLD'. "
+    "THE CONTENT is the Beyond Biomes story drawn as one voyage: "
+    "(1) A coastal harbor labeled 'THE BLIND FIELD' with a farmer's field drawn as flat squares marked 'N P K pH - what "
+    "is there, never what is missing', and a finely drawn human EYE nearby labeled 'EYES BEFORE MUSCLE'. "
+    "(2) At the CENTER, a grand cross-section of LIVING SOIL teeming with tiny glowing microbes, roots and fungal "
+    "threads - the heart of the map, labeled 'THE LIVING BIOME'; around it a circular route of four stages labeled "
+    "'DIAGNOSE -> PRESCRIBE -> TREAT -> LEARN'. "
+    "(3) Three islands joined by golden dotted trade routes: a FARMER island ('knows the land by hand'), a SCIENTIST "
+    "island (microscope + DNA strand, 'knows what is failing'), and a PRODUCER island (little factory + product "
+    "bottles, 'sells the cure'); a banner reads 'THREE PEOPLE, ONE FIELD - CONNECTED'. "
+    "(4) A large ornate brass ASTROLABE / armillary sphere instrument labeled 'THE AGENTIC ENGINE' that hands a small "
+    "rolled scroll/spyglass to the farmer labeled 'a living app for every field'. "
+    "(5) Two small globes joined by a route: one with a sun labeled 'GERMANY', one with snow labeled 'CHILE & SPAIN', "
+    "the route labeled 'WE BEND TIME - retrain every 6 months'. "
+    "(6) At the far frontier, a glowing 'FACTORY THAT BUILDS FACTORIES' emitting little kingdoms - a soil/leaf one "
+    "(highlighted, 'first off the line'), a construction site, a laboratory, a classroom - labeled 'BEYOND - THE SYSTEM "
+    "THAT BUILDS SYSTEMS'. "
+    "(7) A small antique wax SEAL stamp reading '+396% Mn  +309% P  - peer-reviewed' and an ornate cartouche maker's "
+    "mark 'BEYOND BIOMES' in a bottom corner. "
+    "A ribbon scroll along the bottom edge reads: 'READ THE SYSTEM BEFORE YOU CHANGE IT'. "
+    "Legible antique serif and calligraphic lettering throughout, intricate fine-line detail, high resolution."),
+ "onepager": (
+    "A clean, modern SINGLE-PAGE INVESTOR ONE-PAGER infographic poster, portrait 3:4, designed to be understood at a "
+    "glance in 10 seconds. Generous white space, flat vector illustration, crisp bold sans-serif, HIGH LEGIBILITY, only "
+    "SHORT labels (no paragraphs). Warm brand palette: deep navy #0B2545, teal #1B7F8C, gold #C9A227, leaf green "
+    "#3E7C4F, soil brown #6B4F3A, on a light cream background. A clear TOP-TO-BOTTOM flow of four stacked bands with big "
+    "section headings: "
+    "TITLE BAND (top): a small leaf-and-soil logo with the title 'BEYOND BIOMES' and subtitle 'Precision medicine for the soil'. "
+    "BAND 1 'THE PROBLEM': left side shows dull grey cracked soil with big letters 'N P K' and a small blindfold icon, "
+    "short caption 'soil read as dead chemistry = blind'; a large arrow points right. "
+    "BAND 2 'WHAT WE DO': right side shows rich living soil full of colourful microbes and roots, caption 'we read what "
+    "the living soil is DOING'; beneath it a clean circular loop of four simple icons labelled 'DIAGNOSE / PRESCRIBE / "
+    "TREAT / LEARN'. "
+    "BAND 3 'THREE CUSTOMERS, ONE PLATFORM': three simple flat character icons in a row, each connected by a line to a "
+    "central glowing chip labelled 'AI PLATFORM' - a FARMER ('more yield'), a SCIENTIST ('powers the science'), a "
+    "PRODUCER ('pays + white-label'). "
+    "BOTTOM BAND 'PROOF & ASK': three bold stat badges reading '+396% nutrient uptake', '221 AI models live', '5 signed "
+    "partners', then a gold call-to-action box 'Raising EUR 1.5M seed'. A thin ribbon at the very bottom: 'Read the "
+    "system before you change it.' "
+    "Minimal clean icons, no clutter, no photorealism, no gibberish text, perfectly legible short labels only."),
+ "page1": (
+    "A SIMPLE, elegant ANTIQUE illustration plate, 4:5 portrait, warm aged-parchment with sepia and burnt-sienna ink, "
+    "hand-drawn, a single ornate compass rose in one corner and a thin scrollwork border, LOTS of empty parchment "
+    "space, calm and UNCLUTTERED (this is a single-idea plate, NOT a busy map), candle-lit warm color grade. "
+    "A title banner in elegant calligraphy across the top reads: 'READ THE SYSTEM BEFORE YOU CHANGE IT'. "
+    "A small line of calligraphy beneath it reads: 'Nature solved reliability 3.5 billion years ago - eyes before muscle'. "
+    "At the CENTER, large and clear, a beautifully drawn cross-section of LIVING SOIL with a single tree growing above "
+    "and roots reaching below (the Beyond Biomes emblem), encircled by ONE clean four-step ring of four simple labelled "
+    "icons: 'OBSERVE' with a finely drawn human eye, 'UNDERSTAND' with a tiny microbe-and-leaf, 'ACT' with a hand "
+    "placing a seedling, 'LEARN' with a spiral arrow. "
+    "At the bottom, a small ornate cartouche maker's mark reads: 'BEYOND BIOMES - precision medicine for the soil'. "
+    "Only these few elements, big legible antique calligraphic lettering, generous negative space, intricate but "
+    "uncrowded fine-line detail, high resolution."),
 }
 
-ASPECT = {"p1_map":"4:5","connections":"16:9","logo_wordmark":"16:9","mappa":"16:9","doctor":"1:1","factory":"1:1","logo_mark":"1:1"}
+ASPECT = {"p1_map":"4:5","connections":"16:9","logo_wordmark":"16:9","mappa":"16:9","mappa_bb":"16:9","onepager":"3:4","page1":"4:5","doctor":"1:1","factory":"1:1","logo_mark":"1:1"}
 
 def save_parts(resp, base):
     n = 0
