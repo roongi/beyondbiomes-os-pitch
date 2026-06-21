@@ -139,9 +139,63 @@ PROMPTS = {
     "WITNESS checks it - 1 in a billion. We built that witness in software.' "
     "Bottom cartouche maker's mark: 'BEYOND BIOMES - the agentic platform that reads living systems'. "
     "Big legible antique calligraphic lettering, generous negative space, uncrowded fine-line detail, high resolution."),
+
+ "m_clean": (
+    "A refined, light-mode scientific infographic on warm bone-white paper #f6f2e8 with faint grain. "
+    "Editorial-scientific tone, museum-grade, high contrast. Three horizontal strata stacked vertically like soil "
+    "horizons, split into 4 aligned columns: I Sensing & Record, II Verification, III Coordination, IV Resilience. "
+    "TOP stratum 'THE MUSCLES' (muted grey): Tools & MCPs; Spec-first workflows; Multi-agent orchestration; Autonomy "
+    "& routines. MIDDLE stratum 'THE OPEN GAPS' (terracotta #c1542f, glowing dots): An out-of-band witness; Proof by "
+    "reconciliation; Who watches the watcher?; Self-healing & the human ceiling. BOTTOM stratum 'THE LIVING BLUEPRINT "
+    "- 3.5 billion years' (ochre-gold #b3851f, luminous dots): Proofreading polymerase; Self/non-self immunity; Quorum "
+    "sensing; Stigmergy & homeostasis. Thin vertical connector lines run straight down each column. Headline: 'Build "
+    "the eyes before the muscles.' Distinctive display serif headings, refined serif body, monospace labels. No purple, "
+    "no dark background. 16:9."),
+ "m_antique": (
+    "A hand-drawn antique map / vintage engraving on aged parchment #e8dabd, sepia ink #5a4632, softly foxed edges, "
+    "tea-stained blotches, a fine double border. Warm, timeless, weathered - like a 1900s technical illustration. "
+    "Centerpiece: an ornate old control-console in sepia line-work, a single large eye-lens on its screen, two round "
+    "dials, a brass nameplate reading 'THE WITNESS'. Thin radiating lines connect it to a ring of small hand-drawn "
+    "browser/agent windows orbiting above and below - every agent wired back to the one instrument. A small culture "
+    "flask beside the console as a quiet biological motif. An engraved sunburst above the title. Title in serif "
+    "capitals: 'ONE WITNESS - EVERY AGENT'. Italic caption below: 'observe - verify - then trust'. Monochrome sepia on "
+    "parchment, no modern colors, no photography. 16:9."),
+ "m_hero": (
+    "A single arresting conceptual image - photoreal meets scientific illustration. In soft darkness, a glowing "
+    "petri-dish culture seen from above slowly resolves: under magnification its bioluminescent teal-and-gold microbial "
+    "colonies trace the exact shape of a circuit board / agent-orchestration diagram - nodes, branching trails, "
+    "feedback loops. Biology and deep tech becoming the same picture. A faint trail of light threads through like a "
+    "living wire. Shallow depth of field, fine grain, soft volumetric glow, deep near-black ground. Mood: quiet, "
+    "intelligent, awe. No text. No purple. Cinematic, museum-grade, 3:2."),
+ "m_pairing": (
+    "A clean, light-mode scientific infographic, 16:9, on warm bone-white paper #f6f2e8, museum-grade, high contrast, "
+    "no purple, no dark background, distinctive serif headings, refined serif body, generous margins. "
+    "Title at top: 'EACH GAP - AND LIFE'S ANSWER'. Two aligned columns: LEFT header 'THE OPEN GAP (AI today)' in "
+    "terracotta #c1542f; RIGHT header 'NATURE ALREADY SOLVED IT' in ochre-gold #b3851f. FOUR rows, each a gap paired "
+    "with its nature example, each with one small clean icon and a short plain-English line: "
+    "Row1 LEFT 'An out-of-band witness - the actor must not check its own work' RIGHT 'PROOFREADING POLYMERASE: when a "
+    "cell copies DNA a SEPARATE part re-reads every letter and snips out the mistake - the writer never certifies its "
+    "own page'. "
+    "Row2 LEFT 'Proof by reconciliation - don't trust the summary' RIGHT 'IMMUNE SELF / NON-SELF: the body re-checks "
+    "every cell against a reference the intruder cannot edit'. "
+    "Row3 LEFT 'Who watches the watcher?' RIGHT 'QUORUM SENSING: cells read a shared signal in the medium - no referee; "
+    "the decision lives in the environment, not in any one voice'. "
+    "Row4 LEFT 'Self-healing & the human ceiling' RIGHT 'STIGMERGY & HOMEOSTASIS: ants leave a trail in the world (an "
+    "append-only ledger); feedback heals the ground with no one deciding'. "
+    "A teal footer ribbon: 'BEYOND BIOMES - the agentic layer that builds these eyes into every system'. Crisp, legible. 16:9."),
+ "m_bb": (
+    "A refined, light-mode scientific infographic, 16:9, warm bone-white paper #f6f2e8, museum-grade, high contrast, "
+    "Beyond Biomes brand accents (deep navy #0B2545 headings, teal #1B7F8C, gold #C9A227). Title: 'THE BORING LAYER "
+    "THAT MAKES THE EXCITING LAYER SAFE'. Three horizontal strata: TOP 'THE MUSCLES - what everyone teaches' (grey: "
+    "tools, multi-agent, autonomy); MIDDLE 'THE OPEN GAPS - what no one built' (terracotta: out-of-band witness, "
+    "reconciliation, who watches the watcher, self-healing); BOTTOM 'THE LIVING BLUEPRINT - nature, 3.5 billion years' "
+    "(gold: proofreading polymerase, immune self/non-self, quorum sensing, stigmergy). A bold navy bracket on the right "
+    "spans all three strata labelled 'BEYOND BIOMES - the agentic layer that now CLOSES every gap, on nature's "
+    "principles'. A small footer: 'observe - verify - then grant autonomy'. Distinctive serif headings, monospace "
+    "labels, clean connector lines, no purple, no dark background. 16:9."),
 }
 
-ASPECT = {"p1_map":"4:5","connections":"16:9","logo_wordmark":"16:9","mappa":"16:9","mappa_bb":"16:9","onepager":"3:4","page1":"16:9","doctor":"1:1","factory":"1:1","logo_mark":"1:1"}
+ASPECT = {"p1_map":"4:5","connections":"16:9","logo_wordmark":"16:9","mappa":"16:9","mappa_bb":"16:9","onepager":"3:4","page1":"16:9","m_clean":"16:9","m_antique":"16:9","m_hero":"3:2","m_pairing":"16:9","m_bb":"16:9","doctor":"1:1","factory":"1:1","logo_mark":"1:1"}
 
 def save_parts(resp, base):
     n = 0
