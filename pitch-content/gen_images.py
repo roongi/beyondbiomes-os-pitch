@@ -230,13 +230,74 @@ PROMPTS = {
     "builds systems'. "
     "A bottom banner ribbon reads: 'WE GO FAR TOGETHER'; a small second line beneath: 'build the eyes before the "
     "muscles'. Rich sepia line-work on parchment, ornate but legible, no modern colors, no photography. 16:9."),
+ "map_hub": (
+    "Re-render in the rich antique treasure-map style of the reference image: aged parchment, sepia/burnt-sienna ink, "
+    "ONE ornate compass rose (top-left only), a couple of small ships in the ocean margins, scrollwork title and bottom "
+    "banner. CRITICAL: render every region, label, icon and banner EXACTLY ONCE - NO duplicates, no repeated labels. "
+    "KEEP ALL TEXT EXACT and legible. Balanced, uncluttered, generous negative space. "
+    "Title banner top: 'BEYOND BIOMES - THE PLATFORM THAT CONNECTS ALL'. "
+    "At the exact CENTER: one ornate brass astrolabe hub labelled 'THE AGENTIC LAYER - open platform', small italic "
+    "caption under it 'observe - verify - act'. "
+    "FOUR routes radiate from the hub, each drawn ONCE to one small vignette: "
+    "up-left -> three small figures: 'HUMANS <-> HUMANS - farmer, producer, scientist'; "
+    "up-right -> a person holding a small tablet: 'HUMANS <-> AGENTS - a living app for each'; "
+    "down-left -> a field with a single eye and a sun+snow pair: 'AGENTS <-> ENVIRONMENT - we read the field'; "
+    "down-right -> a soil cross-section with roots and bacteria: 'AGENTS <-> BACTERIA - we design consortia'. "
+    "Across the BOTTOM, one foundation band labelled 'NATURE'S PRINCIPLES' holding four small emblems ONCE each: "
+    "proofreader, immunity, quorum, stigmergy. One small frontier corner top-right: 'BEYOND - next verticals'. "
+    "One bottom ribbon: 'build the eyes before the muscles - we go far together'. Rich sepia, legible, 16:9."),
+ "map_layers": (
+    "Re-render in the antique treasure-map / vintage-engraving style of the reference image: aged parchment, sepia ink, "
+    "scrollwork title banner, fine hatching. CRITICAL: every label appears EXACTLY ONCE - NO duplicates. KEEP ALL TEXT "
+    "EXACT and legible. Clean, balanced. "
+    "Title banner top: 'HOW BEYOND BIOMES CONNECTS ALL - on nature's principles'. "
+    "FOUR horizontal layers stacked like soil horizons, labelled ONCE each, bottom to top: "
+    "BEDROCK 'NATURE'S PRINCIPLES' with four tiny emblems (proofreader, immunity, quorum, stigmergy); "
+    "above it 'THE AGENTIC LAYER - the witness: observe - verify - act'; "
+    "above it 'THE OPEN PLATFORM - the connector (open API)'; "
+    "TOP 'THE COMMUNITIES - farmer, producer, scientist' with three small figures linked by one arc. "
+    "On the right edge, ONE elegant vertical cycle arrow threading all four layers, labelled 'observe -> verify -> act "
+    "-> learn'. One small frontier mark at the top-right: 'BEYOND - next verticals'. A single bottom ribbon: 'build the "
+    "eyes before the muscles'. Sepia on parchment, uncluttered, 16:9."),
+ "map_clean2": (
+    "Re-render in EXACTLY the refined MINIMAL antique-editorial style of the reference image: warm parchment, sepia ink, "
+    "thin elegant double border, refined serif, GENEROUS negative space, thin radiating lines, an engraved sunburst, "
+    "very calm and uncluttered. CRITICAL: each label EXACTLY ONCE, NO duplicates. KEEP ALL TEXT EXACT. "
+    "Title serif caps: 'ONE PLATFORM - CONNECTS ALL'. CENTER: a single elegant instrument with an eye-lens and brass "
+    "nameplate 'THE AGENTIC LAYER', italic caption 'observe - verify - act'. Four thin lines to four small labels ONCE "
+    "each: 'farmer + producer + scientist', 'a living app for each', 'reads the living field', 'designs the consortia'. "
+    "A small footer line: 'on nature's principles - build the eyes before the muscles'. Monochrome sepia, 16:9."),
+ "map_hero": (
+    "Re-render in the rich antique treasure-map style of the reference image: aged parchment, sepia/burnt-sienna ink, "
+    "ornate yet PROFESSIONAL and balanced, ONE compass rose (top-left), a couple of small ships in the margins, fine "
+    "scrollwork. FULLY SELF-CONTAINED and SYMMETRICAL - use the whole space evenly, balanced left and right and top and "
+    "bottom, no empty gaps, nothing cut off at the edges. CRITICAL: every label, region, icon and banner EXACTLY ONCE - "
+    "absolutely NO duplicates. KEEP ALL TEXT EXACT and fully legible. "
+    "Top title banner, large elegant serif: 'BEYOND BIOMES - AS NATURE INTENDED'. A smaller subtitle ribbon beneath it: "
+    "'the AI-native platform for regenerative agriculture - a multidisciplinary community system'. "
+    "EXACT CENTER: one ornate brass astrolabe hub labelled 'THE AGENTIC LAYER - open platform' with italic caption "
+    "'observe - verify - act'. "
+    "FOUR symmetrical connections, ONE in each quadrant (two left, two right), each drawn ONCE with a small vignette and "
+    "a short label: top-left 'HUMANS <-> HUMANS - farmer, producer, scientist'; top-right 'HUMANS <-> AGENTS - a living "
+    "app for each'; bottom-left 'AGENTS <-> ENVIRONMENT - we read the field'; bottom-right 'AGENTS <-> BACTERIA - we "
+    "design consortia'. "
+    "A WIDE prominent foundation band across the ENTIRE bottom, larger than the rest, labelled 'NATURE'S PRINCIPLES - "
+    "the rules behind everything we build', holding four evenly-spaced emblems ONCE each with names underneath: "
+    "'proofreader', 'immunity', 'quorum', 'stigmergy'. "
+    "One small frontier emblem in the top-right corner: 'BEYOND - next verticals'. "
+    "A single thin bottom ribbon: 'build the eyes before the muscles - we go far together'. "
+    "Rich sepia, professional, symmetrical, balanced, legible, no duplicates, fills the frame. 16:9."),
 }
 
 # optional reference images (style transfer) per prompt name
 REF = {"the_map": "/mnt/e/WSL/shared/pitches/media/ref_jack.png",
-       "map_cycle": "/mnt/e/WSL/shared/JACK_REF_MAP.jpeg"}
+       "map_cycle": "/mnt/e/WSL/shared/JACK_REF_MAP.jpeg",
+       "map_hub": "/mnt/e/WSL/shared/JACK_REF_MAP.jpeg",
+       "map_layers": "/mnt/e/WSL/shared/JACK_REF_MAP.jpeg",
+       "map_clean2": "/mnt/e/WSL/shared/pitches/media/ref_jack.png",
+       "map_hero": "/mnt/e/WSL/shared/JACK_REF_MAP.jpeg"}
 
-ASPECT = {"p1_map":"4:5","connections":"16:9","logo_wordmark":"16:9","mappa":"16:9","mappa_bb":"16:9","onepager":"3:4","page1":"16:9","m_clean":"16:9","m_antique":"16:9","m_hero":"3:2","m_pairing":"16:9","m_bb":"16:9","the_map":"16:9","map_cycle":"16:9","doctor":"1:1","factory":"1:1","logo_mark":"1:1"}
+ASPECT = {"p1_map":"4:5","connections":"16:9","logo_wordmark":"16:9","mappa":"16:9","mappa_bb":"16:9","onepager":"3:4","page1":"16:9","m_clean":"16:9","m_antique":"16:9","m_hero":"3:2","m_pairing":"16:9","m_bb":"16:9","the_map":"16:9","map_cycle":"16:9","map_hub":"16:9","map_layers":"16:9","map_clean2":"16:9","map_hero":"16:9","doctor":"1:1","factory":"1:1","logo_mark":"1:1"}
 
 def save_parts(resp, base):
     n = 0
