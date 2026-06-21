@@ -1,64 +1,40 @@
-# ▶ NEXT-SESSION PASTE — Beyond Biomes Pitch Wave (paste this to resume)
-_Wave 16: "BeyondBiomes OS Pitch App + Handout" — the wave AFTER Wave 15 (BBOS commercial site)._
-
-## Goal
-Ship the investor-facing **beyondbiomes-os-pitch** app and the **4-page laminated handout** as one synthesized story (pitch + handout-visuals slideshow + investor stats + team), using the new evidence-rich script and Ringo's locally-generated voice.
-
-## Read first (all prepared)
-- **Outputs:** `E:\WSL\shared\BeyondBiomes_Pitch_2026-06-21\` (mirror: `shared/pitches/_pitch_build/`; in-repo: `beyondbiomes-os-pitch` branch `feat/bb-pitch-content-2026-06-21` / `pitch-content/`).
-- `CANONICAL_FACTS.md` · `DECISIONS.md` · `PITCH_MASTER_v1.md` · `GEMINI_NUANCES.md` · `VOICE_SCRIPT_v1.md` · `HANDOUT_PLAN.md` · `IMAGE_PROMPTS.md` · `PITCH_APP_INTEGRATION.md` · evidence: `EVIDENCE_LEDGER/REPO_LEDGER/DEEP_ADDENDUM`.
-
-## Canonical facts (don't re-derive)
-- NOW: app **696 commits**, ~890 endpoints, **221 models**, 97.1% disease detection, live review.beyondbiomes.de; proof **+396% Mn/+309% P/+366% Si** (Schwabe 2021 Chemosphere, greenhouse).
-- FUTURE: agentic-layer **1,505 commits**, system-that-builds-systems, 4+ verticals (SCHWABE UG, SENCE, LeadGen, ErnieBauMEistER).
-- Ask **€1.5M seed** (40/30/20/10) · R² 0.68→0.85 target · Cyro/7Rocks signed white-label (35+ countries).
-- Honesty: patent-PENDING · yield/field=TARGET · "120 B2B deals" = María Paz's track record (not paying clients) · OpenAPI = ~890 endpoints today + contract next · TAM show both (€12.5B / €3.5B) · "around €12B" crop loss.
+# ▶ NEXT-SESSION MASTER PROMPT — Beyond Biomes Pitch (Wave 16)
+_Paste the block below into the next session (Pi/Claude in WSL). It implements EVERYTHING using the same approach we used here: evidence-grounded, honesty-locked, multi-model reviewed, modular outputs, commit+push each step._
 
 ---
+```
+ROLE: Continue the Beyond Biomes pitch build (Wave 16). Work from WSL. Use the same method as the prep session: ground every claim in the evidence pack, obey the honesty rules, review with Codex (and Gemini once its key is renewed), keep outputs modular, commit+push after each workstream.
 
-## ☑ OPEN TASKS (everything still to do)
+READ FIRST (all in beyondbiomes-os-pitch branch feat/bb-pitch-content-2026-06-21 /pitch-content/, mirror E:\WSL\shared\BeyondBiomes_Pitch_2026-06-21\):
+NEXT_SESSION_PASTE.md, CANONICAL_FACTS.md, DECISIONS.md, PITCH_MASTER_v2.md (default), SCRIPT_VARIANTS.md, QA_MURDER_BOARD.md, TRAINING_APP_SPEC.md, HANDOUT_PLAN.md, IMAGE_PROMPTS.md, VIDEO_STORYBOARD.md, PITCH_APP_INTEGRATION.md, evidence (EVIDENCE_LEDGER/REPO_LEDGER/DEEP_ADDENDUM).
 
-### A. Ringo does (unblocks the build)
-- [ ] **A1 · VOICE** — generate MP3s from `VOICE_SCRIPT_v1.md` (local voice; 3 segments or 1 full) → save to `shared/pitches/`.
-- [ ] **A2 · PICTURES/MAPS** — generate the 4 images from `IMAGE_PROMPTS.md` (see task list below) → hand back PNGs.
-- [ ] **A3 · QR URLs** — provide final: deployed app URL · Drive folder (IP+AP) · Drive/platform-docs · live demo.
-- [ ] **A4 · DECISION** — drop `team_christopher.jpg`? (ledger flagged Christopher Bohring as placeholder).
-- [ ] **A5 · SCRIPT SCORE** — read PITCH_MASTER_v1 aloud vs the timing map; mark beats to punch/soften; pick bookend ("what a time to be alive" vs Gemini "What if… dead language").
+HONESTY (non-negotiable): patent-PENDING; yield/field=TARGET; "120 B2B deals"=Maria Paz track record; OpenAPI=~890 endpoints today+contract next; TAM show both 12.5B/3.5B; ask=1.5M EUR seed.
 
-### B. Build (next session/wave)
-- [ ] **B1 · MERGE** Miguel's branch `feat/perfect-pitch-3min` → `main`, PRESERVING the `?k=` QR auto-login (PR, don't force-push).
-- [ ] **B2 · SCRIPT SWAP** — put PITCH_MASTER_v1 into `PITCH_SCRIPT.md` + in-page text + `marp/pitch.md`/`pitch.de.md`; apply DECISIONS honesty pass to ALL copy.
-- [ ] **B3 · SYNTHESIZED ONE-VIEW** — pitch (12 slides) + handout-visuals slideshow + investor-stats visuals + team in one flow.
-- [ ] **B4 · VOICE WIRING** — per-section audio slots; **OFF by default for investors**, "training mode" toggle for Ringo.
-- [ ] **B5 · QR** — handout→app QR + last-slide→app QR + keep live-demo QR; generate QR PNGs from A3 URLs.
-- [ ] **B6 · FOLD GEMINI NUANCES** — optional metaphors + bookend from `GEMINI_NUANCES.md`.
-- [ ] **B7 · HANDOUT PDF** — build per `HANDOUT_PLAN.md` once A2+A3 in; place images, export `BeyondBiomes_Handout_v1.pdf`.
-- [ ] **B8 · DEPLOY** + verify QR login still works.
+PREREQUISITES to unblock media (do these first, then tell the agent):
+ (P1) Fresh GEMINI_API_KEY in WSL (current one EXPIRED) — needed for image + video + audio-analysis. aistudio.google.com.
+ (P2) pip install google-genai  (SDK not installed in WSL python3).
+ (P3) For video: confirm the key has Veo access (paid/preview). If not, use the Nano-Banana stills + Ken-Burns fallback (VIDEO_STORYBOARD §fallback).
 
-### C. Admin
-- [ ] **C1** — open the PR for `feat/bb-pitch-content-2026-06-21` (or merge when ready).
-- [ ] **C2** — stamp **Wave 16 = BeyondBiomes OS Pitch App + Handout (2026-06-21)** into the operator plan stack (Pi reads on reboot, after Wave 15).
+WORKSTREAMS (commit+push each):
+ 1. APP: clone full beyondbiomes-os-pitch; merge Miguel's branch feat/perfect-pitch-3min -> main PRESERVING the ?k= QR auto-login (PR). Swap in PITCH_MASTER_v2 as the script; honesty pass on ALL copy.
+ 2. SYNTHESIZED ONE-VIEW (investor): pitch (12 slides) + handout-visual slideshow + investor-stats visuals + team. Voice OFF by default for investors. Two QR codes (handout->app, last-slide->app) + live-demo QR.
+ 3. TRAINING /train route (TRAINING_APP_SPEC T1-T6 + voice loop below).
+ 4. IMAGES: run gen_images.py (IMAGE_PROMPTS: hero map, doctor, factory, connections) + the LOGO; drop into handout + app. Nano Banana 2 (gemini-3.1-flash-image), 4K, aspect ratios.
+ 5. VIDEO: run gen_videos.py (VIDEO_STORYBOARD: 12 slide clips + 60s sizzle via Veo 3) OR stills+Ken-Burns fallback; embed as muted autoplay loops behind slides + sizzle on the hero/last-slide.
+ 6. HANDOUT: build BeyondBiomes_Handout_v1.pdf (HANDOUT_PLAN) once images + QR URLs ready.
+ 7. MULTI-MODEL: re-run Codex (Max, WSL: codex exec --skip-git-repo-check - < review_prompt.txt) AND Gemini (Ultra, after key renew: GEMINI_CLI_TRUST_WORKSPACE=true gemini < review_prompt.txt) on PITCH_MASTER_v2; synthesize v3 if better.
 
+VOICE TRAINING LOOP (the core of /train):
+ Ringo reads a section -> record mic -> analyze -> report -> iterate. Analysis = local metrics (WPM vs ~145-150, timing-vs-map, pauses, energy via Web Audio) + Gemini multimodal audio review (transcript vs script, pace, filler words, tonal variation, confidence) -> specific "improve this" report. A/B his recording against the BEST generated voice (ElevenLabs/local). Version selector to listen/skip/♥-pick across claude_v1, claude_v2, codex, (gemini), winner_soft, deck_180; export his personal blend. Persist progress.
+
+DELIVERABLES FROM RINGO: fresh GEMINI_API_KEY (P1); voice MP3s per chosen variant; final QR URLs; decide drop team_christopher.jpg?; pick default variant (recommended claude_v2).
+
+CLOSE: run /retrospective, /dream, /skillify, then /session-superclose (operator cockpit). Stamp Wave 16 done.
+```
 ---
 
-## 🎨 PICTURE/MAP TASKS (from IMAGE_PROMPTS.md — Ringo generates)
-1. **Hero map** "The Beyond Biomes World" (Page 1, 4:5) — the centerpiece. ★
-2. **Doctor for the soil** (Page 3 left, 1:1) — optional.
-3. **System that builds systems / factory** (Page 3 right, 1:1) — optional.
-4. **Four-connections icon strip** (16:5 banner) — optional.
-Full copy-ready prompts + shared style block + palette are in `IMAGE_PROMPTS.md`. Save as `handout_p1_map.png`, `handout_doctor.png`, `handout_factory.png`, `handout_connections.png`.
-
----
-
-## 🧠 TRAINING APP + MULTI-MODEL SCRIPTS (new — last request)
-- **Q&A defense:** `QA_MURDER_BOARD.md` (comprehensive, grounded, honesty-checked) → becomes `train/qa.json`.
-- **Training app:** `TRAINING_APP_SPEC.md` — build `/train` route in `beyondbiomes-os-pitch` (voice-on; investor view stays voice-off). Tasks **T1–T6**: teleprompter + version selector (listen·skip·decide) · audio per version + ♥-pick→export blend · delivery scoring (WPM, timing-vs-map, pause/energy) · Q&A drill (random-fire, self-score, spaced repetition, 30s cap) · generate scripts.json+qa.json · progress + "5 never-fumble lines".
-- **Script variants** (`SCRIPT_VARIANTS.md`) to load for listen/skip/decide: `claude_v1` · **`claude_v2` ⭐ (PITCH_MASTER_v2, recommended)** · `codex` (`codex_improved.md`) · `winner_soft` · `deck_180`.
-- **Multi-model review:** Codex ✅ done (`codex_improved.md`, folded into v2). **Gemini ⛔ API key EXPIRED** — Ringo renews `GEMINI_API_KEY` in WSL, then re-run: `wsl -d Ubuntu-new -- bash -lc 'cd /mnt/e/WSL/shared/pitches/_pitch_build && GEMINI_CLI_TRUST_WORKSPACE=true gemini < review_prompt.txt > gemini_review.out'` → add as `gemini` variant.
-- **Re-review next session:** re-run Codex + Gemini on `PITCH_MASTER_v2` and synthesize a v3 if needed.
-
-### Added open tasks
-- [ ] **A6** — renew `GEMINI_API_KEY` (WSL) so the Gemini variant can be generated.
-- [ ] **A7** — record voice for EACH chosen variant (v2 default) so the trainer can A/B them.
-- [ ] **B9** — build the `/train` route (T1–T6) per TRAINING_APP_SPEC.
-- [ ] **B10** — generate `scripts.json` (all variants) + `qa.json` (from QA_MURDER_BOARD) + wire audio.
+## Open-task ledger (mirrors the prompt)
+**Ringo:** A1 voice · A2 images · A3 QR URLs · A4 christopher? · A5 score script · A6 renew GEMINI_API_KEY · A7 voice per variant · A8 confirm Veo access.
+**Build:** B1 merge Miguel+QR · B2 script swap+honesty · B3 synthesized view · B4 voice slots · B5 QR · B6 Gemini nuances · B7 handout PDF · B8 deploy · B9 /train route · B10 scripts.json+qa.json · **B11 images (gen_images.py)** · **B12 LOGO** · **B13 videos (gen_videos.py / Veo or fallback)** · **B14 embed video loops + sizzle** · B15 voice-analysis (local + Gemini multimodal).
+**Admin:** C1 open PR · C2 stamp Wave 16 · C3 re-review v2 (Codex+Gemini).
+```
