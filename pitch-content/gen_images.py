@@ -286,7 +286,12 @@ PROMPTS = {
     "'proofreader', 'immunity', 'quorum', 'stigmergy'. "
     "One small frontier emblem in the top-right corner: 'BEYOND - next verticals'. "
     "A single thin bottom ribbon: 'build the eyes before the muscles - we go far together'. "
-    "Rich sepia, professional, symmetrical, balanced, legible, no duplicates, fills the frame. 16:9."),
+    "BRAND IT: in the bottom-RIGHT corner place an ornate antique SEAL / cartouche containing the Beyond Biomes "
+    "emblem - a stylised TREE whose ROOTS are a DNA double-helix, inside a circle - drawn in sepia line-art with a "
+    "warm terracotta-orange tint (the brand mark); echo subtle warm terracotta-orange and soft gold accents across "
+    "the map so it reads as one branded piece. "
+    "Rich sepia + warm terracotta/gold brand accents, professional, symmetrical, balanced, legible, no duplicates, "
+    "fills the frame. 16:9."),
 }
 
 # optional reference images (style transfer) per prompt name

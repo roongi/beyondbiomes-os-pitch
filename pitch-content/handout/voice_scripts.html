@@ -1,0 +1,137 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Beyond Biomes — Voice & Pitch Scripts</title>
+<style>
+:root{--navy:#0B2545;--orange:#C7521E;--gold:#C9A227;--teal:#1B7F8C;--cream:#FAF6EC;--paper:#FBF8F0;--ink:#1f2a36;--grey:#6b7785}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:"Segoe UI",system-ui,Arial,sans-serif;background:var(--cream);color:var(--ink);line-height:1.55}
+.wrap{max-width:920px;margin:0 auto;padding:0 20px 80px}
+header.top{background:var(--navy);color:#fff;padding:26px 0;margin-bottom:0}
+header.top .wrap{display:flex;align-items:center;gap:14px}
+.mark{width:46px;height:46px;border-radius:50%;background:var(--gold);color:var(--navy);font-weight:800;font-size:24px;display:flex;align-items:center;justify-content:center;flex:0 0 auto}
+.brandblock h1{font-family:Georgia,serif;font-size:26px;letter-spacing:.5px}
+.brandblock .tag{color:#cdd8e2;font-size:13px}
+.hero{background:linear-gradient(180deg,#10305a,var(--navy));color:#fff;padding:30px 0;border-bottom:5px solid var(--gold)}
+.hero h2{font-family:Georgia,serif;font-size:30px;margin-bottom:6px}
+.hero p{color:#d7e0ea;max-width:680px}
+nav.jump{position:sticky;top:0;z-index:5;background:var(--paper);border-bottom:1px solid #e6ddc7;box-shadow:0 2px 8px rgba(0,0,0,.04)}
+nav.jump .wrap{display:flex;gap:8px;flex-wrap:wrap;padding:10px 20px}
+nav.jump a{font-size:12px;font-weight:700;text-decoration:none;color:var(--navy);background:#fff;border:1px solid #e0d8c2;border-radius:20px;padding:5px 12px}
+nav.jump a:hover{background:var(--gold);color:var(--navy);border-color:var(--gold)}
+section{margin-top:34px;background:var(--paper);border:1px solid #ece3cf;border-radius:14px;padding:24px 26px;box-shadow:0 1px 4px rgba(0,0,0,.04)}
+section h3{font-family:Georgia,serif;color:var(--navy);font-size:23px;border-left:5px solid var(--orange);padding-left:12px;margin-bottom:6px}
+section .lead{color:var(--grey);font-size:14px;margin-bottom:14px}
+.badge{display:inline-block;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.5px;border-radius:6px;padding:3px 9px;margin-left:8px;vertical-align:middle}
+.rec{background:var(--gold);color:var(--navy)}.alt{background:#e7eef0;color:var(--teal)}
+.slide{margin:12px 0;padding:12px 14px;background:#fff;border-radius:9px;border:1px solid #efe7d4}
+.slide .s{display:inline-block;font-family:"Courier New",monospace;font-size:11px;font-weight:700;color:#fff;background:var(--teal);border-radius:5px;padding:2px 8px;margin-bottom:6px}
+.slide p{font-size:15.5px}
+.slide strong{color:var(--orange)}
+.cue{color:var(--grey);font-style:italic;font-size:13px}
+.set{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:12px 0}
+.set div{background:#fff;border:1px solid #efe7d4;border-radius:8px;padding:10px 12px;font-size:13px}
+.set b{display:block;color:var(--teal);font-size:18px}
+.lines li{margin:7px 0;font-size:15px}
+.lines li b{color:var(--orange)}
+code{background:#f3ecda;border:1px solid #e6ddc7;border-radius:5px;padding:1px 6px;font-size:13px}
+.persona{border-top:3px solid var(--orange)}
+.foot{text-align:center;color:var(--grey);font-size:12px;margin-top:40px}
+.pill{font-size:11px;color:var(--grey)}
+</style></head><body>
+
+<header class="top"><div class="wrap">
+  <div class="mark">B</div>
+  <div class="brandblock"><h1>BEYOND BIOMES</h1><div class="tag">as nature intended · the AI-native platform for regenerative agriculture</div></div>
+</div></header>
+
+<div class="hero"><div class="wrap">
+  <h2>Voice &amp; Pitch Scripts</h2>
+  <p>Every script in one place — the 3-minute master pitch (three versions), the ElevenLabs voice setup, the three platform personas, and the lines you must never fumble. <span class="pill">Generated 2026-06-21 · honesty-locked (patent-pending · yield = target).</span></p>
+</div></div>
+
+<nav class="jump"><div class="wrap">
+  <a href="#voice">🎙 Voice setup</a>
+  <a href="#v3">⭐ Master v3</a>
+  <a href="#v2">Master v2</a>
+  <a href="#v1">Master v1</a>
+  <a href="#farmer">🌱 Farmer</a>
+  <a href="#scientist">🔬 Scientist</a>
+  <a href="#producer">🏭 Producer</a>
+  <a href="#lines">🔑 Never-fumble lines</a>
+</div></nav>
+
+<div class="wrap">
+
+<section id="voice">
+  <h3>🎙 Voice setup — ElevenLabs</h3>
+  <div class="lead">Voice: <b>Old Wizard — Deep, Engaging Storyteller</b> (your PVC clone). Tone: warm, certain, unhurried — a scientist letting them in on a 3.5-billion-year-old secret, not selling.</div>
+  <div class="set">
+    <div><b>v3</b> model — eleven_v3 (emotion / audio-tags)</div>
+    <div><b>0.60</b> stability (lower = more expressive)</div>
+    <div><b>0.80</b> similarity</div>
+    <div><b>0.70</b> style · speaker-boost ON</div>
+  </div>
+  <p style="font-size:14px">Generate: store the key (<code>~/.elevenlabs/.env</code>), find your voice_id, then run <code>gen_voice.py voice_text/v3.txt media/voice/bb_v3.mp3 --voice &lt;id&gt; --model eleven_v3</code>. Full commands in <code>VOICE_API_COMMANDS.md</code>. The 3 non-negotiable silences: after <i>"eyes before the muscles"</i>, after <i>"we bend time"</i>, before <i>"Thank you."</i></p>
+</section>
+
+<section id="v3">
+  <h3>⭐ Master 3-min pitch — v3 <span class="badge rec">recommended</span></h3>
+  <div class="lead">Nature → AI-native. The "Witness" arc. ~480 words · 3:00. Mapped to the locked 12 slides.</div>
+  <div class="slide"><span class="s">1 · TITLE</span><p>What if the most advanced AI we're building already had a <strong>3.5-billion-year-old blueprint</strong>? I'm Dr. Ringo Schwabe — a microbiologist. Everyone in AI is racing to build stronger muscles, and Gartner says <strong>over forty percent of those agent projects will be cancelled by 2027</strong> — because they're blind. Nature never made that mistake: it built the <strong>eyes before the muscles</strong>. Our rule is one line: <strong>read the system before you change it.</strong></p></div>
+  <div class="slide"><span class="s">2 · PROBLEM</span><p>Take the oldest system we farm — the soil. We still read a living microbiome as flat chemistry: nitrogen, phosphorus, potassium. That's like <strong>debugging software by weighing the hardware</strong> — you learn what's there, never what's missing. So billions in biological products get applied <strong>blind</strong>.</p></div>
+  <div class="slide"><span class="s">3 · LANDSCAPE</span><p>Three people stand around every field who've never been in the same conversation. The <strong>farmer</strong>, who knows his land by hand but can't see the biology beneath it. The <strong>scientist</strong>, who knows what's failing but is nowhere near the field. The <strong>producer</strong>, who sells the cure and hopes it survives.</p></div>
+  <div class="slide"><span class="s">4 · TECHNOLOGY</span><p>Beyond Biomes connects them — by borrowing nature's oldest trick. In a living cell, the enzyme that copies DNA <strong>never grades its own work</strong>; a separate proofreader checks it. Nature decided <strong>the witness must stand outside the actor</strong>. We built that witness in software. The farmer sends soil; our platform reads not the <strong>guest list</strong> of who's there, but the <strong>live runtime</strong> of what they're doing — <strong>17 AI agents, 221 models, already live, 97% disease detection.</strong></p></div>
+  <div class="slide"><span class="s">5 · BRIDGE</span><p>Here's where everyone fails: <strong>60–70% of single strains die in the field</strong> — a lab microbe dropped into drought is dropped into a warzone. We don't guess. We measure the battlefield first, then design the consortium built to survive it. Our published strains lifted nutrient uptake <strong>over 300%</strong> — peer-reviewed.</p></div>
+  <div class="slide"><span class="s">6 · BUSINESS MODEL</span><p>The value splits cleanly. The <strong>farmer</strong> gets the yield — a <em>target</em> of 20–25% more, a third less fertiliser. The <strong>producer pays us</strong> to prove and tailor his product. <strong>We sell the eyes; they sell the muscle.</strong> And <strong>Cyro Cavalcante — biofertilizer in 35 countries — just signed to white-label through us.</strong></p></div>
+  <div class="slide"><span class="s">7 · TRACTION</span><p>It's real today: <strong>five signed LOIs</strong>, a <strong>1,200-hectare</strong> German cooperative — and when Europe freezes, our AI trains on live summer fields in Chile. We retrain every six months, not once a year. <strong>We bend time.</strong></p></div>
+  <div class="slide"><span class="s">8–9 · SCALE</span><p>Because the witness is universal, soil is only the <strong>first</strong> system. The engine underneath — our <strong>agentic layer, 1,500 commits</strong> — already builds other ventures, from lab science to construction. We're not building an agent. We're <strong>cultivating systems that build systems.</strong> Soil is the first machine off the line.</p></div>
+  <div class="slide"><span class="s">10 · TEAM</span><p>Built by the scientist who <strong>invented</strong> the method, a <strong>Nature Communications</strong> lead author, the engineer who built the platform, and an operator with <strong>120</strong> LATAM agri-deals. Ruhr-University Bochum, EXIST-funded.</p></div>
+  <div class="slide"><span class="s">11 · VALIDATION</span><p>We're honest. <strong>Patent-pending, not granted.</strong> Greenhouse proof today; field next. R² <strong>0.68</strong> — the <strong>625-metagenome</strong> trial across three climate zones funds <strong>0.85</strong>. We fund the proof; we don't assume it.</p></div>
+  <div class="slide"><span class="s">12 · ASK</span><p>So the ask: <strong>€1.5 million — to buy an industry its eyes.</strong> <span class="cue">[pause]</span> We didn't invent this rule. We translated the oldest one there is. <strong>Read the system before you change it.</strong> Thank you.</p></div>
+</section>
+
+<section id="v2">
+  <h3>Master 3-min pitch — v2 <span class="badge alt">blend</span></h3>
+  <div class="lead">Soil-first, "what if" cold open, the guest-list/live-runtime + warzone metaphors. Use for a VC-heavy room.</div>
+  <div class="slide"><p><strong>[1]</strong> "What if we've been trying to fix the world's most critical living system — with a dead language?" → eyes before muscle. <strong>[2]</strong> soil as flat chemistry = debugging by weighing the hardware. <strong>[3]</strong> three people, never in one conversation. <strong>[4]</strong> guest list vs live runtime · 17 agents · 221 models · ~890 endpoints (contract next). <strong>[5]</strong> the biological warzone; we measure first. <strong>[6]</strong> we sell the eyes; they sell the muscle; Cyro white-label. <strong>[7]</strong> 5 LOIs · 1,200 ha · Chile counter-season. <strong>[8–9]</strong> €12.5B / €3.5B; soil is the first machine off the line. <strong>[10]</strong> team. <strong>[11]</strong> patent-pending · R² 0.68→0.85 · 625-metagenome. <strong>[12]</strong> €1.5M — buy an industry its eyes. <span class="cue">(full text in PITCH_MASTER_v2.md)</span></p></div>
+</section>
+
+<section id="v1">
+  <h3>Master 3-min pitch — v1 <span class="badge alt">original</span></h3>
+  <div class="lead">"What a time to be alive" open; warm narrative. Full text in PITCH_MASTER_v1.md.</div>
+  <div class="slide"><p><strong>[1]</strong> what a time to be alive · which model is best is the wrong question · eyes before muscle. <strong>[2–3]</strong> 40% of agents die blind · the three people. <strong>[4]</strong> read what microbes <em>do</em> · 17 agents/221 models/€30-a-month · doctor for the soil. <strong>[5–7]</strong> we don't guess · +300% published · producer pays · 5 LOIs · two hemispheres. <strong>[8–12]</strong> soil is the first system · team · R² 0.68→0.85 · €1.5M · read the system before you change it.</p></div>
+</section>
+
+<section id="farmer" class="persona">
+  <h3>🌱 Platform persona — Farmer <span class="badge alt">the Cultivator</span></h3>
+  <div class="lead">~70s · grounded, soil/seasons/yield.</div>
+  <div class="slide"><p>"Your field already speaks — you just haven't been able to hear it. For generations we judged soil by its chemistry: nitrogen, phosphorus, potassium. But that's the label on the jar, not the life inside it. Beyond Biomes reads that life — what the microbes in your soil are actually <strong>doing</strong> — and hands you back a living app for your field: what's missing, what to plant next, and the exact biological mix to bring it back to health. You send a sample; we diagnose, we prescribe, you treat. Then every season your field teaches the system, and the next recommendation gets sharper. The goal: more yield, less fertiliser, healthier ground to hand to your children. <strong>We read the system — before we change it.</strong>"</p></div>
+</section>
+
+<section id="scientist" class="persona">
+  <h3>🔬 Platform persona — Scientist <span class="badge alt">the Observer</span></h3>
+  <div class="lead">~75s · rigorous, evidence, out-of-band.</div>
+  <div class="slide"><p>"You know the gap between the bench and the field — a strain that thrives on a plate gets out-competed in real soil. Beyond Biomes closes that gap with observation, not assumption. We read <strong>function</strong> — metagenomics and expression — not just taxonomy: who's present matters less than what they're doing. Every result is a receipt: R², p-values, an out-of-band record you can reproduce and publish. Our consortia come from a multi-objective optimizer, not a hunch; our 625-metagenome program spans three climate zones. And we're honest about where we stand — R² 0.68 today, funding the path to 0.85. Collaborate on our open platform: your knowledge becomes a prediction a farmer can act on tomorrow — and a co-authored result for you."</p></div>
+</section>
+
+<section id="producer" class="persona">
+  <h3>🏭 Platform persona — Producer <span class="badge alt">the Builder</span></h3>
+  <div class="lead">~70s · practical, durable, production-grade.</div>
+  <div class="slide"><p>"You live with one number: how often your product fails in the field. Up to 70% of single strains don't survive contact with real soil — and a product that fails once never sells again. Beyond Biomes is the boring layer that makes your product reliable. We profile the field first, validate where your formulation actually works, and tailor it to that exact stress environment — so you sell <strong>proof</strong>, not promises. White-label our diagnostics, plug your portfolio into our API, and let every treated field feed back evidence that compounds. Production-grade, defensible, durable. <strong>We give you the eyes; you sell the muscle.</strong>"</p></div>
+</section>
+
+<section id="lines">
+  <h3>🔑 The lines you must never fumble</h3>
+  <ul class="lines">
+    <li><b>Eyes before the muscles</b> · read the system before you change it.</li>
+    <li><b>We sell the eyes; they sell the muscle.</b></li>
+    <li><b>DNA is the guest list; we read the live runtime.</b></li>
+    <li><b>We fund the proof — we don't assume it.</b> (R² 0.68 → 0.85)</li>
+    <li><b>Patent-pending</b> (never "patent").</li>
+    <li><b>Soil is the first machine off the line — the factory builds the next.</b></li>
+    <li><b>We go far together</b> · <i>Wer weit gehen will, geht gemeinsam.</i></li>
+  </ul>
+</section>
+
+<div class="foot">Beyond Biomes · voice &amp; pitch scripts · beyondbiomes.de · build the eyes before the muscles</div>
+</div>
+</body></html>
