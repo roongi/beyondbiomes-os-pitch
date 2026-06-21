@@ -193,9 +193,28 @@ PROMPTS = {
     "spans all three strata labelled 'BEYOND BIOMES - the agentic layer that now CLOSES every gap, on nature's "
     "principles'. A small footer: 'observe - verify - then grant autonomy'. Distinctive serif headings, monospace "
     "labels, clean connector lines, no purple, no dark background. 16:9."),
+ "the_map": (
+    "Re-render in EXACTLY the refined minimal antique-editorial style of the reference image: warm parchment, sepia "
+    "ink, a thin elegant double border, distinctive refined serif typography, GENEROUS negative space, thin elegant "
+    "radiating connector lines, restrained line-art emblems, an engraved sunburst - calm, timeless, museum-grade. Keep "
+    "that exact look and palette. KEEP ALL TEXT EXACT and perfectly legible. "
+    "Title in serif capitals at top: 'NATURE'S RULES - OUR AGENTIC LAYER'. "
+    "CENTER: an ornate sepia control-console instrument with a single eye-lens on its screen and a brass nameplate "
+    "reading 'THE AGENTIC LAYER', and a small italic label beneath it: 'observe - verify - act'. "
+    "Thin radiating lines go to the LEFT to four small line-art emblems, NATURE'S RULES: 'PROOFREADER - a separate "
+    "checker', 'IMMUNITY - check vs reference', 'QUORUM - shared signal', 'STIGMERGY - the trail is the ledger'. "
+    "Thin radiating lines go to the RIGHT to small framed system-windows under the heading 'BEYOND BIOMES - a "
+    "personalized system for every field': 'FARMER', 'PRODUCER', 'SCIENTIST', and a frontier node 'NEXT VERTICAL'. "
+    "A small culture flask and a tiny soil-and-root motif sit beside the console as the biological signature. "
+    "Italic caption along the bottom: 'extract - verify - act - the system that builds systems'. A second smaller "
+    "italic line below: 'build the eyes before the muscles - we go far together'. "
+    "Monochrome warm sepia on parchment, no modern colors, no photography. 16:9."),
 }
 
-ASPECT = {"p1_map":"4:5","connections":"16:9","logo_wordmark":"16:9","mappa":"16:9","mappa_bb":"16:9","onepager":"3:4","page1":"16:9","m_clean":"16:9","m_antique":"16:9","m_hero":"3:2","m_pairing":"16:9","m_bb":"16:9","doctor":"1:1","factory":"1:1","logo_mark":"1:1"}
+# optional reference images (style transfer) per prompt name
+REF = {"the_map": "/mnt/e/WSL/shared/pitches/media/ref_jack.png"}
+
+ASPECT = {"p1_map":"4:5","connections":"16:9","logo_wordmark":"16:9","mappa":"16:9","mappa_bb":"16:9","onepager":"3:4","page1":"16:9","m_clean":"16:9","m_antique":"16:9","m_hero":"3:2","m_pairing":"16:9","m_bb":"16:9","the_map":"16:9","doctor":"1:1","factory":"1:1","logo_mark":"1:1"}
 
 def save_parts(resp, base):
     n = 0
@@ -215,14 +234,22 @@ for name in names:
     print(f"[{name}] generating...")
     tried = [good_model] if good_model else MODELS
     ar = ASPECT.get(name, "1:1")
+    contents = [PROMPTS[name]]
+    if name in REF:
+        try:
+            from PIL import Image as _PILImage
+            contents = [PROMPTS[name], _PILImage.open(REF[name])]
+            print(f"  using reference: {REF[name]}")
+        except Exception as e:
+            print(f"  ref load failed: {e}")
     for M in tried:
         try:
             try:
                 cfg = types.GenerateContentConfig(response_modalities=["IMAGE"],
                         image_config=types.ImageConfig(aspect_ratio=ar))
-                resp = client.models.generate_content(model=M, contents=PROMPTS[name], config=cfg)
+                resp = client.models.generate_content(model=M, contents=contents, config=cfg)
             except Exception:
-                resp = client.models.generate_content(model=M, contents=PROMPTS[name],
+                resp = client.models.generate_content(model=M, contents=contents,
                         config=types.GenerateContentConfig(response_modalities=["IMAGE"]))
             if save_parts(resp, name):
                 good_model = M; print(f"  via {M} ({ar})"); break
