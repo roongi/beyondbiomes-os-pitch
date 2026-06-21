@@ -12,12 +12,11 @@ python3 -c 'import os,urllib.request as u;k=os.environ["ELEVENLABS_API_KEY"];r=u
 unset ELEVENLABS_API_KEY
 ```
 
-## STEP 2 — find your "Old Wizard" voice_id
-```bash
-wsl -d Ubuntu-new -- bash -lc 'curl -s -H "xi-api-key:$(grep -oP "ELEVENLABS_API_KEY=\K\S+" ~/.elevenlabs/.env)" https://api.elevenlabs.io/v1/voices | /home/ringo007/.venvs/bbmedia/bin/python -c "import sys,json
-for v in json.load(sys.stdin)[\"voices\"]: print(v[\"voice_id\"], \"-\", v[\"name\"])"'
-```
-Copy the `voice_id` next to **Old Wizard**.
+## STEP 2 — your "Old Wizard" voice_id (already found)
+**`JoYo65swyP8hH6fVMeTO`** = Old Wizard – Deep, Engaging Storyteller (professional).
+To re-list any time: `~/.venvs/bbmedia/bin/python list_voices.py`
+
+> ⚠️ CONTEXT NOTE: the commands prefixed `wsl -d Ubuntu-new --` are for running **from Windows** (PowerShell / Git Bash). If you are **already inside the WSL Ubuntu shell** (`ringo007@...$`), DROP that wrapper and run the inner command directly (inside WSL, `wsl` is a different unrelated tool).
 
 ## STEP 3 — generate the narration (Claude or you can run this)
 ```bash
