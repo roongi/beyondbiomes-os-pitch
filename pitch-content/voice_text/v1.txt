@@ -1,0 +1,13 @@
+I'm Doctor Ringo Schwabe. And — what a time to be alive. Every month the machines around us get stronger, cheaper, faster, and the whole world is racing to answer one question: which model is the best? I want to talk about the question that actually decides who wins — what do you build around the model so it can be trusted?
+
+Here's the uncomfortable truth. Gartner says over forty percent of AI agent projects will be cancelled by twenty twenty-seven. Not because the models are weak — because they are blind. We are building stronger and stronger muscles, and forgetting to give them eyes.
+---
+So we asked a different question: who has already solved this — reliability, at scale? Nature has. For four billion years. And nature has one rule: never let a process grade its own work. When your DNA is copied, the enzyme that writes it makes one mistake in a hundred thousand letters. So a separate proofreader walks behind it, checks every letter against the truth, and the error rate drops to one in a billion. Eyes before muscle. Observe, verify against reality, then act. That engine is Beyond Biomes — and the first system it built reads the soil.
+
+Three people stand around every field and have never been in the same conversation. The farmer, who knows his land by hand but can't see the biology beneath it. The scientist, who knows what's failing. The producer, who sells the cure and prays.
+---
+Beyond Biomes puts them in one conversation. The farmer sends soil; we read not just who lives in it, but what they're doing. The scientist's knowledge becomes a prediction; the producer's product becomes precise; the farmer gets more yield with less fertiliser. And every paid field makes the next one sharper.
+
+It's running today: five signed letters of intent, a German cooperative, two hemispheres so we retrain every six months. Our published strains lifted nutrient uptake over three hundred percent, peer-reviewed.
+
+So the ask: we're raising our seed round to bring this to the first farms. Soil is only the first system — the same engine works for any living system where a farmer, a producer and a scientist have never been able to talk. Read the system before you change it. Thank you.

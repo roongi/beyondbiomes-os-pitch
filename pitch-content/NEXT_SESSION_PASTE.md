@@ -1,40 +1,40 @@
-# ▶ NEXT-SESSION MASTER PROMPT — Beyond Biomes (Wave 16: wire the app, ship it)
-_Paste the block below into a fresh session (WSL). Content + visuals + the handoff are DONE; this session WIRES THE APP and ships. Use a comprehensive parallel workflow, evidence-grounded, honesty-locked, commit+push each step._
+# ▶ NEXT-SESSION MASTER PLAN & PASTE — Beyond Biomes (Wave 16: voices→videos→app)
+_Paste the block at the bottom into a fresh WSL session. Everything below is the state + the plan agreed 2026-06-21._
 
-## STATE AS OF 2026-06-21 (done — don't redo)
-- **Evidence:** EVIDENCE_LEDGER · REPO_LEDGER · DEEP_ADDENDUM · CANONICAL_FACTS · DECISIONS · PERSONALITY_NARRATIVE · REPLIES_KPIS · AUDIENCE_SCORING.
-- **Pitch:** PITCH_MASTER_v1 / v2 (blend) / **v3 (nature→AI-native, recommended)** · codex_improved · SCRIPT_VARIANTS · GEMINI_NUANCES · VOICE_SCRIPT_v1 · QA_MURDER_BOARD · PERSONA_SCRIPTS (farmer/scientist/producer).
-- **Visuals (in `shared/pitches/media/` + outputs `media/`):** hero = **handout_map_hero.jpg** ("Beyond Biomes — As Nature Intended"); also map_hub/map_layers/map_clean2/the_map/map_cycle/m_pairing/m_clean/page1 + English business images (openapi/eng_bmc/revenue/eng_journey/eng_org) + 2 QR codes.
-- **Handoff:** **`shared/pitches/handout/BeyondBiomes_Handout_FINAL.pdf`** (7-page 16:9 English deck, hero-map cover) — editable source `handout16x9.html`. DONE.
-- **Media pipeline:** venv `~/.venvs/bbmedia`; key in `~/.gemini/.env`; `gen_images.py` (Nano Banana 2 + reference-image style transfer via `REF`); `run_gemini_api.py` (text). All working.
-- **Repo:** all of the above committed to `beyondbiomes-os-pitch` branch `feat/bb-pitch-content-2026-06-21` / `pitch-content/`.
+## ✅ DONE this session (don't redo — saved in `shared/pitches/` + outputs `BeyondBiomes_Pitch_2026-06-21/`, pushed to branch `feat/bb-pitch-content-2026-06-21`/`pitch-content/`)
+- **Evidence + scripts:** EVIDENCE/REPO/DEEP ledgers · CANONICAL_FACTS · DECISIONS · PERSONALITY_NARRATIVE · REPLIES_KPIS · AUDIENCE_SCORING · PITCH_MASTER v1/v2/v3 · PERSONA_SCRIPTS · QA_MURDER_BOARD · GEMINI_NUANCES · SCRIPT_VARIANTS · voice_scripts.html (beautiful all-scripts page).
+- **Voices (ElevenLabs "Old Wizard" `JoYo65swyP8hH6fVMeTO`, multilingual_v2)** in `media/voice/`: bb_v3 (4-min, parts+full), **bb_v3_3min** (pitch), bb_v1 (what-a-time-to-be-alive), bb_farmer / bb_scientist / bb_producer. Pipeline: gen_voice.py · list_voices.py · VOICE_API_COMMANDS.md. Key in `~/.elevenlabs/.env`.
+- **HERO MAP** `media/handout_map_hero.jpg` — antique, green+orange (no blue), deep-tech loop (PLAN→IMPLEMENT→REVIEW→VERIFY→SHIP→LEARN), "NATURE'S RULE = DEEP-TECH RULE" mapping, real LOGNEU logo composited. Pipeline: gen_images.py (Nano Banana 2 + reference-image transfer; refs = JACK_REF_MAP.jpeg/ref_jack.png), composite_logo.py.
+- **HANDOFF** `handout/BeyondBiomes_Handout_FINAL.pdf` (7-page 16:9 English, hero-map cover). Source `handout16x9.html`.
+
+## 🔧 OPEN — do next session (in parallel where possible)
+**A · MAP FINAL polish** — refit the real **LOGNEU** logo so it sits *just below the intended logo position* and *fits inside* its frame (use Nano Banana 2 with LOGNEU as a reference, OR precise PIL composite into that exact box). Add one short line of **nature-based deep-tech principles** ("we connect agents, data, humans and companies the way nature does — observe, verify, then act") and name the **next verticals: education · construction · facility management**. Then the map is READY.
+
+**B · 3-min vs 4-min** — pitch uses **bb_v3_3min** (3 min). Keep the 4-min **bb_v3_full** for the app's "listen" mode **with subtitles** (generate SRT/VTT from voice_text). Don't delete anything.
+
+**C · SLIDE VIDEOS (12 slides)** — build a video that runs along the **locked 12 slides** (BeyondBiomes_SoilIntelligence_FINAL.pdf), narrated by the **same Old Wizard voice** (per-slide timing from the script's timing map). Produce one per voice variant (v3_3min, v1) so Ringo can A/B. Wire into the **training app** for listen/skip/select.
+
+**D · NOTEBOOKLM video** — feed the voice scripts to **NotebookLM** to create a **3-min ANIME-style** video; then bring **our Old Wizard voice** onto it (replace/overlay NLM's voice). 
+
+**E · GOOGLE FLOW (Veo, Ultra Gemini)** — the full cinematic "living pitch" video per VIDEO_STORYBOARD (12 clips + sizzle), our voice on top.
+
+**F · TRAINING APP end-to-end** — make `/train` work fully: teleprompter + per-slide voice + **version selector (listen all → pick)** + delivery scoring + Q&A drills (QA_MURDER_BOARD). Wire the **presentation-based slide video** in first. After Ringo selects, wire the **best voice + video** into: the **pitch app**, the **training app**, and reference in the **handoff**.
+
+**G · APP BRANDING** — brand the pitch/training app with the **round LOGNEU logo** + brand colors (the app still lacks branding). Merge Miguel's branch `feat/perfect-pitch-3min` → main preserving `?k=` QR login (per PITCH_APP_INTEGRATION).
+
+**From Ringo:** final app/demo URLs (QR); confirm drop team_christopher; listen to all voices/videos and pick winners.
 
 ```
-ROLE: Wire the Beyond Biomes pitch into the app and ship (Wave 16). Work from WSL. Read pitch-content/ first
-(NEXT_SESSION_PASTE.md, CANONICAL_FACTS.md, DECISIONS.md, PITCH_MASTER_v3.md, PERSONA_SCRIPTS.md,
-QA_MURDER_BOARD.md, VOICE_SCRIPT_v1.md, PITCH_APP_INTEGRATION.md, TRAINING_APP_SPEC.md, AUDIENCE_SCORING.md).
-HONESTY (locked): patent-PENDING; yield/field=TARGET; "120 B2B deals"=Maria Paz track record;
-OpenAPI=~890 endpoints today + contract next; TAM show both 12.5B/3.5B; ask=1.5M EUR seed.
-
-PARALLEL WORKSTREAMS (commit+push each):
- 1. APP: full-clone beyondbiomes-os-pitch; merge Miguel's branch feat/perfect-pitch-3min -> main PRESERVING the
-    ?k= QR auto-login (PR; no force-push). This styled app becomes the base.
- 2. SCRIPT: put PITCH_MASTER_v3 into PITCH_SCRIPT.md + in-page text + marp decks; honesty pass on ALL copy.
- 3. SYNTHESIZED ONE-VIEW (investor): the pitch (12 slides) + the handout visuals as a slideshow (hero map +
-    English business images) + investor-stats/proof + team. Voice OFF by default for investors.
- 4. /train route (TRAINING_APP_SPEC): teleprompter + version selector (listen/skip/decide across
-    claude_v1/v2/v3, codex) + delivery scoring (WPM, timing-vs-map, pauses, energy) + Q&A drills (qa.json from
-    QA_MURDER_BOARD, random-fire, self-score) + voice-analysis loop (record -> local metrics + Gemini multimodal
-    report -> iterate; A/B own voice vs best voice).
- 5. VOICE: wire Ringo's generated MP3s (local voice) as per-section audio slots.
- 6. QR: handout->app + last-slide->app; generate QR PNGs from final URLs.
- 7. DEPLOY; verify ?k= QR login still works.
-
-ASSETS FROM RINGO: voice MP3s (from VOICE_SCRIPT_v1) · final app/demo URLs · confirm drop team_christopher.
-
-CLOSE: run the operator cockpit commands /retrospective, /dream, /skillify, /session-superclose. Stamp Wave 16 done.
-```
-
-## Open items for Ringo
-- Generate voice MP3s (VOICE_SCRIPT_v1) · provide final app/demo URLs · confirm drop `team_christopher` · (optional) print-grade upscale of hero map.
+ROLE: Continue Beyond Biomes (Wave 16) from WSL. Read pitch-content/ (NEXT_SESSION_PASTE.md first, then CANONICAL_FACTS,
+DECISIONS, PITCH_MASTER_v3, PERSONA_SCRIPTS, QA_MURDER_BOARD, VIDEO_STORYBOARD, PITCH_APP_INTEGRATION, TRAINING_APP_SPEC,
+VOICE_API_COMMANDS). Tools ready: venv ~/.venvs/bbmedia; keys in ~/.gemini/.env (Gemini+Veo) & ~/.elevenlabs/.env;
+gen_images.py (Nano Banana 2 + REF style-transfer), gen_voice.py, composite_logo.py. Honesty locked (patent-pending,
+yield=target, TAM both, ask 1.5M).
+DO, in parallel: (A) finalize hero map — refit LOGNEU logo into its box + add nature-deep-tech principle line + next
+verticals (education/construction/facility-mgmt); (B) make SRT subtitles for the 4-min audio; (C) build the 12-slide
+narrated video (Old Wizard voice) per voice variant; (D) NotebookLM 3-min anime video, then overlay our Old Wizard voice;
+(E) Google Flow/Veo cinematic video per VIDEO_STORYBOARD; (F) wire /train end-to-end (listen-all + select) and brand the
+app with the round LOGNEU logo + merge Miguel branch preserving ?k= login; (G) after Ringo picks, wire best voice+video
+into pitch app + training app + reference in handoff. Commit+push each. Then run cockpit /retrospective /dream /skillify
+/session-superclose. Stamp Wave 16.
 ```
