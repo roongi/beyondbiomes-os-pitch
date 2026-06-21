@@ -1,0 +1,1232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Beyond Biomes — Rehearsal Trainer</title>
+<style>
+  :root{
+    --green:#1b5e20; --green-dk:#103d16; --green-lt:#e7f0e8;
+    --orange:#c8631b; --orange-lt:#fbeadd;
+    --ink:#1c2421; --muted:#5d6b63; --line:#dde5df;
+    --bg:#f5f8f5; --card:#ffffff; --good:#1b5e20; --warn:#c8631b; --bad:#b0341e;
+    --shadow:0 1px 3px rgba(20,40,25,.08),0 6px 22px rgba(20,40,25,.06);
+    --radius:14px;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    color:var(--ink); background:var(--bg); line-height:1.45; -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--green)}
+  .wrap{max-width:920px;margin:0 auto;padding:0 16px 80px}
+  /* Header */
+  header{
+    position:sticky;top:0;z-index:30;background:rgba(245,248,245,.92);
+    backdrop-filter:blur(8px);border-bottom:1px solid var(--line);
+  }
+  .head-inner{max-width:920px;margin:0 auto;display:flex;align-items:center;gap:12px;padding:12px 16px}
+  .logo{width:42px;height:42px;border-radius:50%;flex:0 0 auto;object-fit:cover;
+    box-shadow:0 0 0 2px #fff,0 0 0 4px var(--green-lt)}
+  .logo-fallback{width:42px;height:42px;border-radius:50%;flex:0 0 auto;
+    background:var(--green);color:#fff;display:flex;align-items:center;justify-content:center;
+    font-weight:800;letter-spacing:.5px;font-size:15px;box-shadow:0 0 0 2px #fff,0 0 0 4px var(--green-lt)}
+  .brandtext{display:flex;flex-direction:column;line-height:1.1}
+  .brandtext b{font-size:16px;letter-spacing:.2px}
+  .brandtext span{font-size:11.5px;color:var(--muted);text-transform:uppercase;letter-spacing:1px}
+  .grow{flex:1}
+  /* Tabs */
+  nav.tabs{display:flex;gap:4px;max-width:920px;margin:0 auto;padding:0 12px;overflow-x:auto}
+  nav.tabs button{
+    appearance:none;border:none;background:transparent;font:inherit;cursor:pointer;
+    padding:11px 16px;color:var(--muted);font-weight:600;border-bottom:3px solid transparent;
+    white-space:nowrap;font-size:14.5px;
+  }
+  nav.tabs button.active{color:var(--green);border-bottom-color:var(--orange)}
+  nav.tabs button:hover{color:var(--ink)}
+  section.tab{display:none;padding-top:22px}
+  section.tab.active{display:block;animation:fade .25s ease}
+  @keyframes fade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+  h2.title{font-size:20px;margin:2px 0 4px}
+  .sub{color:var(--muted);font-size:13.5px;margin:0 0 16px}
+  /* Cards / controls */
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    box-shadow:var(--shadow);padding:18px;margin-bottom:16px}
+  .row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+  .seg{display:inline-flex;background:var(--green-lt);border-radius:10px;padding:3px;gap:2px;flex-wrap:wrap}
+  .seg button{appearance:none;border:none;background:transparent;font:inherit;font-weight:600;
+    cursor:pointer;padding:7px 13px;border-radius:8px;color:var(--green-dk);font-size:13.5px}
+  .seg button.on{background:var(--green);color:#fff;box-shadow:var(--shadow)}
+  .pill{font-size:11.5px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;
+    background:var(--orange-lt);color:var(--orange);padding:3px 9px;border-radius:999px}
+  .btn{appearance:none;border:1px solid var(--line);background:#fff;font:inherit;font-weight:600;
+    cursor:pointer;padding:9px 15px;border-radius:10px;color:var(--ink);font-size:14px}
+  .btn:hover{border-color:var(--green)}
+  .btn.primary{background:var(--green);border-color:var(--green);color:#fff}
+  .btn.primary:hover{background:var(--green-dk)}
+  .btn.orange{background:var(--orange);border-color:var(--orange);color:#fff}
+  .btn.ghost{background:transparent}
+  .btn:disabled{opacity:.45;cursor:not-allowed}
+  select{font:inherit;padding:9px 12px;border-radius:10px;border:1px solid var(--line);background:#fff;font-size:14px}
+  label.lbl{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--muted);display:block;margin-bottom:6px}
+  .note{background:var(--orange-lt);border:1px solid #f0d2bb;color:#7a3d10;border-radius:10px;padding:10px 13px;font-size:13.5px}
+  .muted{color:var(--muted)}
+  .hint{font-size:12.5px;color:var(--muted)}
+  /* Rehearse version cards */
+  .vgrid{display:grid;grid-template-columns:1fr;gap:10px}
+  .vcard{border:1px solid var(--line);border-radius:12px;padding:13px 14px;display:flex;align-items:center;gap:12px;cursor:pointer;background:#fff;transition:.15s}
+  .vcard:hover{border-color:var(--green)}
+  .vcard.sel{border-color:var(--green);background:var(--green-lt)}
+  .vcard .vmeta{flex:1;min-width:0}
+  .vcard .vmeta b{font-size:14.5px}
+  .vcard .vmeta .ch{font-size:12.5px;color:var(--muted);display:block;margin-top:2px}
+  .heart{font-size:20px;line-height:1;background:none;border:none;cursor:pointer;filter:grayscale(1);opacity:.5;transition:.15s;padding:4px}
+  .heart.on{filter:none;opacity:1;transform:scale(1.12)}
+  .dur{font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
+  /* Player */
+  audio,video{width:100%;border-radius:10px;margin-top:6px}
+  video{background:#000;aspect-ratio:16/9}
+  .caption{margin-top:14px;min-height:64px;background:var(--green-lt);border-radius:12px;padding:16px 18px;
+    font-size:18px;line-height:1.5;color:var(--green-dk);font-weight:500;border:1px solid #cfe0d1}
+  .caption.empty{color:var(--muted);font-weight:400;font-size:14px}
+  .speedwrap{display:flex;align-items:center;gap:10px}
+  input[type=range]{accent-color:var(--green)}
+  .picks li{margin:4px 0}
+  /* QA */
+  .qcard{text-align:center}
+  .ring{width:84px;height:84px;margin:6px auto 2px;position:relative}
+  .ring svg{transform:rotate(-90deg)}
+  .ring .num{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:24px;font-variant-numeric:tabular-nums}
+  .qtext{font-size:19px;font-weight:600;margin:10px 4px 6px;line-height:1.4}
+  .acard{text-align:left;background:var(--green-lt);border:1px solid #cfe0d1;border-radius:12px;padding:14px 16px;margin:12px 0;font-size:15.5px;line-height:1.55}
+  .bridge{margin-top:10px;font-style:italic;color:var(--orange);font-size:14px}
+  .score-row{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:6px}
+  .score-row .btn{min-width:104px}
+  .got{border-color:var(--good);color:var(--good)} .got:hover{background:var(--green-lt)}
+  .shaky{border-color:var(--orange);color:var(--orange)} .shaky:hover{background:var(--orange-lt)}
+  .missed{border-color:var(--bad);color:var(--bad)} .missed:hover{background:#fbe7e2}
+  .bar{height:9px;background:var(--line);border-radius:999px;overflow:hidden}
+  .bar>i{display:block;height:100%;background:var(--green);border-radius:999px;transition:width .4s}
+  .catrow{display:flex;align-items:center;gap:10px;margin:7px 0;font-size:13.5px}
+  .catrow .nm{flex:0 0 46%;font-weight:600}
+  .catrow .bar{flex:1}
+  .catrow .pc{flex:0 0 42px;text-align:right;font-variant-numeric:tabular-nums;color:var(--muted)}
+  /* Delivery */
+  .metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:14px 0}
+  .metric{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px;text-align:center}
+  .metric .v{font-size:26px;font-weight:800;font-variant-numeric:tabular-nums;line-height:1.1}
+  .metric .k{font-size:11.5px;text-transform:uppercase;letter-spacing:.6px;color:var(--muted);margin-top:4px}
+  .energy{height:22px;background:var(--line);border-radius:999px;overflow:hidden;margin-top:6px}
+  .energy>i{display:block;height:100%;width:0%;background:linear-gradient(90deg,#7bb87f,var(--green));transition:width .08s}
+  .rec-dot{display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--bad);margin-right:7px;animation:pulse 1s infinite}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.25}}
+  /* Progress */
+  .kv{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--line);font-size:14px}
+  .kv:last-child{border-bottom:none}
+  .kv b{font-weight:700}
+  @media(max-width:560px){
+    .metrics{grid-template-columns:1fr 1fr}
+    .catrow .nm{flex-basis:38%}
+    .caption{font-size:16px}
+  }
+</style>
+</head>
+<body>
+<script>window.__SCRIPTS_INLINE__={
+  "base": "https://review.beyondbiomes.de/annexes/train",
+  "versions": [
+    {
+      "id": "eyes",
+      "label": "NEW · Eyes (sharp hook ⭐)",
+      "character": "Thesis-first: build AI its eyes — fits 3:00",
+      "langs": {
+        "en": {
+          "audio": "https://review.beyondbiomes.de/annexes/train/bb_eyes_3min_full.mp3",
+          "duration": 207.3,
+          "srt": "https://review.beyondbiomes.de/annexes/train/bb_eyes_3min.srt"
+        },
+        "de": {
+          "audio": "https://review.beyondbiomes.de/annexes/train/bb_eyes_3min_de_full.mp3",
+          "duration": 252.2,
+          "srt": "https://review.beyondbiomes.de/annexes/train/bb_eyes_3min_de.srt"
+        },
+        "es": {
+          "audio": "https://review.beyondbiomes.de/annexes/train/bb_eyes_3min_es_full.mp3",
+          "duration": 248.1,
+          "srt": "https://review.beyondbiomes.de/annexes/train/bb_eyes_3min_es.srt"
+        }
+      }
+    },
+    {
+      "id": "warzone",
+      "label": "NEW · Warzone (visceral hook)",
+      "character": "Opens on the field-death image — fits 3:00",
+      "langs": {
+        "en": {
+          "audio": "https://review.beyondbiomes.de/annexes/train/bb_warzone_3min_full.mp3",
+          "duration": 218.3,
+          "srt": "https://review.beyondbiomes.de/annexes/train/bb_warzone_3min.srt"
+        },
+        "de": {
+          "audio": "https://review.beyondbiomes.de/annexes/train/bb_warzone_3min_de_full.mp3",
+          "duration": 265.2,
+          "srt": "https://review.beyondbiomes.de/annexes/train/bb_warzone_3min_de.srt"
+        },
+        "es": {
+          "audio": "https://review.beyondbiomes.de/annexes/train/bb_warzone_3min_es_full.mp3",
+          "duration": 256.7,
+          "srt": "https://review.beyondbiomes.de/annexes/train/bb_warzone_3min_es.srt"
+        }
+      }
+    },
+    {
+      "id": "witness",
+      "label": "NEW · Witness (question hook)",
+      "character": "Opens on the 'dead language' question — fits 3:00",
+      "langs": {
+        "en": {
+          "audio": "https://review.beyondbiomes.de/annexes/train/bb_witness_3min_full.mp3",
+          "duration": 220.0,
+          "srt": "https://review.beyondbiomes.de/annexes/train/bb_witness_3min.srt"
+        },
+        "de": {
+          "audio": "https://review.beyondbiomes.de/annexes/train/bb_witness_3min_de_full.mp3",
+          "duration": 259.8,
+          "srt": "https://review.beyondbiomes.de/annexes/train/bb_witness_3min_de.srt"
+        },
+        "es": {
+          "audio": "https://review.beyondbiomes.de/annexes/train/bb_witness_3min_es_full.mp3",
+          "duration": 261.4,
+          "srt": "https://review.beyondbiomes.de/annexes/train/bb_witness_3min_es.srt"
+        }
+      }
+    },
+    {
+      "id": "blind",
+      "label": "NEW · Blind (cold-stat hook)",
+      "character": "Opens on the Gartner 40% stat — runs ~3:30",
+      "langs": {
+        "en": {
+          "audio": "https://review.beyondbiomes.de/annexes/train/bb_blind_3min_full.mp3",
+          "duration": 234.8,
+          "srt": "https://review.beyondbiomes.de/annexes/train/bb_blind_3min.srt"
+        },
+        "de": {
+          "audio": "https://review.beyondbiomes.de/annexes/train/bb_blind_3min_de_full.mp3",
+          "duration": 272.1,
+          "srt": "https://review.beyondbiomes.de/annexes/train/bb_blind_3min_de.srt"
+        },
+        "es": {
+          "audio": "https://review.beyondbiomes.de/annexes/train/bb_blind_3min_es_full.mp3",
+          "duration": 268.5,
+          "srt": "https://review.beyondbiomes.de/annexes/train/bb_blind_3min_es.srt"
+        }
+      }
+    },
+    {
+      "id": "v3",
+      "label": "Master · v3 (prior default)",
+      "character": "Evidence-rich, honest — the prior live default",
+      "langs": {
+        "en": {
+          "audio": "https://review.beyondbiomes.de/annexes/train/bb_v3_3min_full.mp3",
+          "duration": 182.7,
+          "srt": "https://review.beyondbiomes.de/annexes/train/bb_v3_3min.srt",
+          "video": "https://review.beyondbiomes.de/annexes/train/slidevid_en.mp4"
+        },
+        "de": {
+          "audio": "https://review.beyondbiomes.de/annexes/train/bb_v3_de_full.mp3",
+          "duration": 236.3,
+          "srt": "https://review.beyondbiomes.de/annexes/train/bb_v3_de.srt",
+          "video": "https://review.beyondbiomes.de/annexes/train/slidevid_de.mp4"
+        },
+        "es": {
+          "audio": "https://review.beyondbiomes.de/annexes/train/bb_v3_es_full.mp3",
+          "duration": 219.3,
+          "srt": "https://review.beyondbiomes.de/annexes/train/bb_v3_es.srt",
+          "video": "https://review.beyondbiomes.de/annexes/train/slidevid_es.mp4"
+        }
+      }
+    },
+    {
+      "id": "v2",
+      "label": "Claude v2 (blend)",
+      "character": "What-if open, tightest + most honest",
+      "langs": {
+        "en": {
+          "audio": "https://review.beyondbiomes.de/annexes/train/bb_v2_3min_full.mp3",
+          "duration": 262.2,
+          "srt": "https://review.beyondbiomes.de/annexes/train/bb_v2_3min.srt"
+        },
+        "de": {
+          "audio": "https://review.beyondbiomes.de/annexes/train/bb_v2_3min_de_full.mp3",
+          "duration": 303.7,
+          "srt": "https://review.beyondbiomes.de/annexes/train/bb_v2_3min_de.srt"
+        },
+        "es": {
+          "audio": "https://review.beyondbiomes.de/annexes/train/bb_v2_3min_es_full.mp3",
+          "duration": 291.6,
+          "srt": "https://review.beyondbiomes.de/annexes/train/bb_v2_3min_es.srt"
+        }
+      }
+    },
+    {
+      "id": "codex",
+      "label": "Codex",
+      "character": "Crisp, metaphor-forward, VC-room",
+      "langs": {
+        "en": {
+          "audio": "https://review.beyondbiomes.de/annexes/train/bb_codex_3min_full.mp3",
+          "duration": 287.9,
+          "srt": "https://review.beyondbiomes.de/annexes/train/bb_codex_3min.srt"
+        },
+        "de": {
+          "audio": "https://review.beyondbiomes.de/annexes/train/bb_codex_3min_de_full.mp3",
+          "duration": 332.0,
+          "srt": "https://review.beyondbiomes.de/annexes/train/bb_codex_3min_de.srt"
+        },
+        "es": {
+          "audio": "https://review.beyondbiomes.de/annexes/train/bb_codex_3min_es_full.mp3",
+          "duration": 322.5,
+          "srt": "https://review.beyondbiomes.de/annexes/train/bb_codex_3min_es.srt"
+        }
+      }
+    },
+    {
+      "id": "winner_soft",
+      "label": "Winner · Eyes before muscle",
+      "character": "Soft, pure story",
+      "langs": {
+        "en": {
+          "audio": "https://review.beyondbiomes.de/annexes/train/bb_winner_soft_3min_full.mp3",
+          "duration": 232.6,
+          "srt": "https://review.beyondbiomes.de/annexes/train/bb_winner_soft_3min.srt"
+        },
+        "de": {
+          "audio": "https://review.beyondbiomes.de/annexes/train/bb_winner_soft_3min_de_full.mp3",
+          "duration": 256.9,
+          "srt": "https://review.beyondbiomes.de/annexes/train/bb_winner_soft_3min_de.srt"
+        },
+        "es": {
+          "audio": "https://review.beyondbiomes.de/annexes/train/bb_winner_soft_3min_es_full.mp3",
+          "duration": 258.9,
+          "srt": "https://review.beyondbiomes.de/annexes/train/bb_winner_soft_3min_es.srt"
+        }
+      }
+    },
+    {
+      "id": "deck_180",
+      "label": "Deck-180",
+      "character": "Fully-numbered, deck-locked",
+      "langs": {
+        "en": {
+          "audio": "https://review.beyondbiomes.de/annexes/train/bb_deck_180_3min_full.mp3",
+          "duration": 274.8,
+          "srt": "https://review.beyondbiomes.de/annexes/train/bb_deck_180_3min.srt"
+        },
+        "de": {
+          "audio": "https://review.beyondbiomes.de/annexes/train/bb_deck_180_3min_de_full.mp3",
+          "duration": 335.7,
+          "srt": "https://review.beyondbiomes.de/annexes/train/bb_deck_180_3min_de.srt"
+        },
+        "es": {
+          "audio": "https://review.beyondbiomes.de/annexes/train/bb_deck_180_3min_es_full.mp3",
+          "duration": 332.1,
+          "srt": "https://review.beyondbiomes.de/annexes/train/bb_deck_180_3min_es.srt"
+        }
+      }
+    },
+    {
+      "id": "v1",
+      "label": "What a time to be alive",
+      "character": "Warm narrative open",
+      "langs": {
+        "en": {
+          "audio": "https://review.beyondbiomes.de/annexes/train/bb_v1_full.mp3",
+          "duration": 172.3
+        },
+        "de": {
+          "audio": "https://review.beyondbiomes.de/annexes/train/bb_v1_de_full.mp3",
+          "duration": 205.8
+        },
+        "es": {
+          "audio": "https://review.beyondbiomes.de/annexes/train/bb_v1_es_full.mp3",
+          "duration": 203.4
+        }
+      }
+    }
+  ]
+};window.__QA_INLINE__=[
+  {
+    "id": 1,
+    "category": "BUSINESS MODEL & MONETIZATION",
+    "seat": "",
+    "q": "If the farmer gets the yield, why does the producer pay you?",
+    "a": "\"Because the producer has an existential problem: up to 70% of biological products fail in the field, and a product that fails once never gets bought again. They pay us €800 a hectare not to treat the whole farm — to profile validation plots so their product only goes where it will work. We de-risk their product so they can sell it. We sell the eyes; they sell the muscle.\"",
+    "bridge": "that's eyes before muscle, as a business model."
+  },
+  {
+    "id": 2,
+    "category": "BUSINESS MODEL & MONETIZATION",
+    "seat": "",
+    "q": "€800/ha at ~84% margin — isn't that just expensive sequencing?",
+    "a": "\"DNA sequencing tells you who's there — a guest list. We sell the decision: what will actually work in this field, closed to a tailored product. The margin is software-like because compute is local-first — about €30–60 a month — and it compounds: every paid field improves the model the next producer buys.\" ⚠ say margin as target.",
+    "bridge": ""
+  },
+  {
+    "id": 3,
+    "category": "BUSINESS MODEL & MONETIZATION",
+    "seat": "",
+    "q": "Farmers are notoriously hard to sell to — how do you scale?",
+    "a": "\"We don't sell farm-by-farm. Our payer is the producer — a concentrated B2B market of dozens, not millions. One producer contract carries many hectares. The farmer is the beneficiary, not the checkout.\"",
+    "bridge": ""
+  },
+  {
+    "id": 4,
+    "category": "TRACTION & CLIENTS",
+    "seat": "",
+    "q": "You say 120 B2B deals — where's the revenue?",
+    "a": "\"Total transparency: we're pre-revenue, finishing TRL 5. The 120 deals are María Paz's verified track record — it's why she's on the team; it let us skip cold outreach and land USACH in Chile. We have five signed LOIs, including Dr. Cyro Cavalcante, a biofertilizer producer in 35+ countries who signed to white-label through us.\" ⚠ LOIs = intent, not booked revenue.",
+    "bridge": ""
+  },
+  {
+    "id": 5,
+    "category": "TRACTION & CLIENTS",
+    "seat": "",
+    "q": "Are the LOIs binding?",
+    "a": "\"They're signed letters of intent — design-partner commitments for pilot access and data rights across three climate zones, for almost no cash. We represent them as channel validation, not revenue.\"",
+    "bridge": ""
+  },
+  {
+    "id": 6,
+    "category": "TRACTION & CLIENTS",
+    "seat": "",
+    "q": "Why Chile if you're EXIST-funded in Bochum?",
+    "a": "\"Biology dictates our speed. In Europe we get one harvest a year to train the AI. Chile gives us the counter-season — while Europe freezes, our model trains on live summer fields. It roughly doubles our iteration speed. That's a capital-efficiency multiplier, not a distraction.\"",
+    "bridge": ""
+  },
+  {
+    "id": 7,
+    "category": "SCIENCE & TECH",
+    "seat": "",
+    "q": "What's actually different — everyone reads soil DNA.",
+    "a": "\"DNA is the guest list — who's present. We read function — who's actually working: nutrient cycling, stress response, pathogen suppression. It's the difference between a guest list and the live runtime. That's what lets us prescribe, not just describe.\" ⚠ function via functional metagenomics/RNA-seq; don't claim it's the only method.",
+    "bridge": ""
+  },
+  {
+    "id": 8,
+    "category": "SCIENCE & TECH",
+    "seat": "",
+    "q": "R² 0.68 isn't production-grade. Why should we believe 0.85?",
+    "a": "\"We're radically honest: 0.68 is our demonstrator today, 0.81 on the EMP500 benchmark. This round funds the exact 625-metagenome trial across Germany, Chile and Spain to reach 0.85. Even 0.78 is commercially useful — the model degrades gracefully. We fund the proof; we don't assume it.\"",
+    "bridge": ""
+  },
+  {
+    "id": 9,
+    "category": "SCIENCE & TECH",
+    "seat": "",
+    "q": "If functional reading is so good, why don't Biome Makers / Trace Genomics do it?",
+    "a": "\"Paradigm and cost. They're built on the DNA 'guest list' and a cloud cost base. Function generates far heavier data; on their architecture the hyperscaler bill breaks the unit economics. Our moat is our CTO's local-first compute that processes it at the edge affordably — plus a data flywheel that compounds on fields they never saw.\"",
+    "bridge": ""
+  },
+  {
+    "id": 10,
+    "category": "SCIENCE & TECH",
+    "seat": "",
+    "q": "Is the platform real or slideware?",
+    "a": "\"It's live at review.beyondbiomes.de — 221 trained models, ~890 API endpoints, 15,000+ real samples, crop-disease detection at 97%, built on 696 commits. Scan the QR and run a diagnosis yourself in 30 seconds.\"",
+    "bridge": ""
+  },
+  {
+    "id": 11,
+    "category": "MARKET & TAM",
+    "seat": "",
+    "q": "Your TAM numbers jump around — 12.5B, 3.5B?",
+    "a": "\"Two honest numbers: the broad European biostimulant/soil market is around €12.5 billion; our serviceable intersection bottoms-up to ~€3.5 billion, with a €150M SAM and a €15M SOM by year five at ~375 customers. We pitch the serviceable one to investors who do diligence.\"",
+    "bridge": ""
+  },
+  {
+    "id": 12,
+    "category": "MARKET & TAM",
+    "seat": "",
+    "q": "+20–25% yield — is that real?",
+    "a": "\"We say target. The peer-reviewed field average is ~18%; commercial products average ~14%. Our edge is targeting — putting the right consortium where it works. We'll never put an unqualified 25% in a farmer contract.\"",
+    "bridge": ""
+  },
+  {
+    "id": 13,
+    "category": "MARKET & TAM",
+    "seat": "",
+    "q": "€12B EU crop loss — source?",
+    "a": "\"That's our estimate of blind biostimulant/fertilizer mis-application — say 'around twelve billion.' The named figures run higher: the EU JRC puts erosion alone at €1.25B/yr, EEA puts unhealthy-soil cost at €40–73B/yr.\" ⚠ never state €12B as a hard sourced fact.",
+    "bridge": ""
+  },
+  {
+    "id": 14,
+    "category": "MOAT & DEFENSIBILITY",
+    "seat": "",
+    "q": "What stops a giant from copying this?",
+    "a": "\"Three things: a data flywheel — every paid field sharpens predictions, so fast-followers start from zero; a 45–66-month / €1.3M replication barrier to rebuild the dataset; and regulation — EU 2019/1009 approves only four microorganism types, excluding 88% of makers, and forces producers to evidence claims, which is exactly what we sell.\"",
+    "bridge": ""
+  },
+  {
+    "id": 15,
+    "category": "MOAT & DEFENSIBILITY",
+    "seat": "",
+    "q": "Your patent position?",
+    "a": "\"Patent-pending — first filing now with the DPMA, PCT/EP at seed, on the Siderophore-Surfactin synergy. We analyzed 150+ patent families — no blockers. The real moat is the combination plus the data, not one molecule.\" ⚠ NEVER say 'granted patent.'",
+    "bridge": ""
+  },
+  {
+    "id": 16,
+    "category": "MOAT & DEFENSIBILITY",
+    "seat": "",
+    "q": "The 17-agent pipeline is a trade secret — what if it leaks?",
+    "a": "\"It's local-first by design — pipeline and training data never leave our control; NDAs with pilot partners; and the flywheel makes the output, prediction accuracy, the defensible asset even if methods leak.\"",
+    "bridge": ""
+  },
+  {
+    "id": 17,
+    "category": "FINANCIALS & THE ASK",
+    "seat": "",
+    "q": "What exactly does €1.5M buy, and when are you cash-flow positive?",
+    "a": "\"It's a milestone raise to TRL 7, not a path to profit. 40% producer pilots, 30% the 625-metagenome validation, 20% go-to-market, 10% regulatory. Break-even is modeled at month 36–42 on the base case; this round de-risks the Series A.\"",
+    "bridge": ""
+  },
+  {
+    "id": 18,
+    "category": "FINANCIALS & THE ASK",
+    "seat": "",
+    "q": "Your dilution / funding path?",
+    "a": "\"Seed €1.5M at €8–10M pre, then Series A €3M, Series B €5M — about €10.5M cumulative; founders retain ~48% through B. Plausible exit €30–50M to BASF, Bayer, Corteva or dsm-firmenich over ~10 years.\" ⚠ projections.",
+    "bridge": ""
+  },
+  {
+    "id": 19,
+    "category": "FINANCIALS & THE ASK",
+    "seat": "",
+    "q": "What if the validation trial misses 0.85?",
+    "a": "\"It degrades gracefully — 0.78 still validates products commercially. We'd re-scope consortium claims, not the company. We're funding the proof precisely so this isn't a binary bet.\"",
+    "bridge": ""
+  },
+  {
+    "id": 20,
+    "category": "REGULATORY",
+    "seat": "",
+    "q": "EU 2019/1009 limits microbial biostimulants to four taxa (CMC 7) — doesn't that cap you?",
+    "a": "\"Crucially, we don't sell the microbes — we sell the diagnostic and the design. Our customer, the producer, owns their product's registration. Where we recommend consortia we work within CMC 7 today and track EBIC's push to widen the list. The regulation is a tailwind: it forces producers to evidence claims — our exact product.\"",
+    "bridge": ""
+  },
+  {
+    "id": 21,
+    "category": "TEAM",
+    "seat": "",
+    "q": "Is this the team to execute?",
+    "a": "\"The scientist who invented the method (lead author, Chemosphere), a Nature Communications lead author as CSO, the engineer who built the live 221-model platform, and a commercial operator with 120 LATAM agri-deals. Method-builders plus operators, out of Ruhr-University Bochum, EXIST-funded.\" ⚠ don't name unconfirmed advisors as FTEs.",
+    "bridge": ""
+  },
+  {
+    "id": 22,
+    "category": "TEAM",
+    "seat": "",
+    "q": "Key-person risk?",
+    "a": "\"Real, and we mitigate it — advisory bridge, documented IP, and an ESOP to incentivize early hires. The science is published, not in one head.\"",
+    "bridge": ""
+  },
+  {
+    "id": 23,
+    "category": "WHY NOW / SCALE",
+    "seat": "",
+    "q": "Why now?",
+    "a": "\"Three curves crossed: sequencing cost collapsed, local-first compute made functional data affordable, and agentic AI hit its reliability wall — Gartner says >40% of agentic projects die by 2027 for lack of an observation layer. We are that layer, for biology first.\"",
+    "bridge": ""
+  },
+  {
+    "id": 24,
+    "category": "WHY NOW / SCALE",
+    "seat": "",
+    "q": "The Bauleiter / 'system that builds systems' — are you AgTech or an AI platform? Don't lose focus.",
+    "a": "\"AgTech today — the soil problem is our wedge and our revenue. But the engine is an agentic layer that already spun up four other ventures, from lab science to construction. Soil is the first machine off the line; the same factory builds the next. We monetize agriculture first; we're building the observation layer for physical AI.\"",
+    "bridge": ""
+  }
+]
+;</script>
+<header>
+  <div class="head-inner">
+    <img id="logo" class="logo" src="logo.png" alt="Beyond Biomes" />
+    <div class="brandtext">
+      <b>Beyond Biomes</b><span>Rehearsal Trainer</span>
+    </div>
+    <div class="grow"></div>
+    <span class="pill" id="never-pill" title="Eyes before muscle">eyes before muscle</span>
+  </div>
+  <nav class="tabs" id="tabs">
+    <button data-tab="rehearse" class="active">Rehearse</button>
+    <button data-tab="qa">Q&amp;A</button>
+    <button data-tab="delivery">Delivery</button>
+    <button data-tab="progress">Progress</button>
+  </nav>
+</header>
+
+<div class="wrap">
+
+  <!-- ============ REHEARSE ============ -->
+  <section class="tab active" id="tab-rehearse">
+    <h2 class="title">Rehearse</h2>
+    <p class="sub">Listen to each version, follow the live captions, and pick your winners.</p>
+
+    <div id="rehearse-err"></div>
+
+    <div class="card" id="version-card">
+      <label class="lbl">Version</label>
+      <div class="vgrid" id="vgrid"></div>
+    </div>
+
+    <div class="card" id="player-card">
+      <div class="row" style="justify-content:space-between">
+        <div>
+          <label class="lbl" style="margin:0">Language</label>
+          <div class="seg" id="langseg" style="margin-top:6px">
+            <button data-lang="en" class="on">EN</button>
+            <button data-lang="de">DE</button>
+            <button data-lang="es">ES</button>
+          </div>
+        </div>
+        <div id="videotoggle-wrap"></div>
+      </div>
+
+      <div id="media-host" style="margin-top:14px"></div>
+
+      <div class="row" style="margin-top:12px;justify-content:space-between">
+        <div class="speedwrap">
+          <span class="lbl" style="margin:0">Speed</span>
+          <input type="range" id="speed" min="0.8" max="1.3" step="0.05" value="1" style="width:150px" />
+          <b id="speed-val" style="font-variant-numeric:tabular-nums">1.00×</b>
+        </div>
+        <span class="dur" id="track-dur"></span>
+      </div>
+
+      <div class="caption empty" id="caption">Press play — the live caption appears here.</div>
+    </div>
+
+    <div class="card">
+      <label class="lbl">My picks</label>
+      <ul class="picks" id="picks-list"><li class="muted">No picks yet. Tap a ♥ on a version.</li></ul>
+    </div>
+  </section>
+
+  <!-- ============ Q&A ============ -->
+  <section class="tab" id="tab-qa">
+    <h2 class="title">Q&amp;A Murder Board</h2>
+    <p class="sub">Answer aloud in 30s, reveal, then score yourself. Shaky &amp; Missed come back sooner.</p>
+
+    <div id="qa-err"></div>
+
+    <div class="card row" style="justify-content:space-between">
+      <div>
+        <label class="lbl">Mode</label>
+        <div class="seg" id="qa-mode">
+          <button data-mode="category" class="on">By category</button>
+          <button data-mode="random">Random-fire</button>
+          <button data-mode="weak">Weak only</button>
+        </div>
+      </div>
+      <div id="qa-cat-wrap" style="display:none">
+        <label class="lbl">Category</label>
+        <select id="qa-cat"></select>
+      </div>
+    </div>
+
+    <div class="card qcard" id="qa-stage">
+      <div class="ring" id="ring">
+        <svg width="84" height="84" viewBox="0 0 84 84">
+          <circle cx="42" cy="42" r="37" fill="none" stroke="#dde5df" stroke-width="7"/>
+          <circle id="ring-fg" cx="42" cy="42" r="37" fill="none" stroke="#1b5e20" stroke-width="7"
+            stroke-linecap="round" stroke-dasharray="232.5" stroke-dashoffset="0"/>
+        </svg>
+        <div class="num" id="ring-num">30</div>
+      </div>
+      <div><span class="pill" id="qa-cat-tag">—</span></div>
+      <div class="qtext" id="qa-q">Loading questions…</div>
+
+      <div id="qa-answer" style="display:none">
+        <div class="acard" id="qa-a"></div>
+        <div class="bridge" id="qa-bridge"></div>
+      </div>
+
+      <div class="row" style="justify-content:center;margin-top:10px" id="qa-controls">
+        <button class="btn primary" id="qa-reveal">Reveal answer</button>
+      </div>
+      <div class="score-row" id="qa-score" style="display:none">
+        <button class="btn got" data-s="got">Got it</button>
+        <button class="btn shaky" data-s="shaky">Shaky</button>
+        <button class="btn missed" data-s="missed">Missed</button>
+      </div>
+      <div class="hint" id="qa-progress" style="margin-top:12px"></div>
+    </div>
+
+    <div class="card">
+      <label class="lbl">Mastery by category</label>
+      <div id="qa-mastery"></div>
+    </div>
+  </section>
+
+  <!-- ============ DELIVERY ============ -->
+  <section class="tab" id="tab-delivery">
+    <h2 class="title">Delivery</h2>
+    <p class="sub">Record yourself. Track pace, pauses and energy — all local, nothing leaves this device.</p>
+
+    <div id="mic-err"></div>
+
+    <div class="card">
+      <div class="row" style="justify-content:space-between">
+        <div class="row">
+          <button class="btn primary" id="rec-btn">Start mic</button>
+          <span id="rec-state" class="hint">Mic idle.</span>
+        </div>
+        <div class="row">
+          <label class="lbl" style="margin:0">Target WPM</label>
+          <select id="target-wpm"><option>140</option><option selected>150</option><option>160</option></select>
+        </div>
+      </div>
+
+      <div class="metrics">
+        <div class="metric"><div class="v" id="m-time">0:00</div><div class="k">Elapsed</div></div>
+        <div class="metric"><div class="v" id="m-wpm">—</div><div class="k">Est. WPM</div></div>
+        <div class="metric"><div class="v" id="m-pauses">0</div><div class="k">Pauses &gt;0.6s</div></div>
+      </div>
+
+      <label class="lbl">Live energy</label>
+      <div class="energy"><i id="energy-fill"></i></div>
+
+      <div class="row" style="margin-top:14px;align-items:flex-end">
+        <div>
+          <label class="lbl">Words spoken (correct the estimate)</label>
+          <input type="number" id="word-count" min="0" value="0" style="width:120px;font:inherit;padding:9px 12px;border-radius:10px;border:1px solid var(--line)"/>
+        </div>
+        <button class="btn ghost" id="recompute">Recompute WPM</button>
+      </div>
+      <p class="hint" style="margin-top:10px">WPM is auto-estimated from volume-gated speech bursts (rough). For an exact figure, type your real word count and recompute. The three non-negotiable silences — after “eyes before muscle”, after “we bend time”, before “Thank you” — should each show up as a pause.</p>
+    </div>
+
+    <div class="card">
+      <label class="lbl">Last run</label>
+      <div id="run-summary" class="muted">No run yet.</div>
+    </div>
+  </section>
+
+  <!-- ============ PROGRESS ============ -->
+  <section class="tab" id="tab-progress">
+    <h2 class="title">Progress</h2>
+    <p class="sub">Everything saved locally on this device.</p>
+    <div class="card">
+      <label class="lbl">Snapshot</label>
+      <div id="prog-snap"></div>
+    </div>
+    <div class="card">
+      <label class="lbl">Q&amp;A mastery</label>
+      <div id="prog-mastery"></div>
+    </div>
+    <div class="card">
+      <label class="lbl">Picked versions</label>
+      <ul class="picks" id="prog-picks"><li class="muted">None yet.</li></ul>
+    </div>
+    <div class="row">
+      <button class="btn missed" id="reset-all">Reset all local data</button>
+    </div>
+  </section>
+
+</div>
+
+<script>
+"use strict";
+/* ---------------- storage helpers ---------------- */
+const LS = {
+  get(k,d){ try{ const v=localStorage.getItem(k); return v==null?d:JSON.parse(v);}catch(e){return d;} },
+  set(k,v){ try{ localStorage.setItem(k,JSON.stringify(v)); }catch(e){} }
+};
+const K = { picks:'bb_picks', mastery:'bb_mastery', last:'bb_last', run:'bb_lastrun' };
+
+/* ---------------- generic helpers ---------------- */
+const $=(s,r=document)=>r.querySelector(s);
+const $$=(s,r=document)=>[...r.querySelectorAll(s)];
+const esc=s=>String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const fmtTime=sec=>{sec=Math.max(0,Math.round(sec));return Math.floor(sec/60)+':'+String(sec%60).padStart(2,'0');};
+function errBox(host,msg){ host.innerHTML='<div class="note">'+esc(msg)+'</div>'; }
+
+/* logo fallback */
+$('#logo').addEventListener('error',function(){
+  const f=document.createElement('div'); f.className='logo-fallback'; f.textContent='BB';
+  this.replaceWith(f);
+});
+
+/* ---------------- tabs ---------------- */
+$$('#tabs button').forEach(b=>b.addEventListener('click',()=>{
+  $$('#tabs button').forEach(x=>x.classList.toggle('active',x===b));
+  $$('section.tab').forEach(s=>s.classList.toggle('active', s.id==='tab-'+b.dataset.tab));
+  if(b.dataset.tab==='progress') renderProgress();
+}));
+
+/* =====================================================================
+   REHEARSE
+   ===================================================================== */
+let SCRIPTS=null, curVer=null, curLang='en', cues=[], showVideo=false;
+const media={el:null,kind:null};
+
+(async function loadScripts(){
+  try{
+    const r=await Promise.resolve({ok:true,json:()=>window.__SCRIPTS_INLINE__});
+    if(!r.ok) throw new Error('HTTP '+r.status);
+    SCRIPTS=await r.json();
+    if(!SCRIPTS||!Array.isArray(SCRIPTS.versions)||!SCRIPTS.versions.length) throw new Error('No versions found.');
+    initRehearse();
+  }catch(e){
+    errBox($('#rehearse-err'),'Could not load scripts.json ('+e.message+'). Audio rehearsal is unavailable, but Q&A and Delivery still work.');
+    $('#version-card').style.display='none'; $('#player-card').style.display='none';
+  }
+})();
+
+function initRehearse(){
+  const last=LS.get(K.last,{});
+  curLang = ['en','de','es'].includes(last.lang)? last.lang : 'en';
+  $$('#langseg button').forEach(b=>b.classList.toggle('on',b.dataset.lang===curLang));
+
+  renderVersionGrid();
+  // restore last version if present
+  const found = SCRIPTS.versions.find(v=>v.id===last.version) || SCRIPTS.versions[0];
+  selectVersion(found.id,true);
+}
+
+function renderVersionGrid(){
+  const picks=LS.get(K.picks,[]);
+  const host=$('#vgrid'); host.innerHTML='';
+  SCRIPTS.versions.forEach(v=>{
+    const lang=v.langs[curLang]||firstLang(v);
+    const dur=lang&&lang.duration?fmtTime(lang.duration):'';
+    const el=document.createElement('div');
+    el.className='vcard'+(v.id===curVer?' sel':'');
+    el.innerHTML=
+      '<div class="vmeta"><b>'+esc(v.label)+'</b><span class="ch">'+esc(v.character||'')+'</span></div>'+
+      (dur?'<span class="dur">'+dur+'</span>':'')+
+      '<button class="heart'+(picks.includes(v.id)?' on':'')+'" title="Pick this version" data-id="'+esc(v.id)+'">&#10084;</button>';
+    el.addEventListener('click',e=>{ if(e.target.classList.contains('heart'))return; selectVersion(v.id); });
+    el.querySelector('.heart').addEventListener('click',e=>{e.stopPropagation();togglePick(v.id);});
+    host.appendChild(el);
+  });
+}
+function firstLang(v){ return v.langs.en||v.langs.de||v.langs.es||Object.values(v.langs)[0]; }
+
+function togglePick(id){
+  let picks=LS.get(K.picks,[]);
+  picks = picks.includes(id)? picks.filter(x=>x!==id) : [...picks,id];
+  LS.set(K.picks,picks);
+  renderVersionGrid(); renderPicks();
+}
+function renderPicks(){
+  const picks=LS.get(K.picks,[]);
+  const ul=$('#picks-list');
+  if(!picks.length){ ul.innerHTML='<li class="muted">No picks yet. Tap a &#10084; on a version.</li>'; return; }
+  ul.innerHTML=picks.map(id=>{
+    const v=SCRIPTS&&SCRIPTS.versions.find(x=>x.id===id);
+    return '<li>&#10084; '+esc(v?v.label:id)+'</li>';
+  }).join('');
+}
+
+function selectVersion(id,silent){
+  curVer=id;
+  LS.set(K.last,{...LS.get(K.last,{}),version:id,lang:curLang});
+  renderVersionGrid();
+  loadTrack();
+}
+
+/* language buttons */
+$$('#langseg button').forEach(b=>b.addEventListener('click',()=>{
+  curLang=b.dataset.lang;
+  $$('#langseg button').forEach(x=>x.classList.toggle('on',x===b));
+  LS.set(K.last,{...LS.get(K.last,{}),lang:curLang,version:curVer});
+  renderVersionGrid();
+  loadTrack();
+}));
+
+function curTrack(){
+  const v=SCRIPTS.versions.find(x=>x.id===curVer); if(!v)return null;
+  return {v, lang:v.langs[curLang]||null};
+}
+
+function loadTrack(){
+  showVideo=false; renderVideoToggle();
+  const t=curTrack();
+  const host=$('#media-host'); host.innerHTML='';
+  $('#caption').className='caption empty'; $('#caption').textContent='Press play — the live caption appears here.';
+  cues=[];
+  if(!t||!t.lang||!t.lang.audio){
+    host.innerHTML='<div class="note">No audio for this language on this version. Try EN, or another version.</div>';
+    $('#track-dur').textContent=''; return;
+  }
+  buildAudio(t.lang.audio, t.lang.duration);
+  if(t.lang.srt) loadSrt(t.lang.srt); else setCaption('(no captions for this track)',true);
+  renderVideoToggle();
+}
+
+function buildAudio(src,dur){
+  const host=$('#media-host'); host.innerHTML='';
+  const a=document.createElement('audio'); a.controls=true; a.preload='metadata'; a.src=src;
+  a.playbackRate=parseFloat($('#speed').value);
+  a.addEventListener('timeupdate',()=>syncCaption(a.currentTime));
+  a.addEventListener('error',()=>{ host.innerHTML='<div class="note">Audio failed to load. The file may not be reachable from here.</div>'; });
+  media.el=a; media.kind='audio';
+  host.appendChild(a);
+  $('#track-dur').textContent = dur? 'Track '+fmtTime(dur) : '';
+}
+
+function renderVideoToggle(){
+  const t=curTrack(); const wrap=$('#videotoggle-wrap'); wrap.innerHTML='';
+  if(!t||!t.lang||!t.lang.video) return;
+  const b=document.createElement('button');
+  b.className='btn'+(showVideo?' primary':'');
+  b.textContent= showVideo?'Hide slides':'Watch slides';
+  b.addEventListener('click',()=>{ showVideo=!showVideo; swapMedia(); renderVideoToggle(); });
+  wrap.appendChild(b);
+}
+
+function swapMedia(){
+  const t=curTrack(); if(!t||!t.lang)return;
+  const host=$('#media-host'); host.innerHTML='';
+  if(showVideo && t.lang.video){
+    const v=document.createElement('video'); v.controls=true; v.preload='metadata'; v.src=t.lang.video;
+    v.playbackRate=parseFloat($('#speed').value);
+    v.addEventListener('timeupdate',()=>syncCaption(v.currentTime));
+    v.addEventListener('error',()=>{ host.innerHTML='<div class="note">Video failed to load.</div>'; });
+    media.el=v; media.kind='video'; host.appendChild(v);
+  }else{
+    buildAudio(t.lang.audio,t.lang.duration);
+  }
+}
+
+/* speed */
+$('#speed').addEventListener('input',function(){
+  const r=parseFloat(this.value); $('#speed-val').textContent=r.toFixed(2)+'×';
+  if(media.el) media.el.playbackRate=r;
+});
+
+/* SRT parse + sync */
+async function loadSrt(url){
+  try{
+    const r=await fetch(url,{cache:'no-store'}); if(!r.ok)throw new Error('HTTP '+r.status);
+    cues=parseSrt(await r.text());
+    if(!cues.length) setCaption('(captions empty)',true);
+  }catch(e){ cues=[]; setCaption('(captions unavailable)',true); }
+}
+function srtTime(t){
+  const m=t.trim().match(/(\d+):(\d+):(\d+)[,.](\d+)/); if(!m)return 0;
+  return (+m[1])*3600+(+m[2])*60+(+m[3])+(+m[4])/1000;
+}
+function parseSrt(txt){
+  const out=[]; const blocks=txt.replace(/\r/g,'').split(/\n\n+/);
+  for(const b of blocks){
+    const lines=b.split('\n').filter(l=>l.trim()!=='');
+    const tl=lines.find(l=>l.includes('-->'));
+    if(!tl)continue;
+    const[a,bb]=tl.split('-->');
+    const idx=lines.indexOf(tl);
+    const text=lines.slice(idx+1).join(' ').trim();
+    if(text) out.push({s:srtTime(a),e:srtTime(bb),t:text});
+  }
+  return out.sort((x,y)=>x.s-y.s);
+}
+let lastCue=-1;
+function syncCaption(time){
+  if(!cues.length)return;
+  let i=-1;
+  for(let k=0;k<cues.length;k++){ if(time>=cues[k].s && time<=cues[k].e){i=k;break;} }
+  if(i===-1){ // between cues -> keep last shown briefly, else nearest upcoming blank
+    if(lastCue!==-2){ /* keep */ }
+    return;
+  }
+  if(i!==lastCue){ lastCue=i; setCaption(cues[i].t,false); }
+}
+function setCaption(txt,empty){
+  const c=$('#caption'); c.textContent=txt; c.className='caption'+(empty?' empty':'');
+}
+
+renderPicks();
+
+/* =====================================================================
+   Q&A
+   ===================================================================== */
+let QA=[], qaMode='category', qaCat=null, queue=[], curCard=null, qaTimer=null, qaLeft=30;
+const RING_LEN=232.5;
+
+(async function loadQA(){
+  try{
+    const r=await Promise.resolve({ok:true,json:()=>window.__QA_INLINE__}); if(!r.ok)throw new Error('HTTP '+r.status);
+    QA=await r.json();
+    if(!Array.isArray(QA)||!QA.length)throw new Error('empty');
+    QA.forEach((c,i)=>{ if(c.id==null)c.id='q'+i; });
+    initQA();
+  }catch(e){
+    errBox($('#qa-err'),'Could not load qa.json ('+e.message+'). Q&A drills are unavailable.');
+    $('#qa-stage').style.display='none';
+  }
+})();
+
+function masteryStore(){ return LS.get(K.mastery,{}); }
+function cardScore(id){ const m=masteryStore(); return m[id]||'new'; }
+
+function initQA(){
+  // category select
+  const cats=[...new Set(QA.map(c=>c.category))];
+  const sel=$('#qa-cat'); sel.innerHTML=cats.map(c=>'<option>'+esc(c)+'</option>').join('');
+  qaCat=cats[0];
+  sel.addEventListener('change',()=>{ qaCat=sel.value; buildQueue(); nextCard(); });
+
+  $$('#qa-mode button').forEach(b=>b.addEventListener('click',()=>{
+    qaMode=b.dataset.mode;
+    $$('#qa-mode button').forEach(x=>x.classList.toggle('on',x===b));
+    $('#qa-cat-wrap').style.display = qaMode==='category'?'block':'none';
+    buildQueue(); nextCard();
+  }));
+
+  $('#qa-reveal').addEventListener('click',revealAnswer);
+  $$('#qa-score .btn').forEach(b=>b.addEventListener('click',()=>scoreCard(b.dataset.s)));
+
+  buildQueue(); nextCard(); renderMastery();
+}
+
+function buildQueue(){
+  let pool=[...QA];
+  if(qaMode==='category') pool=QA.filter(c=>c.category===qaCat);
+  else if(qaMode==='weak') pool=QA.filter(c=>['shaky','missed','new'].includes(cardScore(c.id)));
+  if(qaMode==='random' || qaMode==='weak') shuffle(pool);
+  if(qaMode==='weak'){
+    // missed first, then shaky, then new
+    const w={missed:0,shaky:1,new:2};
+    pool.sort((a,b)=>(w[cardScore(a.id)]??3)-(w[cardScore(b.id)]??3));
+  }
+  queue=pool;
+}
+function shuffle(a){ for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];} return a; }
+
+function nextCard(){
+  stopTimer();
+  if(!queue.length){
+    curCard=null;
+    $('#qa-q').textContent = qaMode==='weak' ? 'Nothing weak left — everything is mastered. Nice.' : 'No cards in this set.';
+    $('#qa-cat-tag').textContent='—';
+    $('#qa-answer').style.display='none'; $('#qa-score').style.display='none';
+    $('#qa-controls').style.display='none'; $('#ring-num').textContent='—';
+    $('#qa-progress').textContent='';
+    return;
+  }
+  curCard=queue.shift();
+  $('#qa-controls').style.display='flex';
+  $('#qa-cat-tag').textContent=curCard.category;
+  $('#qa-q').textContent=curCard.q;
+  $('#qa-answer').style.display='none';
+  $('#qa-score').style.display='none';
+  $('#qa-reveal').style.display='inline-block';
+  $('#qa-progress').textContent = queue.length+' more queued · status: '+cardScore(curCard.id);
+  startTimer();
+}
+
+function startTimer(){
+  qaLeft=30; updateRing();
+  qaTimer=setInterval(()=>{
+    qaLeft-=0.1;
+    if(qaLeft<=0){ qaLeft=0; updateRing(); stopTimer(); revealAnswer(); return; }
+    updateRing();
+  },100);
+}
+function stopTimer(){ if(qaTimer){clearInterval(qaTimer);qaTimer=null;} }
+function updateRing(){
+  const frac=qaLeft/30;
+  $('#ring-fg').setAttribute('stroke-dashoffset', (RING_LEN*(1-frac)).toFixed(1));
+  $('#ring-fg').setAttribute('stroke', qaLeft<=8?'#c8631b':'#1b5e20');
+  $('#ring-num').textContent=Math.ceil(qaLeft);
+}
+
+function revealAnswer(){
+  if(!curCard)return;
+  stopTimer();
+  $('#qa-a').textContent=curCard.a;
+  const br=$('#qa-bridge');
+  if(curCard.bridge){ br.style.display='block'; br.textContent='↳ bridge: '+curCard.bridge; }
+  else br.style.display='none';
+  $('#qa-answer').style.display='block';
+  $('#qa-reveal').style.display='none';
+  $('#qa-score').style.display='flex';
+}
+
+function scoreCard(s){
+  if(!curCard)return;
+  const m=masteryStore(); m[curCard.id]=s; LS.set(K.mastery,m);
+  // spaced repetition: requeue shaky/missed sooner
+  if(s==='missed') queue.splice(Math.min(1,queue.length),0,curCard);
+  else if(s==='shaky') queue.splice(Math.min(3,queue.length),0,curCard);
+  renderMastery();
+  nextCard();
+}
+
+function renderMastery(){
+  const cats=[...new Set(QA.map(c=>c.category))];
+  const host=$('#qa-mastery'); host.innerHTML='';
+  cats.forEach(cat=>{
+    const items=QA.filter(c=>c.category===cat);
+    const got=items.filter(c=>cardScore(c.id)==='got').length;
+    const pc=Math.round(got/items.length*100);
+    host.insertAdjacentHTML('beforeend',
+      '<div class="catrow"><span class="nm">'+esc(cat)+'</span>'+
+      '<div class="bar"><i style="width:'+pc+'%"></i></div><span class="pc">'+pc+'%</span></div>');
+  });
+}
+
+/* =====================================================================
+   DELIVERY (Web Audio)
+   ===================================================================== */
+let audioCtx=null, analyser=null, micStream=null, rafId=null, recording=false;
+let startTs=0, pauseCount=0, inSilence=false, silenceStart=0, lastVoiceTs=0;
+let burstCount=0, prevAbove=false, lastBurstTs=0;
+const SIL_THRESH=0.02, BURST_THRESH=0.05, SIL_GAP=600; // ms
+
+$('#rec-btn').addEventListener('click',()=> recording? stopRec() : startRec());
+$('#recompute').addEventListener('click',()=>{
+  const w=parseInt($('#word-count').value)||0;
+  const mins=(performance.now()-startTs)/60000 || (lastElapsed/60);
+  if(mins>0){ $('#m-wpm').textContent=Math.round(w/Math.max(mins,0.01)); }
+});
+
+let lastElapsed=0;
+async function startRec(){
+  $('#mic-err').innerHTML='';
+  try{
+    micStream=await navigator.mediaDevices.getUserMedia({audio:true});
+  }catch(e){
+    errBox($('#mic-err'),'Microphone unavailable or denied. You can still time yourself manually: type your word count and elapsed time. ('+e.name+')');
+    return;
+  }
+  try{
+    audioCtx=new (window.AudioContext||window.webkitAudioContext)();
+    const src=audioCtx.createMediaStreamSource(micStream);
+    analyser=audioCtx.createAnalyser(); analyser.fftSize=1024; analyser.smoothingTimeConstant=0.6;
+    src.connect(analyser);
+  }catch(e){
+    errBox($('#mic-err'),'Web Audio not supported here. ('+e.message+')'); cleanupMic(); return;
+  }
+  recording=true; startTs=performance.now(); pauseCount=0; burstCount=0;
+  inSilence=false; prevAbove=false; lastVoiceTs=startTs; lastBurstTs=0;
+  $('#rec-btn').textContent='Stop'; $('#rec-btn').classList.remove('primary'); $('#rec-btn').classList.add('orange');
+  $('#rec-state').innerHTML='<span class="rec-dot"></span>Recording…';
+  $('#m-pauses').textContent='0';
+  loopMeter();
+}
+
+function loopMeter(){
+  const buf=new Uint8Array(analyser.fftSize);
+  const tick=()=>{
+    if(!recording)return;
+    analyser.getByteTimeDomainData(buf);
+    let sum=0;
+    for(let i=0;i<buf.length;i++){ const v=(buf[i]-128)/128; sum+=v*v; }
+    const rms=Math.sqrt(sum/buf.length);
+    const now=performance.now();
+    // energy bar
+    const pct=Math.min(100, Math.round(rms*320));
+    $('#energy-fill').style.width=pct+'%';
+    // elapsed
+    lastElapsed=(now-startTs)/1000;
+    $('#m-time').textContent=fmtTime(lastElapsed);
+    // pause detection
+    if(rms<SIL_THRESH){
+      if(!inSilence){ inSilence=true; silenceStart=now; }
+      else if(now-silenceStart>=SIL_GAP && !silenceCounted){ pauseCount++; silenceCounted=true; $('#m-pauses').textContent=pauseCount; }
+    }else{
+      inSilence=false; silenceCounted=false; lastVoiceTs=now;
+    }
+    // syllable-ish bursts (rising edge over burst threshold, debounced)
+    const above=rms>BURST_THRESH;
+    if(above && !prevAbove && now-lastBurstTs>140){ burstCount++; lastBurstTs=now; }
+    prevAbove=above;
+    // live WPM estimate: ~1.4 bursts/word heuristic
+    const mins=lastElapsed/60;
+    if(mins>0.05){
+      const words=burstCount/1.4;
+      $('#m-wpm').textContent=Math.round(words/mins);
+      if(!userWordsDirty) $('#word-count').value=Math.round(words);
+    }
+    rafId=requestAnimationFrame(tick);
+  };
+  rafId=requestAnimationFrame(tick);
+}
+let silenceCounted=false, userWordsDirty=false;
+$('#word-count').addEventListener('input',()=>{userWordsDirty=true;});
+
+function stopRec(){
+  recording=false;
+  if(rafId)cancelAnimationFrame(rafId);
+  const target=parseInt($('#target-wpm').value);
+  const wpm=$('#m-wpm').textContent;
+  const run={ when:new Date().toLocaleString(), elapsed:fmtTime(lastElapsed), wpm:wpm, pauses:pauseCount, target:target };
+  LS.set(K.run,run); renderRun(run);
+  cleanupMic();
+  $('#rec-btn').textContent='Start mic'; $('#rec-btn').classList.add('primary'); $('#rec-btn').classList.remove('orange');
+  $('#rec-state').textContent='Stopped. Saved to Last run.';
+  $('#energy-fill').style.width='0%';
+}
+function cleanupMic(){
+  if(micStream){ micStream.getTracks().forEach(t=>t.stop()); micStream=null; }
+  if(audioCtx){ try{audioCtx.close();}catch(e){} audioCtx=null; }
+  analyser=null;
+}
+function renderRun(r){
+  if(!r){ $('#run-summary').textContent='No run yet.'; return; }
+  const off = r.wpm!=='—' && Math.abs((+r.wpm)-r.target)>20;
+  $('#run-summary').innerHTML=
+    '<div class="kv"><span>When</span><b>'+esc(r.when)+'</b></div>'+
+    '<div class="kv"><span>Elapsed</span><b>'+esc(r.elapsed)+'</b></div>'+
+    '<div class="kv"><span>Est. WPM (target '+r.target+')</span><b style="color:'+(off?'var(--bad)':'var(--good)')+'">'+esc(r.wpm)+'</b></div>'+
+    '<div class="kv"><span>Pauses &gt;0.6s</span><b>'+r.pauses+'</b></div>';
+}
+renderRun(LS.get(K.run,null));
+
+/* =====================================================================
+   PROGRESS
+   ===================================================================== */
+function renderProgress(){
+  const last=LS.get(K.last,{});
+  const picks=LS.get(K.picks,[]);
+  const m=masteryStore();
+  const total=QA.length||0;
+  const got=Object.values(m).filter(v=>v==='got').length;
+  $('#prog-snap').innerHTML=
+    '<div class="kv"><span>Last version</span><b>'+esc(verLabel(last.version)||'—')+'</b></div>'+
+    '<div class="kv"><span>Last language</span><b>'+esc((last.lang||'—').toUpperCase())+'</b></div>'+
+    '<div class="kv"><span>Versions picked</span><b>'+picks.length+'</b></div>'+
+    '<div class="kv"><span>Q&amp;A mastered</span><b>'+got+' / '+total+'</b></div>';
+
+  // mastery per category
+  const host=$('#prog-mastery');
+  if(!total){ host.innerHTML='<span class="muted">No Q&A loaded.</span>'; }
+  else{
+    const cats=[...new Set(QA.map(c=>c.category))];
+    host.innerHTML=cats.map(cat=>{
+      const items=QA.filter(c=>c.category===cat);
+      const g=items.filter(c=>(m[c.id]||'new')==='got').length;
+      const pc=Math.round(g/items.length*100);
+      return '<div class="catrow"><span class="nm">'+esc(cat)+'</span><div class="bar"><i style="width:'+pc+'%"></i></div><span class="pc">'+pc+'%</span></div>';
+    }).join('');
+  }
+  const ul=$('#prog-picks');
+  ul.innerHTML = picks.length? picks.map(id=>'<li>&#10084; '+esc(verLabel(id)||id)+'</li>').join('')
+    : '<li class="muted">None yet.</li>';
+}
+function verLabel(id){ const v=SCRIPTS&&SCRIPTS.versions.find(x=>x.id===id); return v?v.label:id; }
+
+$('#reset-all').addEventListener('click',()=>{
+  if(!confirm('Erase all local rehearsal data (picks, mastery, last run)?'))return;
+  [K.picks,K.mastery,K.last,K.run].forEach(k=>localStorage.removeItem(k));
+  location.reload();
+});
+</script>
+</body>
+</html>

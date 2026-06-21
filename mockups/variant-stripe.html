@@ -1,0 +1,46 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BB — Variant: Premium (Stripe craft)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--forest:#2C5F2D;--deep:#0f241a;--orange:#D9531E;--lime:#86AC36;--ink:#0d253d;--mute:#64748d;}
+*{box-sizing:border-box;margin:0}body{font-family:Inter,system-ui,sans-serif;background:#fff;color:var(--ink);-webkit-font-smoothing:antialiased}
+.tag{position:fixed;top:14px;left:14px;background:var(--deep);color:#fff;font-size:12px;font-weight:600;padding:6px 12px;border-radius:6px;z-index:9}
+/* atmospheric gradient mesh in the upper third — Stripe signature, on BB palette */
+.mesh{position:absolute;inset:0 0 auto 0;height:560px;z-index:-1;background:
+  radial-gradient(900px 420px at 12% -8%, rgba(134,172,54,.30), transparent 60%),
+  radial-gradient(760px 420px at 88% -12%, rgba(217,83,30,.22), transparent 60%),
+  linear-gradient(180deg,#f4f8f1,#fff 78%);}
+nav{display:flex;align-items:center;justify-content:space-between;padding:22px clamp(20px,6vw,72px);max-width:1200px;margin:0 auto}
+nav .brand{font-weight:600;color:var(--forest);letter-spacing:-.02em}
+nav .links{display:flex;gap:24px;font-size:14px;color:#3a5168}
+.pill{background:var(--forest);color:#fff;padding:9px 16px;border-radius:999px;font-size:13px;font-weight:600}
+.wrap{max-width:1100px;margin:0 auto;padding:clamp(44px,7vw,110px) clamp(20px,6vw,72px)}
+.eyebrow{font-size:13px;font-weight:600;letter-spacing:.04em;color:var(--orange)}
+h1{font-family:Fraunces,Georgia,serif;font-weight:300;font-size:clamp(44px,7.5vw,84px);line-height:1.0;letter-spacing:-.035em;margin:16px 0 22px;max-width:15ch}
+h1 b{font-weight:600;color:var(--forest)}
+.sub{font-size:clamp(17px,2vw,21px);line-height:1.5;color:#37506a;max-width:44ch}
+.cta{display:flex;gap:14px;margin-top:32px;flex-wrap:wrap;align-items:center}
+.btn{cursor:pointer;font:inherit;font-weight:600;font-size:15px;padding:13px 22px;border-radius:999px;border:0}
+.btn.p{background:var(--orange);color:#fff}.btn.s{background:#fff;border:1px solid #d8e0ea;color:var(--ink)}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:18px;margin-top:64px}
+.card{background:#fff;border:1px solid #eaeef3;border-radius:14px;padding:22px;box-shadow:0 1px 2px rgba(13,37,61,.04)}
+.card .n{font-variant-numeric:tabular-nums;font-family:Fraunces,serif;font-weight:600;font-size:30px;color:var(--forest);letter-spacing:-.02em}
+.card .l{font-size:13px;color:var(--mute);margin-top:6px;line-height:1.4}
+</style></head><body>
+<div class="mesh"></div>
+<div class="tag">VARIANT · PREMIUM (Stripe craft)</div>
+<nav><div class="brand">Beyond Biomes</div><div class="links"><span>Soil</span><span>Model</span><span>Method</span><span class="pill">See the pitch</span></div></nav>
+<div class="wrap">
+  <div class="eyebrow">Beyond Biomes</div>
+  <h1>Precision medicine for <b>living soil</b></h1>
+  <p class="sub">We read what a field's microbes are actually doing — then deliver a custom biome that brings the soil back to life. The money goes into one market: agriculture.</p>
+  <div class="cta"><button class="btn p">See the live pitch →</button><button class="btn s">Download the deck</button></div>
+  <div class="cards">
+    <div class="card"><div class="n">$3.08B</div><div class="l">Europe biostimulant market by 2030 (from $1.8B today)</div></div>
+    <div class="card"><div class="n">2019/1009</div><div class="l">EU regulation opened a clear path to sell</div></div>
+    <div class="card"><div class="n">€1–2M</div><div class="l">Revenue per operator · local-first infrastructure</div></div>
+    <div class="card"><div class="n">€300<span style="font-size:16px">/mo</span></div><div class="l">Recurring soil diagnostics · audits €5–15k</div></div>
+  </div>
+</div>
+</body></html>

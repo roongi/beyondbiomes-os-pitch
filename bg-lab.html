@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Beyond Biomes · Background Lab</title>
+<style>
+  :root{ --bg:#15110c; --ink:#ece3d1; --muted:#a99d86; --green:#6aa84a; --lime:#9bc247;
+         --lime2:#bdd97a; --orange:#e2691f; --gold:#cda33a; --line:#3a3128; }
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%}
+  body{ background:radial-gradient(120% 90% at 50% 0%, #1f1810 0%, #15110c 55%, #100c07 100%);
+        color:var(--ink); font:500 15px/1.5 system-ui,-apple-system,sans-serif; overflow:hidden; }
+  #bg{ position:fixed; inset:0; width:100vw; height:100vh; z-index:0; }
+  /* readable foreground to judge contrast over the bg */
+  .center{ position:fixed; inset:0; z-index:1; display:flex; flex-direction:column;
+           align-items:center; justify-content:center; pointer-events:none; text-align:center; }
+  .center .ey{ letter-spacing:.24em; text-transform:uppercase; font-size:13px; color:var(--orange); font-weight:600; }
+  .center h1{ font:400 64px/1.05 Georgia,'Times New Roman',serif; margin:14px 0 0; color:#fff;
+              letter-spacing:-.02em; text-shadow:0 2px 30px rgba(0,0,0,.5); }
+  .center h1 .ac{ color:var(--lime2); }
+  .center p{ color:var(--muted); margin-top:14px; max-width:30ch; }
+  /* control bar */
+  .bar{ position:fixed; z-index:3; left:50%; bottom:26px; transform:translateX(-50%);
+        display:flex; gap:8px; align-items:center; padding:10px 12px; flex-wrap:wrap; justify-content:center;
+        background:rgba(20,15,10,.82); border:1px solid var(--line); border-radius:16px;
+        backdrop-filter:blur(10px); box-shadow:0 18px 40px -16px rgba(0,0,0,.7); max-width:94vw; }
+  .bar button{ font:600 13px system-ui; color:var(--ink); background:rgba(255,255,255,.06);
+        border:1px solid var(--line); border-radius:10px; padding:9px 13px; cursor:pointer; transition:.15s; }
+  .bar button:hover{ border-color:var(--lime); }
+  .bar button.on{ background:var(--orange); border-color:var(--orange); color:#fff; }
+  .info{ position:fixed; z-index:3; top:20px; left:50%; transform:translateX(-50%);
+         font-size:13px; color:var(--muted); background:rgba(20,15,10,.7); border:1px solid var(--line);
+         padding:8px 16px; border-radius:999px; backdrop-filter:blur(8px); }
+  .info b{ color:var(--lime2); }
+</style>
+</head>
+<body>
+<canvas id="bg"></canvas>
+<div class="center">
+  <div class="ey">Beyond Biomes</div>
+  <h1>Precision medicine<br>for <span class="ac">living soil</span></h1>
+  <p>Texto de muestra para juzgar contraste y legibilidad sobre cada fondo.</p>
+</div>
+<div class="info" id="info"></div>
+<div class="bar" id="bar"></div>
+
+<script>
+const C = document.getElementById('bg');
+const X = C.getContext('2d');
+let W,H,DPR;
+function resize(){ DPR=Math.min(2,window.devicePixelRatio||1); W=C.width=innerWidth*DPR; H=C.height=innerHeight*DPR;
+  C.style.width=innerWidth+'px'; C.style.height=innerHeight+'px'; X.setTransform(DPR,0,0,DPR,0,0); if(active&&active.reset)active.reset(); }
+const w=()=>innerWidth, h=()=>innerHeight;
+
+// cheap pseudo-noise (no libs): smooth-ish field from layered sines
+function noise(x,y,t){ return Math.sin(x*1.3+t)*Math.cos(y*1.1-t*0.7)+Math.sin((x+y)*0.7+t*1.3)*0.5; }
+
+let raf=null, active=null, t=0;
+function stop(){ if(raf)cancelAnimationFrame(raf); raf=null; }
+function run(mode){ stop(); active=MODES[mode]; active.reset&&active.reset(); t=0;
+  document.getElementById('info').innerHTML=active.label;
+  [...document.querySelectorAll('.bar button')].forEach(b=>b.classList.toggle('on', b.dataset.m===mode));
+  (function loop(){ t+=0.006; active.frame(); raf=requestAnimationFrame(loop); })(); }
+
+/* ---------- 1. MYCELIUM / ROOTS ---------- */
+const Mycelium = {
+  label:'<b>1 · Micelio / raíces</b> — red viva que brota y se ramifica',
+  reset(){ X.clearRect(0,0,w(),h()); this.tips=[]; this.seed(); },
+  seed(){ const n=6; for(let i=0;i<n;i++){ this.tips.push({ x:Math.random()*w(), y:Math.random()*h(),
+      a:Math.random()*Math.PI*2, life:0, max:160+Math.random()*220 }); } },
+  frame(){ X.fillStyle='rgba(21,17,12,0.045)'; X.fillRect(0,0,w(),h()); // slow fade trail
+    const next=[];
+    for(const tp of this.tips){
+      tp.a += (Math.random()-0.5)*0.5; const sp=0.9;
+      const nx=tp.x+Math.cos(tp.a)*sp, ny=tp.y+Math.sin(tp.a)*sp;
+      X.strokeStyle='rgba(134,172,54,0.5)'; X.lineWidth=1.1; X.beginPath(); X.moveTo(tp.x,tp.y); X.lineTo(nx,ny); X.stroke();
+      tp.x=nx; tp.y=ny; tp.life++;
+      // node glow at branch points
+      if(Math.random()<0.02){ X.fillStyle='rgba(189,217,122,0.8)'; X.beginPath(); X.arc(nx,ny,1.6,0,7); X.fill(); }
+      if(tp.life<tp.max && nx>0&&nx<w()&&ny>0&&ny<h()){
+        next.push(tp);
+        if(Math.random()<0.012 && next.length<140){ next.push({x:nx,y:ny,a:tp.a+(Math.random()<.5?1:-1)*(0.5+Math.random()*0.6),life:tp.life,max:tp.max}); }
+      }
+    }
+    this.tips=next;
+    if(this.tips.length<4) this.seed();
+  }
+};
+
+/* ---------- 2. MICROBIAL DRIFT ---------- */
+const Microbes = {
+  label:'<b>2 · Deriva microbiana</b> — partículas que se conectan y se sueltan',
+  reset(){ const N=Math.min(120,Math.floor(w()*h()/12000));
+    this.p=Array.from({length:N},()=>({x:Math.random()*w(),y:Math.random()*h(),
+      vx:(Math.random()-.5)*.3,vy:(Math.random()-.5)*.3,r:1.2+Math.random()*2.2,ph:Math.random()*7})); },
+  frame(){ X.clearRect(0,0,w(),h());
+    for(const p of this.p){ p.vx+=(Math.random()-.5)*.04; p.vy+=(Math.random()-.5)*.04;
+      p.vx*=.96; p.vy*=.96; p.x+=p.vx; p.y+=p.vy;
+      if(p.x<0)p.x=w(); if(p.x>w())p.x=0; if(p.y<0)p.y=h(); if(p.y>h())p.y=0; }
+    for(let i=0;i<this.p.length;i++)for(let j=i+1;j<this.p.length;j++){
+      const a=this.p[i],b=this.p[j],d=Math.hypot(a.x-b.x,a.y-b.y);
+      if(d<120){ X.strokeStyle='rgba(106,168,74,'+(.3*(1-d/120))+')'; X.lineWidth=.8;
+        X.beginPath(); X.moveTo(a.x,a.y); X.lineTo(b.x,b.y); X.stroke(); } }
+    for(const p of this.p){ const pulse=.6+.4*Math.sin(t*6+p.ph);
+      X.fillStyle='rgba(155,194,71,'+(.55*pulse)+')'; X.beginPath(); X.arc(p.x,p.y,p.r,0,7); X.fill();
+      X.fillStyle='rgba(189,217,122,.9)'; X.beginPath(); X.arc(p.x,p.y,p.r*.4,0,7); X.fill(); }
+  }
+};
+
+/* ---------- 3. NUTRIENT FLOW FIELD ---------- */
+const Flow = {
+  label:'<b>3 · Flujo de nutrientes</b> — partículas arrastradas por un campo',
+  reset(){ X.fillStyle='#15110c'; X.fillRect(0,0,w(),h());
+    const N=Math.min(700,Math.floor(w()*h()/2600));
+    this.p=Array.from({length:N},()=>({x:Math.random()*w(),y:Math.random()*h(),life:Math.random()*100})); },
+  frame(){ X.fillStyle='rgba(21,17,12,0.05)'; X.fillRect(0,0,w(),h());
+    for(const p of this.p){ const ang=noise(p.x*0.0025,p.y*0.0025,t)*Math.PI;
+      p.x+=Math.cos(ang)*1.1; p.y+=Math.sin(ang)*1.1; p.life--;
+      const c = p.life%2? '189,217,122' : '226,105,31';
+      X.fillStyle='rgba('+c+',0.5)'; X.fillRect(p.x,p.y,1.4,1.4);
+      if(p.life<0||p.x<0||p.x>w()||p.y<0||p.y>h()){ p.x=Math.random()*w(); p.y=Math.random()*h(); p.life=60+Math.random()*120; } }
+  }
+};
+
+/* ---------- 4. BIOLUMINESCENT PULSE ---------- */
+const Pulse = {
+  label:'<b>4 · Pulso bioluminiscente</b> — señales que recorren la red (observar→verificar→actuar)',
+  reset(){ const N=Math.min(46,Math.floor(w()*h()/26000));
+    this.nodes=Array.from({length:N},()=>({x:Math.random()*w(),y:Math.random()*h(),
+      vx:(Math.random()-.5)*.12,vy:(Math.random()-.5)*.12,e:0}));
+    this.edges=[]; for(let i=0;i<this.nodes.length;i++)for(let j=i+1;j<this.nodes.length;j++){
+      if(Math.hypot(this.nodes[i].x-this.nodes[j].x,this.nodes[i].y-this.nodes[j].y)<210) this.edges.push([i,j]); }
+    this.signals=[]; },
+  frame(){ X.clearRect(0,0,w(),h());
+    for(const n of this.nodes){ n.x+=n.vx; n.y+=n.vy; if(n.x<0||n.x>w())n.vx*=-1; if(n.y<0||n.y>h())n.vy*=-1; n.e*=.92; }
+    for(const [i,j] of this.edges){ const a=this.nodes[i],b=this.nodes[j];
+      X.strokeStyle='rgba(106,168,74,.16)'; X.lineWidth=.8; X.beginPath(); X.moveTo(a.x,a.y); X.lineTo(b.x,b.y); X.stroke(); }
+    if(Math.random()<0.05 && this.edges.length){ const e=this.edges[(Math.random()*this.edges.length)|0];
+      this.signals.push({e,p:0,sp:0.01+Math.random()*0.02}); }
+    this.signals=this.signals.filter(s=>{ const a=this.nodes[s.e[0]],b=this.nodes[s.e[1]]; s.p+=s.sp;
+      const x=a.x+(b.x-a.x)*s.p, y=a.y+(b.y-a.y)*s.p;
+      X.fillStyle='rgba(226,105,31,.9)'; X.beginPath(); X.arc(x,y,2.4,0,7); X.fill();
+      if(s.p>=1){ b.e=1; return false; } return true; });
+    for(const n of this.nodes){ const g=.4+n.e*.6;
+      X.fillStyle='rgba(189,217,122,'+g+')'; X.beginPath(); X.arc(n.x,n.y,2.6+n.e*3,0,7); X.fill(); }
+  }
+};
+
+/* ---------- 5. SOIL STRATA ---------- */
+const Strata = {
+  label:'<b>5 · Estratos de suelo</b> — capas que se desplazan + partículas asentándose',
+  reset(){ this.layers=[]; const cols=['#3a2a1c','#46331f','#523a22','#2f2516','#5c4327'];
+    let y=h()*0.18; for(let i=0;i<6;i++){ const hh=h()*(0.1+Math.random()*0.12);
+      this.layers.push({y,hh,c:cols[i%cols.length],amp:6+Math.random()*10,ph:Math.random()*7}); y+=hh; }
+    const N=Math.min(90,Math.floor(w()/14));
+    this.dust=Array.from({length:N},()=>({x:Math.random()*w(),y:Math.random()*h(),v:.2+Math.random()*.6,r:.6+Math.random()*1.4})); },
+  frame(){ X.fillStyle='#120d08'; X.fillRect(0,0,w(),h());
+    for(const L of this.layers){ X.fillStyle=L.c; X.beginPath(); X.moveTo(0,L.y);
+      for(let x=0;x<=w();x+=24){ X.lineTo(x, L.y+Math.sin(x*0.008+t*3+L.ph)*L.amp); }
+      X.lineTo(w(),L.y+L.hh); X.lineTo(0,L.y+L.hh); X.closePath(); X.globalAlpha=.55; X.fill(); X.globalAlpha=1; }
+    for(const d of this.dust){ d.y+=d.v; if(d.y>h()){ d.y=-4; d.x=Math.random()*w(); }
+      X.fillStyle='rgba(205,163,58,.5)'; X.beginPath(); X.arc(d.x,d.y,d.r,0,7); X.fill(); }
+  }
+};
+
+const MODES={ mycelium:Mycelium, microbes:Microbes, flow:Flow, pulse:Pulse, strata:Strata };
+const BTNS=[['mycelium','1 · Micelio'],['microbes','2 · Microbios'],['flow','3 · Flujo'],['pulse','4 · Pulso'],['strata','5 · Estratos']];
+const bar=document.getElementById('bar');
+BTNS.forEach(([m,lbl])=>{ const b=document.createElement('button'); b.textContent=lbl; b.dataset.m=m;
+  b.onclick=()=>run(m); bar.appendChild(b); });
+
+addEventListener('resize',resize); resize(); run('mycelium');
+</script>
+</body>
+</html>
