@@ -1,0 +1,13 @@
+Soy el Doctor Ringo Schwabe. Y... qué increíble época para estar vivos. Cada mes, las máquinas a nuestro alrededor se vuelven más potentes, más baratas, más rápidas... y el mundo entero está en una carrera por responder una pregunta: ¿cuál es el mejor modelo? Yo quiero hablar de la pregunta que de verdad decide quién gana: ¿qué construyes alrededor del modelo para que sea confiable?
+
+Aquí va la cruda realidad. Gartner dice que más del cuarenta por ciento de los proyectos de agentes de inteligencia artificial serán cancelados para el dos mil veintisiete. No porque los modelos sean débiles... sino porque son ciegos. Estamos construyendo músculos cada vez más y más fuertes, y nos estamos olvidando de darles ojos.
+---
+Así que nos hicimos una pregunta distinta: ¿quién ha resuelto esto ya... la confiabilidad, a gran escala? La naturaleza. Por cuatro mil millones de años. Y la naturaleza tiene una sola regla: nunca dejes que un proceso evalúe su propio trabajo. Cuando tu ADN se copia, la enzima que lo escribe comete un error cada cien mil letras. Así que un corrector independiente viene detrás, revisa cada letra contra la original, y la tasa de error cae a uno en mil millones. Ojos antes que músculo. Observar, verificar contra la realidad, y luego actuar. Ese motor es Beyond Biomes... y el primer sistema que construyó, lee el suelo.
+
+Alrededor de cada campo hay tres personas que nunca han conversado entre sí. El agricultor, que conoce su tierra como la palma de su mano, pero no puede ver la biología que hay debajo. El científico, que sabe qué es lo que está fallando. Y el productor, que vende la solución y cruza los dedos.
+---
+Beyond Biomes los reúne en una sola conversación. El agricultor envía una muestra de suelo; nosotros no solo leemos quiénes viven ahí, sino qué están haciendo. El conocimiento del científico se convierte en una predicción; el producto del productor se vuelve preciso; y el agricultor obtiene mayor rendimiento con menos fertilizante. Y cada campo pagado hace que el siguiente sea más preciso.
+
+Ya está funcionando hoy: cinco cartas de intención firmadas, una cooperativa alemana, presencia en dos hemisferios, por lo que reentrenamos el modelo cada seis meses. Nuestras cepas publicadas aumentaron la absorción de nutrientes en más de un trescientos por ciento, con revisión de pares.
+
+Y esta es la petición: estamos levantando nuestra ronda semilla para llevar esto a los primeros campos. El suelo es solo el primer sistema... el mismo motor funciona para cualquier sistema vivo donde un agricultor, un productor y un científico nunca han podido conversar. Lee el sistema antes de cambiarlo. Muchas gracias.

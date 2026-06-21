@@ -1,0 +1,19 @@
+¿Y si la inteligencia artificial más avanzada ya tuviera un plan maestro de tres mil quinientos millones de años? Soy el Doctor Ringo Schwabe, microbiólogo. Todos compiten por construir músculos de IA más fuertes, y Gartner dice que más del cuarenta por ciento de los proyectos de agentes serán cancelados para el dos mil veintisiete... porque son ciegos. La naturaleza construyó los ojos antes que los músculos. Nuestra regla: leer el sistema antes de cambiarlo.
+
+Tomemos el suelo. Leemos un microbioma vivo como si fuera química plana: nitrógeno, fósforo, potasio. Eso es como depurar software pesando el hardware. Y así, miles de millones en productos biológicos se aplican a ciegas.
+
+Hay tres personas en cada campo que nunca hablan entre sí. El agricultor, que no puede ver la biología bajo su tierra. El científico, que sabe lo que está fallando pero está lejos del campo. Y el productor, que vende una cura y espera que funcione.
+---
+Beyond Biomes los conecta, con el truco más antiguo de la naturaleza. Cuando una célula copia el ADN, un corrector independiente lo revisa: el testigo observa desde fuera a quien actúa. Nosotros construimos ese testigo en software. El agricultor nos envía tierra; no leemos quién está ahí, sino qué están haciendo: diecisiete agentes de inteligencia artificial, doscientos veintiún modelos, en vivo, con un noventa y siete por ciento de detección de enfermedades.
+
+Entre el sesenta y el setenta por ciento de las cepas individuales mueren en el campo. Nosotros no adivinamos: primero medimos el estrés, y luego diseñamos el consorcio creado para sobrevivirlo. Nuestras cepas publicadas aumentaron la absorción de nutrientes en más de un trescientos por ciento, validado por pares.
+
+El valor se divide claramente: el agricultor obtiene el rendimiento, el productor paga por probar y personalizar su producto. Nosotros vendemos los ojos; ellos venden el músculo. Y Cyro Cavalcante —una empresa de biofertilizantes con presencia en treinta y cinco países— acaba de firmar para usar nuestra tecnología como marca blanca.
+---
+Esto es real, hoy: cinco cartas de intención firmadas, una cooperativa alemana de mil doscientas hectáreas y campos en dos hemisferios, por lo que reentrenamos nuestros modelos cada seis meses. Comprimimos el tiempo.
+
+Y el suelo es solo el primer sistema. Nuestra capa de agentes —con mil quinientos *commits*— ya está construyendo otros negocios, desde ciencia de laboratorio hasta la construcción. Cultivamos sistemas que construyen sistemas.
+
+Somos transparentes: la patente está en trámite; la tecnología está probada en invernadero a día de hoy; el ensayo con seiscientos veinticinco metagenomas sentará las bases para el estándar de campo. Nosotros financiamos la prueba, no la damos por sentada.
+
+Entonces, lo que pedimos: un millón y medio de euros... para comprarle los ojos a una industria. Leer el sistema antes de cambiarlo. Muchas gracias.
