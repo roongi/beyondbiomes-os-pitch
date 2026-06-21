@@ -124,21 +124,24 @@ PROMPTS = {
     "system before you change it.' "
     "Minimal clean icons, no clutter, no photorealism, no gibberish text, perfectly legible short labels only."),
  "page1": (
-    "A SIMPLE, elegant ANTIQUE illustration plate, 4:5 portrait, warm aged-parchment with sepia and burnt-sienna ink, "
-    "hand-drawn, a single ornate compass rose in one corner and a thin scrollwork border, LOTS of empty parchment "
-    "space, calm and UNCLUTTERED (this is a single-idea plate, NOT a busy map), candle-lit warm color grade. "
-    "A title banner in elegant calligraphy across the top reads: 'READ THE SYSTEM BEFORE YOU CHANGE IT'. "
-    "A small line of calligraphy beneath it reads: 'Nature solved reliability 3.5 billion years ago - eyes before muscle'. "
-    "At the CENTER, large and clear, a beautifully drawn cross-section of LIVING SOIL with a single tree growing above "
-    "and roots reaching below (the Beyond Biomes emblem), encircled by ONE clean four-step ring of four simple labelled "
-    "icons: 'OBSERVE' with a finely drawn human eye, 'UNDERSTAND' with a tiny microbe-and-leaf, 'ACT' with a hand "
-    "placing a seedling, 'LEARN' with a spiral arrow. "
-    "At the bottom, a small ornate cartouche maker's mark reads: 'BEYOND BIOMES - precision medicine for the soil'. "
-    "Only these few elements, big legible antique calligraphic lettering, generous negative space, intricate but "
-    "uncrowded fine-line detail, high resolution."),
+    "An elegant ANTIQUE illustration plate, 16:9 landscape, warm aged-parchment with sepia and burnt-sienna ink, "
+    "hand-drawn, a single ornate compass rose in a corner and a thin scrollwork border, calm and UNCLUTTERED with "
+    "generous empty parchment space, candle-lit warm color grade. "
+    "A title banner in elegant calligraphy across the top reads: 'READ THE SYSTEM BEFORE YOU CHANGE IT'. A small line "
+    "beneath: 'Nature solved reliability 3.5 billion years ago - eyes before muscle'. "
+    "CENTER-LEFT, large and clear: a cross-section of LIVING SOIL with one tree growing above and roots below (the "
+    "Beyond Biomes emblem), encircled by ONE clean four-step ring of labelled icons: 'OBSERVE' (a finely drawn human "
+    "eye), 'UNDERSTAND' (a microbe-and-leaf), 'ACT' (a hand placing a seedling), 'LEARN' (a spiral). "
+    "Three small elegant calligraphic labels float around it as the AGENTIC-AI principles: 'OBSERVABILITY', 'THE "
+    "WITNESS - verify before you act', 'MULTI-AGENT, AUTONOMY YOU CAN TRUST'. "
+    "RIGHT SIDE, a small framed 'biological example' vignette with a hand-drawn DNA double helix and a magnifying glass, "
+    "captioned in neat antique lettering: 'Nature's proofreader: the enzyme copying DNA errs 1 in 100,000 - a separate "
+    "WITNESS checks it - 1 in a billion. We built that witness in software.' "
+    "Bottom cartouche maker's mark: 'BEYOND BIOMES - the agentic platform that reads living systems'. "
+    "Big legible antique calligraphic lettering, generous negative space, uncrowded fine-line detail, high resolution."),
 }
 
-ASPECT = {"p1_map":"4:5","connections":"16:9","logo_wordmark":"16:9","mappa":"16:9","mappa_bb":"16:9","onepager":"3:4","page1":"4:5","doctor":"1:1","factory":"1:1","logo_mark":"1:1"}
+ASPECT = {"p1_map":"4:5","connections":"16:9","logo_wordmark":"16:9","mappa":"16:9","mappa_bb":"16:9","onepager":"3:4","page1":"16:9","doctor":"1:1","factory":"1:1","logo_mark":"1:1"}
 
 def save_parts(resp, base):
     n = 0
