@@ -12,11 +12,19 @@ _Paste the block at the bottom into a fresh WSL session. Everything below is the
 
 **B · 3-min vs 4-min** — pitch uses **bb_v3_3min** (3 min). Keep the 4-min **bb_v3_full** for the app's "listen" mode **with subtitles** (generate SRT/VTT from voice_text). Don't delete anything.
 
-**C · SLIDE VIDEOS (12 slides)** — build a video that runs along the **locked 12 slides** (BeyondBiomes_SoilIntelligence_FINAL.pdf), narrated by the **same Old Wizard voice** (per-slide timing from the script's timing map). Produce one per voice variant (v3_3min, v1) so Ringo can A/B. Wire into the **training app** for listen/skip/select.
+**VIDEOS — 3 LANGUAGES (EN · DE · ES) and this ORDER:**
+- Voices already generated (Old Wizard, `media/voice/`): **EN** bb_v3_3min_full · **DE** bb_v3_de_full · **ES** bb_v3_es_full (+ v1, 4-min EN, personas). Translations in `voice_text/v3_de.txt`, `v3_es.txt`.
+- ⚠ ElevenLabs credits ~1,594 left → use the **2nd API key** for persona-DE/ES or more languages.
 
-**D · NOTEBOOKLM video** — feed the voice scripts to **NotebookLM** to create a **3-min ANIME-style** video; then bring **our Old Wizard voice** onto it (replace/overlay NLM's voice). 
+**C · (do FIRST) ANIMATED PRESENTATION / "HYPERFRAME MOTION" video** — render the **locked 12 slides** (BeyondBiomes_SoilIntelligence_FINAL.pdf) as an animated (Framer-Motion / Ken-Burns) video, narrated by the Old Wizard voice, per-slide timing from the script timing map. Make EN + DE + ES. **Wire this one into the pitch app first.**
 
-**E · GOOGLE FLOW (Veo, Ultra Gemini)** — the full cinematic "living pitch" video per VIDEO_STORYBOARD (12 clips + sizzle), our voice on top.
+**D · (second) NOTEBOOKLM video** — feed the voice scripts to **NotebookLM** → **3-min ANIME-style** video; overlay **our Old Wizard voice** (EN/DE/ES). 
+
+**E · (last) GOOGLE FLOW (Veo, Ultra Gemini)** — the full cinematic "living pitch" per VIDEO_STORYBOARD (12 clips + sizzle), our voice on top, EN/DE/ES.
+
+→ Wire all into the **training app** (listen/watch all → Ringo selects) → then the chosen one(s) into the **pitch app** + referenced in the **handoff**, in all 3 languages.
+
+**SKILL:** reusable **`pitch-factory`** skill captured at `pitch-content/skill/pitch-factory/SKILL.md` (the whole pipeline + bundled scripts) — install into `.claude/skills/` to re-run this for any pitch.
 
 **F · TRAINING APP end-to-end** — make `/train` work fully: teleprompter + per-slide voice + **version selector (listen all → pick)** + delivery scoring + Q&A drills (QA_MURDER_BOARD). Wire the **presentation-based slide video** in first. After Ringo selects, wire the **best voice + video** into: the **pitch app**, the **training app**, and reference in the **handoff**.
 
