@@ -1,0 +1,225 @@
+{
+  "base": "https://review.beyondbiomes.de/annexes/train",
+  "versions": [
+    {
+      "id": "eyes",
+      "label": "NEW · Eyes (sharp hook ⭐)",
+      "character": "Thesis-first: build AI its eyes — fits 3:00",
+      "langs": {
+        "en": {
+          "audio": "https://review.beyondbiomes.de/annexes/train/bb_eyes_3min_full.mp3",
+          "duration": 207.3,
+          "srt": "https://review.beyondbiomes.de/annexes/train/bb_eyes_3min.srt"
+        },
+        "de": {
+          "audio": "https://review.beyondbiomes.de/annexes/train/bb_eyes_3min_de_full.mp3",
+          "duration": 252.2,
+          "srt": "https://review.beyondbiomes.de/annexes/train/bb_eyes_3min_de.srt"
+        },
+        "es": {
+          "audio": "https://review.beyondbiomes.de/annexes/train/bb_eyes_3min_es_full.mp3",
+          "duration": 248.1,
+          "srt": "https://review.beyondbiomes.de/annexes/train/bb_eyes_3min_es.srt"
+        }
+      }
+    },
+    {
+      "id": "warzone",
+      "label": "NEW · Warzone (visceral hook)",
+      "character": "Opens on the field-death image — fits 3:00",
+      "langs": {
+        "en": {
+          "audio": "https://review.beyondbiomes.de/annexes/train/bb_warzone_3min_full.mp3",
+          "duration": 218.3,
+          "srt": "https://review.beyondbiomes.de/annexes/train/bb_warzone_3min.srt"
+        },
+        "de": {
+          "audio": "https://review.beyondbiomes.de/annexes/train/bb_warzone_3min_de_full.mp3",
+          "duration": 265.2,
+          "srt": "https://review.beyondbiomes.de/annexes/train/bb_warzone_3min_de.srt"
+        },
+        "es": {
+          "audio": "https://review.beyondbiomes.de/annexes/train/bb_warzone_3min_es_full.mp3",
+          "duration": 256.7,
+          "srt": "https://review.beyondbiomes.de/annexes/train/bb_warzone_3min_es.srt"
+        }
+      }
+    },
+    {
+      "id": "witness",
+      "label": "NEW · Witness (question hook)",
+      "character": "Opens on the 'dead language' question — fits 3:00",
+      "langs": {
+        "en": {
+          "audio": "https://review.beyondbiomes.de/annexes/train/bb_witness_3min_full.mp3",
+          "duration": 220.0,
+          "srt": "https://review.beyondbiomes.de/annexes/train/bb_witness_3min.srt"
+        },
+        "de": {
+          "audio": "https://review.beyondbiomes.de/annexes/train/bb_witness_3min_de_full.mp3",
+          "duration": 259.8,
+          "srt": "https://review.beyondbiomes.de/annexes/train/bb_witness_3min_de.srt"
+        },
+        "es": {
+          "audio": "https://review.beyondbiomes.de/annexes/train/bb_witness_3min_es_full.mp3",
+          "duration": 261.4,
+          "srt": "https://review.beyondbiomes.de/annexes/train/bb_witness_3min_es.srt"
+        }
+      }
+    },
+    {
+      "id": "blind",
+      "label": "NEW · Blind (cold-stat hook)",
+      "character": "Opens on the Gartner 40% stat — runs ~3:30",
+      "langs": {
+        "en": {
+          "audio": "https://review.beyondbiomes.de/annexes/train/bb_blind_3min_full.mp3",
+          "duration": 234.8,
+          "srt": "https://review.beyondbiomes.de/annexes/train/bb_blind_3min.srt"
+        },
+        "de": {
+          "audio": "https://review.beyondbiomes.de/annexes/train/bb_blind_3min_de_full.mp3",
+          "duration": 272.1,
+          "srt": "https://review.beyondbiomes.de/annexes/train/bb_blind_3min_de.srt"
+        },
+        "es": {
+          "audio": "https://review.beyondbiomes.de/annexes/train/bb_blind_3min_es_full.mp3",
+          "duration": 268.5,
+          "srt": "https://review.beyondbiomes.de/annexes/train/bb_blind_3min_es.srt"
+        }
+      }
+    },
+    {
+      "id": "v3",
+      "label": "Master · v3 (prior default)",
+      "character": "Evidence-rich, honest — the prior live default",
+      "langs": {
+        "en": {
+          "audio": "https://review.beyondbiomes.de/annexes/train/bb_v3_3min_full.mp3",
+          "duration": 182.7,
+          "srt": "https://review.beyondbiomes.de/annexes/train/bb_v3_3min.srt",
+          "video": "https://review.beyondbiomes.de/annexes/train/slidevid_en.mp4"
+        },
+        "de": {
+          "audio": "https://review.beyondbiomes.de/annexes/train/bb_v3_de_full.mp3",
+          "duration": 236.3,
+          "srt": "https://review.beyondbiomes.de/annexes/train/bb_v3_de.srt",
+          "video": "https://review.beyondbiomes.de/annexes/train/slidevid_de.mp4"
+        },
+        "es": {
+          "audio": "https://review.beyondbiomes.de/annexes/train/bb_v3_es_full.mp3",
+          "duration": 219.3,
+          "srt": "https://review.beyondbiomes.de/annexes/train/bb_v3_es.srt",
+          "video": "https://review.beyondbiomes.de/annexes/train/slidevid_es.mp4"
+        }
+      }
+    },
+    {
+      "id": "v2",
+      "label": "Claude v2 (blend)",
+      "character": "What-if open, tightest + most honest",
+      "langs": {
+        "en": {
+          "audio": "https://review.beyondbiomes.de/annexes/train/bb_v2_3min_full.mp3",
+          "duration": 262.2,
+          "srt": "https://review.beyondbiomes.de/annexes/train/bb_v2_3min.srt"
+        },
+        "de": {
+          "audio": "https://review.beyondbiomes.de/annexes/train/bb_v2_3min_de_full.mp3",
+          "duration": 303.7,
+          "srt": "https://review.beyondbiomes.de/annexes/train/bb_v2_3min_de.srt"
+        },
+        "es": {
+          "audio": "https://review.beyondbiomes.de/annexes/train/bb_v2_3min_es_full.mp3",
+          "duration": 291.6,
+          "srt": "https://review.beyondbiomes.de/annexes/train/bb_v2_3min_es.srt"
+        }
+      }
+    },
+    {
+      "id": "codex",
+      "label": "Codex",
+      "character": "Crisp, metaphor-forward, VC-room",
+      "langs": {
+        "en": {
+          "audio": "https://review.beyondbiomes.de/annexes/train/bb_codex_3min_full.mp3",
+          "duration": 287.9,
+          "srt": "https://review.beyondbiomes.de/annexes/train/bb_codex_3min.srt"
+        },
+        "de": {
+          "audio": "https://review.beyondbiomes.de/annexes/train/bb_codex_3min_de_full.mp3",
+          "duration": 332.0,
+          "srt": "https://review.beyondbiomes.de/annexes/train/bb_codex_3min_de.srt"
+        },
+        "es": {
+          "audio": "https://review.beyondbiomes.de/annexes/train/bb_codex_3min_es_full.mp3",
+          "duration": 322.5,
+          "srt": "https://review.beyondbiomes.de/annexes/train/bb_codex_3min_es.srt"
+        }
+      }
+    },
+    {
+      "id": "winner_soft",
+      "label": "Winner · Eyes before muscle",
+      "character": "Soft, pure story",
+      "langs": {
+        "en": {
+          "audio": "https://review.beyondbiomes.de/annexes/train/bb_winner_soft_3min_full.mp3",
+          "duration": 232.6,
+          "srt": "https://review.beyondbiomes.de/annexes/train/bb_winner_soft_3min.srt"
+        },
+        "de": {
+          "audio": "https://review.beyondbiomes.de/annexes/train/bb_winner_soft_3min_de_full.mp3",
+          "duration": 256.9,
+          "srt": "https://review.beyondbiomes.de/annexes/train/bb_winner_soft_3min_de.srt"
+        },
+        "es": {
+          "audio": "https://review.beyondbiomes.de/annexes/train/bb_winner_soft_3min_es_full.mp3",
+          "duration": 258.9,
+          "srt": "https://review.beyondbiomes.de/annexes/train/bb_winner_soft_3min_es.srt"
+        }
+      }
+    },
+    {
+      "id": "deck_180",
+      "label": "Deck-180",
+      "character": "Fully-numbered, deck-locked",
+      "langs": {
+        "en": {
+          "audio": "https://review.beyondbiomes.de/annexes/train/bb_deck_180_3min_full.mp3",
+          "duration": 274.8,
+          "srt": "https://review.beyondbiomes.de/annexes/train/bb_deck_180_3min.srt"
+        },
+        "de": {
+          "audio": "https://review.beyondbiomes.de/annexes/train/bb_deck_180_3min_de_full.mp3",
+          "duration": 335.7,
+          "srt": "https://review.beyondbiomes.de/annexes/train/bb_deck_180_3min_de.srt"
+        },
+        "es": {
+          "audio": "https://review.beyondbiomes.de/annexes/train/bb_deck_180_3min_es_full.mp3",
+          "duration": 332.1,
+          "srt": "https://review.beyondbiomes.de/annexes/train/bb_deck_180_3min_es.srt"
+        }
+      }
+    },
+    {
+      "id": "v1",
+      "label": "What a time to be alive",
+      "character": "Warm narrative open",
+      "langs": {
+        "en": {
+          "audio": "https://review.beyondbiomes.de/annexes/train/bb_v1_full.mp3",
+          "duration": 172.3
+        },
+        "de": {
+          "audio": "https://review.beyondbiomes.de/annexes/train/bb_v1_de_full.mp3",
+          "duration": 205.8
+        },
+        "es": {
+          "audio": "https://review.beyondbiomes.de/annexes/train/bb_v1_es_full.mp3",
+          "duration": 203.4
+        }
+      }
+    }
+  ]
+}

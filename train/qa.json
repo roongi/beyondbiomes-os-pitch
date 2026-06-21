@@ -1,0 +1,194 @@
+[
+  {
+    "id": 1,
+    "category": "BUSINESS MODEL & MONETIZATION",
+    "seat": "",
+    "q": "If the farmer gets the yield, why does the producer pay you?",
+    "a": "\"Because the producer has an existential problem: up to 70% of biological products fail in the field, and a product that fails once never gets bought again. They pay us €800 a hectare not to treat the whole farm — to profile validation plots so their product only goes where it will work. We de-risk their product so they can sell it. We sell the eyes; they sell the muscle.\"",
+    "bridge": "that's eyes before muscle, as a business model."
+  },
+  {
+    "id": 2,
+    "category": "BUSINESS MODEL & MONETIZATION",
+    "seat": "",
+    "q": "€800/ha at ~84% margin — isn't that just expensive sequencing?",
+    "a": "\"DNA sequencing tells you who's there — a guest list. We sell the decision: what will actually work in this field, closed to a tailored product. The margin is software-like because compute is local-first — about €30–60 a month — and it compounds: every paid field improves the model the next producer buys.\" ⚠ say margin as target.",
+    "bridge": ""
+  },
+  {
+    "id": 3,
+    "category": "BUSINESS MODEL & MONETIZATION",
+    "seat": "",
+    "q": "Farmers are notoriously hard to sell to — how do you scale?",
+    "a": "\"We don't sell farm-by-farm. Our payer is the producer — a concentrated B2B market of dozens, not millions. One producer contract carries many hectares. The farmer is the beneficiary, not the checkout.\"",
+    "bridge": ""
+  },
+  {
+    "id": 4,
+    "category": "TRACTION & CLIENTS",
+    "seat": "",
+    "q": "You say 120 B2B deals — where's the revenue?",
+    "a": "\"Total transparency: we're pre-revenue, finishing TRL 5. The 120 deals are María Paz's verified track record — it's why she's on the team; it let us skip cold outreach and land USACH in Chile. We have five signed LOIs, including Dr. Cyro Cavalcante, a biofertilizer producer in 35+ countries who signed to white-label through us.\" ⚠ LOIs = intent, not booked revenue.",
+    "bridge": ""
+  },
+  {
+    "id": 5,
+    "category": "TRACTION & CLIENTS",
+    "seat": "",
+    "q": "Are the LOIs binding?",
+    "a": "\"They're signed letters of intent — design-partner commitments for pilot access and data rights across three climate zones, for almost no cash. We represent them as channel validation, not revenue.\"",
+    "bridge": ""
+  },
+  {
+    "id": 6,
+    "category": "TRACTION & CLIENTS",
+    "seat": "",
+    "q": "Why Chile if you're EXIST-funded in Bochum?",
+    "a": "\"Biology dictates our speed. In Europe we get one harvest a year to train the AI. Chile gives us the counter-season — while Europe freezes, our model trains on live summer fields. It roughly doubles our iteration speed. That's a capital-efficiency multiplier, not a distraction.\"",
+    "bridge": ""
+  },
+  {
+    "id": 7,
+    "category": "SCIENCE & TECH",
+    "seat": "",
+    "q": "What's actually different — everyone reads soil DNA.",
+    "a": "\"DNA is the guest list — who's present. We read function — who's actually working: nutrient cycling, stress response, pathogen suppression. It's the difference between a guest list and the live runtime. That's what lets us prescribe, not just describe.\" ⚠ function via functional metagenomics/RNA-seq; don't claim it's the only method.",
+    "bridge": ""
+  },
+  {
+    "id": 8,
+    "category": "SCIENCE & TECH",
+    "seat": "",
+    "q": "R² 0.68 isn't production-grade. Why should we believe 0.85?",
+    "a": "\"We're radically honest: 0.68 is our demonstrator today, 0.81 on the EMP500 benchmark. This round funds the exact 625-metagenome trial across Germany, Chile and Spain to reach 0.85. Even 0.78 is commercially useful — the model degrades gracefully. We fund the proof; we don't assume it.\"",
+    "bridge": ""
+  },
+  {
+    "id": 9,
+    "category": "SCIENCE & TECH",
+    "seat": "",
+    "q": "If functional reading is so good, why don't Biome Makers / Trace Genomics do it?",
+    "a": "\"Paradigm and cost. They're built on the DNA 'guest list' and a cloud cost base. Function generates far heavier data; on their architecture the hyperscaler bill breaks the unit economics. Our moat is our CTO's local-first compute that processes it at the edge affordably — plus a data flywheel that compounds on fields they never saw.\"",
+    "bridge": ""
+  },
+  {
+    "id": 10,
+    "category": "SCIENCE & TECH",
+    "seat": "",
+    "q": "Is the platform real or slideware?",
+    "a": "\"It's live at review.beyondbiomes.de — 221 trained models, ~890 API endpoints, 15,000+ real samples, crop-disease detection at 97%, built on 696 commits. Scan the QR and run a diagnosis yourself in 30 seconds.\"",
+    "bridge": ""
+  },
+  {
+    "id": 11,
+    "category": "MARKET & TAM",
+    "seat": "",
+    "q": "Your TAM numbers jump around — 12.5B, 3.5B?",
+    "a": "\"Two honest numbers: the broad European biostimulant/soil market is around €12.5 billion; our serviceable intersection bottoms-up to ~€3.5 billion, with a €150M SAM and a €15M SOM by year five at ~375 customers. We pitch the serviceable one to investors who do diligence.\"",
+    "bridge": ""
+  },
+  {
+    "id": 12,
+    "category": "MARKET & TAM",
+    "seat": "",
+    "q": "+20–25% yield — is that real?",
+    "a": "\"We say target. The peer-reviewed field average is ~18%; commercial products average ~14%. Our edge is targeting — putting the right consortium where it works. We'll never put an unqualified 25% in a farmer contract.\"",
+    "bridge": ""
+  },
+  {
+    "id": 13,
+    "category": "MARKET & TAM",
+    "seat": "",
+    "q": "€12B EU crop loss — source?",
+    "a": "\"That's our estimate of blind biostimulant/fertilizer mis-application — say 'around twelve billion.' The named figures run higher: the EU JRC puts erosion alone at €1.25B/yr, EEA puts unhealthy-soil cost at €40–73B/yr.\" ⚠ never state €12B as a hard sourced fact.",
+    "bridge": ""
+  },
+  {
+    "id": 14,
+    "category": "MOAT & DEFENSIBILITY",
+    "seat": "",
+    "q": "What stops a giant from copying this?",
+    "a": "\"Three things: a data flywheel — every paid field sharpens predictions, so fast-followers start from zero; a 45–66-month / €1.3M replication barrier to rebuild the dataset; and regulation — EU 2019/1009 approves only four microorganism types, excluding 88% of makers, and forces producers to evidence claims, which is exactly what we sell.\"",
+    "bridge": ""
+  },
+  {
+    "id": 15,
+    "category": "MOAT & DEFENSIBILITY",
+    "seat": "",
+    "q": "Your patent position?",
+    "a": "\"Patent-pending — first filing now with the DPMA, PCT/EP at seed, on the Siderophore-Surfactin synergy. We analyzed 150+ patent families — no blockers. The real moat is the combination plus the data, not one molecule.\" ⚠ NEVER say 'granted patent.'",
+    "bridge": ""
+  },
+  {
+    "id": 16,
+    "category": "MOAT & DEFENSIBILITY",
+    "seat": "",
+    "q": "The 17-agent pipeline is a trade secret — what if it leaks?",
+    "a": "\"It's local-first by design — pipeline and training data never leave our control; NDAs with pilot partners; and the flywheel makes the output, prediction accuracy, the defensible asset even if methods leak.\"",
+    "bridge": ""
+  },
+  {
+    "id": 17,
+    "category": "FINANCIALS & THE ASK",
+    "seat": "",
+    "q": "What exactly does €1.5M buy, and when are you cash-flow positive?",
+    "a": "\"It's a milestone raise to TRL 7, not a path to profit. 40% producer pilots, 30% the 625-metagenome validation, 20% go-to-market, 10% regulatory. Break-even is modeled at month 36–42 on the base case; this round de-risks the Series A.\"",
+    "bridge": ""
+  },
+  {
+    "id": 18,
+    "category": "FINANCIALS & THE ASK",
+    "seat": "",
+    "q": "Your dilution / funding path?",
+    "a": "\"Seed €1.5M at €8–10M pre, then Series A €3M, Series B €5M — about €10.5M cumulative; founders retain ~48% through B. Plausible exit €30–50M to BASF, Bayer, Corteva or dsm-firmenich over ~10 years.\" ⚠ projections.",
+    "bridge": ""
+  },
+  {
+    "id": 19,
+    "category": "FINANCIALS & THE ASK",
+    "seat": "",
+    "q": "What if the validation trial misses 0.85?",
+    "a": "\"It degrades gracefully — 0.78 still validates products commercially. We'd re-scope consortium claims, not the company. We're funding the proof precisely so this isn't a binary bet.\"",
+    "bridge": ""
+  },
+  {
+    "id": 20,
+    "category": "REGULATORY",
+    "seat": "",
+    "q": "EU 2019/1009 limits microbial biostimulants to four taxa (CMC 7) — doesn't that cap you?",
+    "a": "\"Crucially, we don't sell the microbes — we sell the diagnostic and the design. Our customer, the producer, owns their product's registration. Where we recommend consortia we work within CMC 7 today and track EBIC's push to widen the list. The regulation is a tailwind: it forces producers to evidence claims — our exact product.\"",
+    "bridge": ""
+  },
+  {
+    "id": 21,
+    "category": "TEAM",
+    "seat": "",
+    "q": "Is this the team to execute?",
+    "a": "\"The scientist who invented the method (lead author, Chemosphere), a Nature Communications lead author as CSO, the engineer who built the live 221-model platform, and a commercial operator with 120 LATAM agri-deals. Method-builders plus operators, out of Ruhr-University Bochum, EXIST-funded.\" ⚠ don't name unconfirmed advisors as FTEs.",
+    "bridge": ""
+  },
+  {
+    "id": 22,
+    "category": "TEAM",
+    "seat": "",
+    "q": "Key-person risk?",
+    "a": "\"Real, and we mitigate it — advisory bridge, documented IP, and an ESOP to incentivize early hires. The science is published, not in one head.\"",
+    "bridge": ""
+  },
+  {
+    "id": 23,
+    "category": "WHY NOW / SCALE",
+    "seat": "",
+    "q": "Why now?",
+    "a": "\"Three curves crossed: sequencing cost collapsed, local-first compute made functional data affordable, and agentic AI hit its reliability wall — Gartner says >40% of agentic projects die by 2027 for lack of an observation layer. We are that layer, for biology first.\"",
+    "bridge": ""
+  },
+  {
+    "id": 24,
+    "category": "WHY NOW / SCALE",
+    "seat": "",
+    "q": "The Bauleiter / 'system that builds systems' — are you AgTech or an AI platform? Don't lose focus.",
+    "a": "\"AgTech today — the soil problem is our wedge and our revenue. But the engine is an agentic layer that already spun up four other ventures, from lab science to construction. Soil is the first machine off the line; the same factory builds the next. We monetize agriculture first; we're building the observation layer for physical AI.\"",
+    "bridge": ""
+  }
+]
