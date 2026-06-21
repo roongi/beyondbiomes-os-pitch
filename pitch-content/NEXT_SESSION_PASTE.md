@@ -47,3 +47,18 @@ Ship the investor-facing **beyondbiomes-os-pitch** app and the **4-page laminate
 3. **System that builds systems / factory** (Page 3 right, 1:1) — optional.
 4. **Four-connections icon strip** (16:5 banner) — optional.
 Full copy-ready prompts + shared style block + palette are in `IMAGE_PROMPTS.md`. Save as `handout_p1_map.png`, `handout_doctor.png`, `handout_factory.png`, `handout_connections.png`.
+
+---
+
+## 🧠 TRAINING APP + MULTI-MODEL SCRIPTS (new — last request)
+- **Q&A defense:** `QA_MURDER_BOARD.md` (comprehensive, grounded, honesty-checked) → becomes `train/qa.json`.
+- **Training app:** `TRAINING_APP_SPEC.md` — build `/train` route in `beyondbiomes-os-pitch` (voice-on; investor view stays voice-off). Tasks **T1–T6**: teleprompter + version selector (listen·skip·decide) · audio per version + ♥-pick→export blend · delivery scoring (WPM, timing-vs-map, pause/energy) · Q&A drill (random-fire, self-score, spaced repetition, 30s cap) · generate scripts.json+qa.json · progress + "5 never-fumble lines".
+- **Script variants** (`SCRIPT_VARIANTS.md`) to load for listen/skip/decide: `claude_v1` · **`claude_v2` ⭐ (PITCH_MASTER_v2, recommended)** · `codex` (`codex_improved.md`) · `winner_soft` · `deck_180`.
+- **Multi-model review:** Codex ✅ done (`codex_improved.md`, folded into v2). **Gemini ⛔ API key EXPIRED** — Ringo renews `GEMINI_API_KEY` in WSL, then re-run: `wsl -d Ubuntu-new -- bash -lc 'cd /mnt/e/WSL/shared/pitches/_pitch_build && GEMINI_CLI_TRUST_WORKSPACE=true gemini < review_prompt.txt > gemini_review.out'` → add as `gemini` variant.
+- **Re-review next session:** re-run Codex + Gemini on `PITCH_MASTER_v2` and synthesize a v3 if needed.
+
+### Added open tasks
+- [ ] **A6** — renew `GEMINI_API_KEY` (WSL) so the Gemini variant can be generated.
+- [ ] **A7** — record voice for EACH chosen variant (v2 default) so the trainer can A/B them.
+- [ ] **B9** — build the `/train` route (T1–T6) per TRAINING_APP_SPEC.
+- [ ] **B10** — generate `scripts.json` (all variants) + `qa.json` (from QA_MURDER_BOARD) + wire audio.
